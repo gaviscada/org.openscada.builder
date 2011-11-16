@@ -12,8 +12,7 @@
          ================================= -->
     <target name="default">
     	<mkdir dir="${output.dir}"/>
-    	<zip basedir="global" file="${output.dir}/builder.global-${version}.zip">
-    	</zip>
+    	<zip basedir="global" file="${output.dir}/builder.global-${version}.zip"/>
     </target>
 
 	<!-- ================================= 
