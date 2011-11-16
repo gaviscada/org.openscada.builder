@@ -5,13 +5,14 @@
     </description>
 	
 	<property name="version" value="0.1.0"/>
+	<property name="output.dir" location="output"/>
 
     <!-- ================================= 
           target: default              
          ================================= -->
     <target name="default">
-    	<mkdir dir="output"/>
-    	<zip basedir="global" file="output/builder.global-${version}.zip">
+    	<mkdir dir="${output.dir}"/>
+    	<zip basedir="global" file="${output.dir}/builder.global-${version}.zip">
     	</zip>
     </target>
 
@@ -19,7 +20,7 @@
           target: clean
          ================================= -->
     <target name="clean">
-    	<delete dir="output" failonerror="false"/>
+    	<delete dir="${output.dir}" failonerror="false"/>
     </target>
 	
 </project>
