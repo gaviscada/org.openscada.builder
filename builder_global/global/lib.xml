@@ -14,6 +14,12 @@
 
 	<property name="build.root" location="../.."/>
 	
+	<property environment="env" />
+	<property file="local.properties"/>
+	<property file="global.properties"/>
+	<property file="common/local.properties"/>
+	<property file="common/global.properties"/>
+	
 	<!-- ================================= 
           target: default              
          ================================= -->
