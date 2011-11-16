@@ -4,15 +4,18 @@
             Global Builder
     </description>
 	
-	<property name="version" value="0.1.0"/>
-	<property name="output.dir" location="output"/>
-
+	<property name="builder.profile" value="local"/>
+	<import file="global/profile.d/profile.${builder.profile}.ant"/>
+	
+	<property file="global/global.properties"/>
+	<property file="global/local.properties"/>
+	
     <!-- ================================= 
           target: default              
          ================================= -->
     <target name="default">
     	<mkdir dir="${output.dir}"/>
-    	<zip basedir="global" file="${output.dir}/builder.global-${version}.zip"/>
+    	<zip basedir="global" file="${output.dir}/builder.global-${builder.version}.zip"/>
     </target>
 
 	<!-- ================================= 

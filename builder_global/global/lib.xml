@@ -7,7 +7,7 @@
                    
      jens                                                                
      ====================================================================== -->
-<project name="OpenSCADA Builder Common Library" default="default">
+<project name="org.openscada.builder.lib" default="default">
     <description>
             Library File
     </description>
@@ -19,6 +19,11 @@
 	<property file="global.properties"/>
 	<property file="global/local.properties"/>
 	<property file="global/global.properties"/>
+	
+	<property name="builder.profile" value="local"/>
+	
+	<dirname file="${ant.file.openscada.lib}" property="org.openscada.builder.lib.dir"/>
+	<import file="${org.openscada.builder.lib.dir}/profile.d/profile.${builder.profile}.ant"/>
 	
 	<!-- ================================= 
           target: default              

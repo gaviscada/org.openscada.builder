@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<property environment="env"/>
+	
+	<property name="" value="http://${jenkins.host}/job/org.openscada.builder-0.18/lastSuccessfulBuild/artifact/output/builder.global-0.1.0.zip"/>
+	<property name="output.dir" location="${env.WORKSPACE}/output"/>
+</project>

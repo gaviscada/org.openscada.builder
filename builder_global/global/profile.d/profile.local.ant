@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<property name="bootstrap.uri" location="../../org.openscada.builder.git/builder_global/output/builder.global-0.1.0.zip"/>
+	<property name="output.dir" location="output"/>
+</project>
