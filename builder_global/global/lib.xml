@@ -145,7 +145,7 @@
        	  	<copy file="${buildDirectory}/${buildLabel}/@{name}-${buildId}-group.group.group.zip" tofile="${output.dir}/@{name}-${buildId}-p2repo.zip" failonerror="true"/>
         	
         	<!-- make a plain zip file -->
-        	<zip destfile="${output.dir}/openscada-@{name}-${buildType}.${buildId}.zip">
+        	<zip destfile="${output.dir}/@{name}-${buildType}.${buildId}.zip">
         		<fileset dir="${buildDirectory}/buildRepo/plugins">
         			<include name="*.jar"/>
         		</fileset>
