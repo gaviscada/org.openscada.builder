@@ -84,9 +84,6 @@
 	    		<arg value="-DbaseLocation=${eclipse.home.dir}"/>
 				<arg value="-DbuildDirectory=${basedir}/@{builder}/build"/>
         		
-        		<arg value="-DbuildType=${buildType}"/>
-        		<arg value="-DbuildId=${buildId}"/>
-        		
         		<arg value="-Ddeploy.repo.root=${deploy.repo.root}"/>
         		<arg value="-Dexternal.repo.root=${external.repo.root}"/>
 			</java>
@@ -119,11 +116,6 @@
         		<arg value="-Dsource.root=${source.root}"/>
 	    		<arg value="-DbaseLocation=${eclipse.home.dir}"/>
 				<arg value="-DbuildDirectory=${basedir}/@{builder}/build"/>
-        		
-        		<arg value="-DbuildType=${buildType}"/>
-        		<arg value="-DbuildId=${buildId}"/>
-        		
-        		<arg value="-Dconfigs=${configs}"/>
         		
         		<arg value="-Ddeploy.repo.root=${deploy.repo.root}"/>
         		<arg value="-Dexternal.repo.root=${external.repo.root}"/>
