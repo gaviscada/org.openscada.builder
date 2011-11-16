@@ -86,6 +86,10 @@
         		
         		<arg value="-Ddeploy.repo.root=${deploy.repo.root}"/>
         		<arg value="-Dexternal.repo.root=${external.repo.root}"/>
+        		
+	        	<syspropertyset>
+	        		<propertyref builtin="all"/>
+	        	</syspropertyset>
 			</java>
         </sequential>
     </macrodef>
@@ -119,6 +123,10 @@
         		
         		<arg value="-Ddeploy.repo.root=${deploy.repo.root}"/>
         		<arg value="-Dexternal.repo.root=${external.repo.root}"/>
+        		
+	        	<syspropertyset>
+	        		<propertyref builtin="all"/>
+	        	</syspropertyset>
 			</java>
         </sequential>
     </macrodef>
@@ -218,44 +226,6 @@
         	<echo message="Import external P2 repository: ${external.repo.root}/@{file}"/>
         	<mkdir dir="${repoBaseLocation}"/>
     		<copy file="${external.repo.root}/@{file}" todir="${repoBaseLocation}" failonerror="true"/>
-        </sequential>
-    </macrodef>
-
-	<!-- = = = = = = = = = = = = = = = = =
-          macrodef: openscada.publish.convertRepos          
-         = = = = = = = = = = = = = = = = = -->
-    <macrodef name="openscada.publish.convertRepos">
-    	<attribute name="targetPath"/>
-    	<attribute name="sourcePath" default="${deploy.repo.root}"/>
-    	<attribute name="makeSnapshot" default="true"/>
-        <sequential>
-        	<java jar="${startup}" failonerror="true" maxmemory="1024m" fork="true">
-	    		<jvmarg value="-XX:MaxPermSize=256m"/>
-	    		
-        		<arg value="-consoleLog"/>
-        		<arg value="-console"/>
-        		
-				<arg value="-application" />
-			    <arg value="org.openscada.bob.p2convert" />
-        		<arg value="-bob.dump"/>
-        		<arg value="-bob.targetPath"/>
-        		<arg value="@{targetPath}"/>
-        		<arg value="-bob.targetType" />
-        		<arg value="maven"/>
-        		
-        		<arg value="-bob.p2repository"/>
-        		<arg value="org.openscada.external=jar:file:@{sourcePath}/org.openscada.external-${external.version}-p2repo.zip/!"/>
-        		<arg value="-bob.p2repository"/>
-        		<arg value="org.openscada.aurora=jar:file:@{sourcePath}/org.openscada.aurora.sdk-${aurora.version}-p2repo.zip/!"/>
-				<arg value="-bob.p2repository"/>
-        		<arg value="org.openscada.utgard=jar:file:@{sourcePath}/org.openscada.utgard.sdk-${utgard.version}-p2repo.zip/!"/>
-        		<arg value="-bob.p2repository"/>
-        		<arg value="org.openscada.atlantis=jar:file:@{sourcePath}/org.openscada.oxygen.sdk-${oxygen.version}-p2repo.zip/!"/>
-        		<arg value="-bob.p2repository"/>
-        		<arg value="org.openscada.atlantis=jar:file:@{sourcePath}/org.openscada.atlantis.sdk-${atlantis.version}-p2repo.zip/!"/>
-        		
-        		<sysproperty key="bob.maven.makeSnapshot" value="@{makeSnapshot}"/>
-			</java>
         </sequential>
     </macrodef>
 
