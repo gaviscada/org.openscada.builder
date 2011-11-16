@@ -22,7 +22,7 @@
 	
 	<property name="builder.profile" value="local"/>
 	
-	<dirname file="${ant.file.openscada.lib}" property="org.openscada.builder.lib.dir"/>
+	<dirname file="${ant.file.org.openscada.builder.lib}" property="org.openscada.builder.lib.dir"/>
 	<import file="${org.openscada.builder.lib.dir}/profile.d/profile.${builder.profile}.ant"/>
 	
 	<!-- ================================= 
