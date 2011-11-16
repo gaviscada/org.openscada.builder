@@ -74,6 +74,9 @@
 				<arg value="-application" />
 			    <arg value="org.eclipse.ant.core.antRunner" />
         		
+        		<arg value="-buildfile" />
+		   		<arg value="${eclipse.home.dir}/plugins/org.eclipse.pde.build${eclipse.builder.version}/scripts/build.xml" />
+        		
         		<!--
         		<arg value="-verbose"/>
         		-->
