@@ -140,55 +140,9 @@
     <macrodef name="openscada.deploy.repository">
         <attribute name="name"/>
         <sequential>
-        	<echo message="Publish repository to: ${deploy.repo.root}"/>
-        	<mkdir dir="${deploy.repo.root}"/>
-       	  	<copy file="${buildDirectory}/${buildLabel}/@{name}-${buildId}-group.group.group.zip" tofile="${deploy.repo.root}/@{name}-${buildId}-p2repo.zip" failonerror="true"/>
-        </sequential>
-    </macrodef>
-
-	<!-- = = = = = = = = = = = = = = = = =
-          macrodef: openscada.publish.repository
-         = = = = = = = = = = = = = = = = = -->
-    <macrodef name="openscada.publish.repository">
-    	<!-- the id of the main feature -->
-    	<attribute name="id" />
-    	<!-- the name of the project -->
-        <attribute name="project" />
-        <sequential>
-        	<delete dir="${publish.download.root}/@{project}/${buildType}/${buildId}"/>
-        	<mkdir dir="${publish.download.root}/@{project}/${buildType}/${buildId}"/>
-        	
-        	<copy file="${deploy.repo.root}/@{id}-${buildId}-p2repo.zip" todir="${publish.download.root}/@{project}/${buildType}/${buildId}" failonerror="true"/>
-        	
-        	<delete dir="${publish.repo.root}/@{project}/${buildType}/${buildId}"/>
-        	<mkdir dir="${publish.repo.root}/@{project}/${buildType}/${buildId}"/>
-        	<unzip src="${deploy.repo.root}/@{id}-${buildId}-p2repo.zip" dest="${publish.repo.root}/@{project}/${buildType}/${buildId}"/>
-        	
-        	<!-- make a plain zip file -->
-        	<zip destfile="${publish.download.root}/@{project}/${buildType}/${buildId}/openscada-@{project}-${buildType}.${buildId}.zip">
-        		<fileset dir="${publish.repo.root}/@{project}/${buildType}/${buildId}/plugins">
-        			<include name="*.jar"/>
-        		</fileset>
-        	</zip>
-        </sequential>
-    </macrodef>
-	
-	<!-- = = = = = = = = = = = = = = = = =
-	          macrodef: openscada.publish.product
-         = = = = = = = = = = = = = = = = = -->
-    <macrodef name="openscada.publish.product">
-    	<attribute name="name" />
-    	<attribute name="project" />
-    	<attribute name="builder" />
-        <sequential>
-        	<delete dir="${publish.download.root}/@{project}/${buildType}/${buildId}/@{name}"/>
-        	<mkdir dir="${publish.download.root}/@{project}/${buildType}/${buildId}/@{name}"/>
-        	
-        	<copy todir="${publish.download.root}/@{project}/${buildType}/${buildId}/@{name}">
-        		<fileset dir="${build.root}/@{builder}/build/${buildLabel}">
-        			<include name="**/@{name}-*.zip"/>
-        		</fileset>
-        	</copy>
+        	<echo message="Publish repository to: ${output.dir}"/>
+        	<mkdir dir="${output.dir}"/>
+       	  	<copy file="${buildDirectory}/${buildLabel}/@{name}-${buildId}-group.group.group.zip" tofile="${output.dir}/@{name}-${buildId}-p2repo.zip" failonerror="true"/>
         </sequential>
     </macrodef>
 
