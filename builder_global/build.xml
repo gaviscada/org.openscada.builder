@@ -3,12 +3,16 @@
     <description>
             Global Builder
     </description>
+	
+	<property name="version" value="0.1.0"/>
 
     <!-- ================================= 
           target: default              
          ================================= -->
     <target name="default">
     	<mkdir dir="output"/>
+    	<zip basedir="global" file="output/builder.global-${version}.zip">
+    	</zip>
     </target>
 
 	<!-- ================================= 
