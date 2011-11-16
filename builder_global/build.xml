@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="builder.global" default="default" basedir=".">
+    <description>
+            Global Builder
+    </description>
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default">
+    	<mkdir dir="output"/>
+    </target>
+
+	<!-- ================================= 
+          target: clean
+         ================================= -->
+    <target name="clean">
+    	<delete dir="output" failonerror="false"/>
+    </target>
+	
+</project>
