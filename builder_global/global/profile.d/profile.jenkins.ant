@@ -5,13 +5,17 @@
 	<property environment="env"/>
 	
 	<property name="eclipse.home.dir" location="${env.ECLIPSE_371_HOME}"/>
-		
+	
+	<property name="build.root" location="../.."/>
+	
 	<property name="output.dir" location="${env.WORKSPACE}/output"/>
 	<property name="input.dir" location="${env.WORKSPACE}/input"/>
 	
 	<!-- load properties last, since they don't override in ant -->
 	<property file="${build.root}/global.properties"/>
 	<property file="${build.root}/global/global.properties"/>
+	
+	<import file="${build.root}/global/tasks.ant"/>
 	
 	<!-- ================================= 
           target: setup
@@ -53,10 +57,13 @@
     	<attribute name="jobName" default="@{repoName}-@{version}" />
     	<attribute name="required" />
         <sequential>
-        	<antcall target="profile.downloadP2Repo" inheritall="true">
-        		<param name="profile.downloadP2Repo_src" value="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
-        		<param name="profile.downloadP2Repo_required" value="@{required}"/>
-        	</antcall>
+        	<if>
+        		<equals arg1="@{required}" arg2="true"/>
+        		<then>
+        			<echo message="Importing P2 Repository from: ${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
+			    	<get dest="${input.dir}/repos" src="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip" usetimestamp="true"/>
+        		</then>
+        	</if>
         </sequential>
     </macrodef>
 

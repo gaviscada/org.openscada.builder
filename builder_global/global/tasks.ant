@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="org.openscada.builder.tasks" default="default">
+    <description>
+            External Tasks
+    </description>
+
+	<property name="build.root" location="../.."/>
+	
+	<property name="builder.profile" value="local"/>	
+	<dirname file="${ant.file.org.openscada.builder.tasks}" property="org.openscada.builder.tasks.dir"/>
+	
+	<!-- antlib -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  <classpath>
+	    <pathelement location="${org.openscada.builder.tasks.dir}/ant-contrib.jar"/>
+	  </classpath>
+	</taskdef>
+	
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" depends="" description="No Default">
+        <fail message="This file is only a task loader"/>
+    </target>
+	
+</project>
+
