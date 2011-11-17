@@ -153,16 +153,14 @@
     </macrodef>
 
 	<!-- = = = = = = = = = = = = = = = = =
-          macrodef: openscada.import.repository          
+          macrodef: openscada.importAllRepositories          
          = = = = = = = = = = = = = = = = = -->
-    <macrodef name="openscada.import.repository">
-        <attribute name="id" />
-    	<attribute name="version"/>
-    	<attribute name="todir" default="${repoBaseLocation}"/>
+    <macrodef name="openscada.importAllRepositories">
         <sequential>
-        	<echo message="Import P2 repository: ${input.dir}/@{id}-@{version}-p2repo.zip"/>
         	<mkdir dir="${repoBaseLocation}"/>
-    		<copy file="${input.dir}/@{id}-@{version}-p2repo.zip" todir="${repoBaseLocation}" failonerror="true"/>
+        	<copy todir="${repoBaseLocation}">
+        		<fileset dir="${input.dir}/repos"/>
+        	</copy>
         </sequential>
     </macrodef>
 	
@@ -186,9 +184,9 @@
     	<attribute name="file"/>
     	<attribute name="todir" default="${repoBaseLocation}"/>
         <sequential>
-        	<echo message="Import external P2 repository: ${input.dir}/@{file}"/>
+        	<echo message="Import external P2 repository: ${input.dir}/repos/@{file}"/>
         	<mkdir dir="${repoBaseLocation}"/>
-    		<copy file="${input.dir}/@{file}" todir="${repoBaseLocation}" failonerror="true"/>
+    		<copy file="${input.dir}/repos/@{file}" todir="${repoBaseLocation}" failonerror="true"/>
         </sequential>
     </macrodef>
 

@@ -28,6 +28,7 @@
     <target name="setup.input">
     	<delete dir="${input.dir}" failonerror="false"/>
 		<mkdir dir="${input.dir}"/>
+    	<mkdir dir="${input.dir}/repos"/>
     </target>
 	
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -45,9 +46,8 @@
     	<attribute name="version" />
     	<attribute name="jobName" default="@{repoName}-@{version}" />
         <sequential>
-        	<get dest="${input.dir}" src="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
+        	<get dest="${input.dir}/repos" src="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
         </sequential>
     </macrodef>
 
-	
 </project>
