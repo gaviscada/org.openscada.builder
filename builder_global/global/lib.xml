@@ -135,7 +135,7 @@
     </macrodef>
 	
 	<!-- = = = = = = = = = = = = = = = = =
-          macrodef: openscada.deploy.repository          
+          macrodef: openscada.deploy.repository
          = = = = = = = = = = = = = = = = = -->
     <macrodef name="openscada.deploy.repository">
         <attribute name="name"/>
@@ -145,12 +145,30 @@
        	  	<copy file="${buildDirectory}/${buildLabel}/@{name}-${buildId}-group.group.group.zip" tofile="${output.dir}/@{name}-${buildId}-p2repo.zip" failonerror="true"/>
         	
         	<!-- make a plain zip file -->
-        	<zip destfile="${output.dir}/@{name}-${buildType}.${buildId}.zip">
+        	<zip destfile="${output.dir}/@{name}-${buildType}.${buildId}.zip" compress="false">
         		<fileset dir="${buildDirectory}/buildRepo/plugins">
         			<include name="*.jar"/>
         		</fileset>
         	</zip>
         	
+        </sequential>
+    </macrodef>
+	
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: openscada.deploy.product
+         = = = = = = = = = = = = = = = = = -->
+    <macrodef name="openscada.deploy.product">
+        <attribute name="name"/>
+        <sequential>
+        	<echo message="Publish product to: ${output.dir}"/>
+        	<mkdir dir="${output.dir}"/>
+        	
+        	<mkdir dir="${output.dir}/@{name}"/>
+        	<copy todir="${output.dir}/@{name}">
+        		<fileset dir="${buildDirectory}/${buildLabel}">
+        			<include name="@{name}-*.zip"/>
+        		</fileset>
+        	</copy>
         </sequential>
     </macrodef>
 
@@ -178,40 +196,6 @@
         	</unzip>
         </sequential>
     </macrodef>
-	
-	<!-- = = = = = = = = = = = = = = = = =
-          macrodef: openscada.import.externalRepository          
-         = = = = = = = = = = = = = = = = = -->
-    <macrodef name="openscada.import.externalRepository">
-    	<attribute name="file"/>
-    	<attribute name="todir" default="${repoBaseLocation}"/>
-        <sequential>
-        	<echo message="Import external P2 repository: ${input.dir}/repos/@{file}"/>
-        	<mkdir dir="${repoBaseLocation}"/>
-    		<copy file="${input.dir}/repos/@{file}" todir="${repoBaseLocation}" failonerror="true"/>
-        </sequential>
-    </macrodef>
-
-	<!-- ================================= 
-          target: populateEclipse              
-         ================================= -->
-    <target name="populateEclipse" depends="" description="Download eclipse stuff">
-    	<mkdir dir="${external.repo.root}"/>
-    	
-    	<parallel threadcount="2">
-	        <get usetimestamp="true" src="http://download.openscada.org/mirror/GEF-Update-3.7.0.zip" dest="${external.repo.root}/GEF-Update-3.7.0.zip"/>
-	    	<get usetimestamp="true" src="http://download.openscada.org/mirror/emf-xsd-Update-2.7.0.zip" dest="${external.repo.root}/emf-xsd-Update-2.7.0.zip"/>
-	    	<get usetimestamp="true" src="http://download.openscada.org/mirror/org.eclipse.rcp-3.7.zip" dest="${external.repo.root}/org.eclipse.rcp-3.7.zip"/>
-	    	<get usetimestamp="true" src="http://download.openscada.org/mirror/org.eclipse.platform-3.7.zip" dest="${external.repo.root}/org.eclipse.platform-3.7.zip"/>
-    		<get usetimestamp="true" src="http://download.openscada.org/mirror/org.eclipse.ecf.sdk_3.2.0.v20100219-1253.zip" dest="${external.repo.root}/org.eclipse.ecf.sdk_3.2.0.v20100219-1253.zip"/>
-	   	   	<get usetimestamp="true" src="http://download.openscada.org/mirror/equinox-SDK-3.7.zip" dest="${external.repo.root}/equinox-SDK-3.7.zip"/>
-	    	
-	    	<get usetimestamp="true" src="http://download.openscada.org/mirror/org.eclipse.albireo.rcp_v20081031.zip" dest="${external.repo.root}/org.eclipse.albireo.rcp_v20081031.zip"/>
-    		<get usetimestamp="true" src="http://download.openscada.org/mirror/BabelLanguagePack-eclipse-de_3.6.0.v20100814043401.zip" dest="${external.repo.root}/BabelLanguagePack-eclipse-de_3.6.0.v20100814043401.zip"/>
-		</parallel>
-
-    </target>
-
 	
 </project>
 
