@@ -17,9 +17,14 @@
           target: setup
          ================================= -->
     <target name="setup" depends="
-    	setup.input,
-    	setup.external
-    	">
+    	setup.input
+    	"
+    	unless="skip.setup"
+    	>
+    	
+    	<getP2Repo required="${require.external}" jobname="org.openscada.external-0.18" reponame="org.openscada.external.sdk" version="0.18.0"/>
+    	<getP2Repo required="${require.aurora}" jobname="org.openscada.aurora-0.18" reponame="org.openscada.aurora.sdk" version="0.18.0"/>
+    	
     </target>
 	
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -31,13 +36,14 @@
     	<mkdir dir="${input.dir}/repos"/>
     </target>
 	
-	<!-- - - - - - - - - - - - - - - - - - 
-          target: setup.external                      
-         - - - - - - - - - - - - - - - - - -->
-    <target name="setup.external" if="require.external">
-    	<getP2Repo jobname="org.openscada.external-0.18" reponame="org.openscada.external.sdk" version="0.18.0"/>
+	<!-- ================================= 
+          target: name              
+         ================================= -->
+    <target name="profile.downloadP2Repo" if="profile.downloadP2Repo_required">
+    	<echo message="Importing P2 Repository from: ${profile.downloadP2Repo_src}"/>
+    	<get dest="${input.dir}/repos" src="${profile.downloadP2Repo_src}" usetimestamp="true"/>
     </target>
-	
+
 	<!-- = = = = = = = = = = = = = = = = =
           macrodef: getP2Repo          
          = = = = = = = = = = = = = = = = = -->
@@ -45,8 +51,12 @@
         <attribute name="repoName" />
     	<attribute name="version" />
     	<attribute name="jobName" default="@{repoName}-@{version}" />
+    	<attribute name="required" />
         <sequential>
-        	<get dest="${input.dir}/repos" src="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
+        	<antcall target="profile.downloadP2Repo" inheritall="true">
+        		<property name="profile.downloadP2Repo_src" value="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
+        		<property name="profile.downloadP2Repo_required" value="@{required}"/>
+        	</antcall>
         </sequential>
     </macrodef>
 
