@@ -54,8 +54,8 @@
     	<attribute name="required" />
         <sequential>
         	<antcall target="profile.downloadP2Repo" inheritall="true">
-        		<property name="profile.downloadP2Repo_src" value="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
-        		<property name="profile.downloadP2Repo_required" value="@{required}"/>
+        		<param name="profile.downloadP2Repo_src" value="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
+        		<param name="profile.downloadP2Repo_required" value="@{required}"/>
         	</antcall>
         </sequential>
     </macrodef>
