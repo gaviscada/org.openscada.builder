@@ -55,7 +55,7 @@
         	<if>
         		<equals arg1="@{required}" arg2="true"/>
         		<then>
-        			<echo message="Importing external P2 Repository from: ${uri}"/>
+        			<echo message="Importing external P2 Repository from: @{uri}"/>
 			    	<get dest="${input.dir}/repos" src="@{uri}" usetimestamp="true"/>
         		</then>
         	</if>
