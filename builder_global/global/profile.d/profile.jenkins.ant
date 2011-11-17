@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
 	<property environment="env"/>
+
+	<property file="global.properties"/>
+	<property file="global/global.properties"/>
 	
-	<property name="" value="http://${jenkins.host}/job/org.openscada.builder-0.18/lastSuccessfulBuild/artifact/output/builder.global-0.1.0.zip"/>
+	<property name="bootstrap.uri" value="http://${jenkins.host}/job/org.openscada.builder-0.18/lastSuccessfulBuild/artifact/output/builder.global-0.1.0.zip"/>
 	<property name="output.dir" location="${env.WORKSPACE}/output"/>
+	<property name="eclipse.home.dir" location="${env.ECLIPSE_371_HOME}"/>
 </project>

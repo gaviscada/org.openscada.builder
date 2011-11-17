@@ -3,12 +3,9 @@
     <description>
             Global Builder
     </description>
-	
+
 	<property name="builder.profile" value="local"/>
 	<import file="global/profile.d/profile.${builder.profile}.ant"/>
-	
-	<property file="global/global.properties"/>
-	<property file="global/local.properties"/>
 	
     <!-- ================================= 
           target: default              

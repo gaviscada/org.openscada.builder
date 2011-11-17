@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
+	
+	<property file="local.properties"/>
+	<property file="global.properties"/>
+	<property file="global/local.properties"/>
+	<property file="global/global.properties"/>
+	
 	<property name="bootstrap.uri" location="../../org.openscada.builder.git/builder_global/output/builder.global-0.1.0.zip"/>
 	<property name="output.dir" location="output"/>
 </project>
