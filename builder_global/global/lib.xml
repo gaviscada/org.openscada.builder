@@ -14,14 +14,7 @@
 
 	<property name="build.root" location="../.."/>
 	
-	<property environment="env" />
-	<property file="local.properties"/>
-	<property file="global.properties"/>
-	<property file="global/local.properties"/>
-	<property file="global/global.properties"/>
-	
-	<property name="builder.profile" value="local"/>
-	
+	<property name="builder.profile" value="local"/>	
 	<dirname file="${ant.file.org.openscada.builder.lib}" property="org.openscada.builder.lib.dir"/>
 	<import file="${org.openscada.builder.lib.dir}/profile.d/profile.${builder.profile}.ant"/>
 	
@@ -169,7 +162,7 @@
         <sequential>
         	<echo message="Import P2 repository: ${deploy.repo.root}/@{id}-@{version}-p2repo.zip"/>
         	<mkdir dir="${repoBaseLocation}"/>
-    		<copy file="${deploy.repo.root}/@{id}-@{version}-p2repo.zip" todir="${repoBaseLocation}" failonerror="true"/>
+    		<copy file="${input.dir}/@{id}-@{version}-p2repo.zip" todir="${repoBaseLocation}" failonerror="true"/>
         </sequential>
     </macrodef>
 	
@@ -195,23 +188,10 @@
         <sequential>
         	<echo message="Import external P2 repository: ${external.repo.root}/@{file}"/>
         	<mkdir dir="${repoBaseLocation}"/>
-    		<copy file="${external.repo.root}/@{file}" todir="${repoBaseLocation}" failonerror="true"/>
+    		<copy file="${input.dir}/@{file}" todir="${repoBaseLocation}" failonerror="true"/>
         </sequential>
     </macrodef>
 
-	<!-- ================================= 
-          target: populateOpenSCADA              
-         ================================= -->
-    <target name="populateOpenSCADA" depends="" description="Download OpenSCADA stuff">
-    	<mkdir dir="${external.repo.root}"/>
-    	<get usetimestamp="true" src="http://download.openscada.org/external/${openscada.release}/${external.version}/org.openscada.external-${external.version}-p2repo.zip" dest="${external.repo.root}/org.openscada.external-${external.version}-p2repo.zip"/>
-    	<get usetimestamp="true" src="http://download.openscada.org/aurora/${openscada.release}/${aurora.version}/org.openscada.aurora.sdk-${aurora.version}-p2repo.zip" dest="${external.repo.root}/org.openscada.aurora.sdk-${aurora.version}-p2repo.zip"/>
-    	<get usetimestamp="true" src="http://download.openscada.org/utgard/${openscada.release}/${utgard.version}/org.openscada.utgard.sdk-${utgard.version}-p2repo.zip" dest="${external.repo.root}/org.openscada.utgard.sdk-${utgard.version}-p2repo.zip"/>
-    	<get usetimestamp="true" src="http://download.openscada.org/atlantis/${openscada.release}/${atlantis.version}/org.openscada.atlantis.sdk-${atlantis.version}-p2repo.zip" dest="${external.repo.root}/org.openscada.atlantis.sdk-${atlantis.version}-p2repo.zip"/>
-		<get usetimestamp="true" src="http://download.openscada.org/orilla/${openscada.release}/${orilla.version}/org.openscada.orilla.sdk-${orilla.version}-p2repo.zip" dest="${external.repo.root}/org.openscada.orilla.sdk-${orilla.version}-p2repo.zip"/>
-    	<get usetimestamp="true" src="http://download.openscada.org/oxygen/${openscada.release}/${oxygen.version}/org.openscada.oxygen.sdk-${oxygen.version}-p2repo.zip" dest="${external.repo.root}/org.openscada.oxygen.sdk-${oxygen.version}-p2repo.zip"/>
-    </target>
-	
 	<!-- ================================= 
           target: populateEclipse              
          ================================= -->
