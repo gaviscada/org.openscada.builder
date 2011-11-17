@@ -12,7 +12,7 @@
 	<!-- antlib -->
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 	  <classpath>
-	    <pathelement location="${org.openscada.builder.tasks.dir}/ant-contrib.jar"/>
+	    <pathelement location="${org.openscada.builder.tasks.dir}/lib/ant-contrib.jar"/>
 	  </classpath>
 	</taskdef>
 	
