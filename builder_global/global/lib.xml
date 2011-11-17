@@ -160,7 +160,7 @@
     	<attribute name="version"/>
     	<attribute name="todir" default="${repoBaseLocation}"/>
         <sequential>
-        	<echo message="Import P2 repository: ${deploy.repo.root}/@{id}-@{version}-p2repo.zip"/>
+        	<echo message="Import P2 repository: ${input.dir}/@{id}-@{version}-p2repo.zip"/>
         	<mkdir dir="${repoBaseLocation}"/>
     		<copy file="${input.dir}/@{id}-@{version}-p2repo.zip" todir="${repoBaseLocation}" failonerror="true"/>
         </sequential>
@@ -186,7 +186,7 @@
     	<attribute name="file"/>
     	<attribute name="todir" default="${repoBaseLocation}"/>
         <sequential>
-        	<echo message="Import external P2 repository: ${external.repo.root}/@{file}"/>
+        	<echo message="Import external P2 repository: ${input.dir}/@{file}"/>
         	<mkdir dir="${repoBaseLocation}"/>
     		<copy file="${input.dir}/@{file}" todir="${repoBaseLocation}" failonerror="true"/>
         </sequential>
