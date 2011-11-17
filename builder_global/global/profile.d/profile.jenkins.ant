@@ -4,12 +4,50 @@
 	
 	<property environment="env"/>
 	
-	<property name="bootstrap.uri" value="http://${jenkins.host}/job/org.openscada.builder-0.18/lastSuccessfulBuild/artifact/output/builder.global-0.1.0.zip"/>
-	<property name="output.dir" location="${env.WORKSPACE}/output"/>
 	<property name="eclipse.home.dir" location="${env.ECLIPSE_371_HOME}"/>
+		
+	<property name="output.dir" location="${env.WORKSPACE}/output"/>
+	<property name="input.dir" location="${env.WORKSPACE}/input"/>
 	
 	<!-- load properties last, since they don't override in ant -->
 	<property file="global.properties"/>
 	<property file="global/global.properties"/>
+	
+	<!-- ================================= 
+          target: setup
+         ================================= -->
+    <target name="setup" depends="
+    	setup.input,
+    	setup.external
+    	">
+    </target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: setup.input                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="setup.input">
+    	<delete dir="${input.dir}" failonerror="false"/>
+		<mkdir dir="${input.dir}"/>
+    </target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: setup.external                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="setup.external" if="require.external">
+    	<getP2Repo jobname="org.openscada.external-0.18" reponame="org.openscada.external.sdk" version="0.18.0"/>
+    </target>
+	
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: getP2Repo          
+         = = = = = = = = = = = = = = = = = -->
+    <macrodef name="getP2Repo">
+        <attribute name="repoName" />
+    	<attribute name="version" />
+    	<attribute name="jobName" default="@{repoName}-@{version}" />
+        <sequential>
+        	<get dest="${input.dir}" src="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
+        </sequential>
+    </macrodef>
+
 	
 </project>
