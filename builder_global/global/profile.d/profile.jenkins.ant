@@ -26,8 +26,10 @@
     	unless="skip.setup"
     	>
     	
-    	<getP2Repo required="${require.external}" jobname="org.openscada.external-0.18" reponame="org.openscada.external.sdk" version="0.18.0"/>
-    	<getP2Repo required="${require.aurora}" jobname="org.openscada.aurora-0.18" reponame="org.openscada.aurora.sdk" version="0.18.0"/>
+    	<getP2Repo required="${require.external}" jobname="org.openscada.external-0.18" reponame="org.openscada.external.sdk" version="${external.version}"/>
+    	<getP2Repo required="${require.aurora}" jobname="org.openscada.aurora-0.18" reponame="org.openscada.aurora.sdk" version="${aurora.version}"/>
+    	<getP2Repo required="${require.oxygen}" jobname="org.openscada.oxygen-0.18" reponame="org.openscada.oxygen.sdk" version="${oxygen.version}"/>
+		<getP2Repo required="${require.utgard}" jobname="org.openscada.utgard-0.18" reponame="org.openscada.utgard.sdk" version="${utgard.version}"/>
     	
     </target>
 	
