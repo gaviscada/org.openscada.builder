@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="builder.upload" default="default">
+    <description>
+            Uploader
+    </description>
+	
+	<property environment="env"/>
+	<property file="upload.properties"/>
+	
+	<property name="target.base" location="target"/>
+	
+	<property name="build.root" location="."/>
+	<import file="global/lib.xml"/>
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" depends="clean,gather,upload">
+    </target>
+	
+	<!-- ================================= 
+          target: clean              
+         ================================= -->
+    <target name="clean">
+        <delete dir="gather" failonerror="false"/>
+    </target>
+
+
+	<!-- ================================= 
+          target: gather              
+         ================================= -->
+    <target name="gather">
+    	<mkdir dir="gather"/>
+
+    	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-0.18"/>
+    	<gatherRepo name="aurora" repository="org.openscada.aurora.sdk" version="${aurora.version}" job="org.openscada.aurora-0.18"/>
+		<gatherRepo name="oxygen" repository="org.openscada.oxygen.sdk" version="${oxygen.version}" job="org.openscada.oxygen-0.18"/>
+		<gatherRepo name="utgard" repository="org.openscada.utgard.sdk" version="${utgard.version}" job="org.openscada.utgard-0.18"/>
+		<gatherRepo name="orilla" repository="org.openscada.orilla.sdk" version="${orilla.version}" job="org.openscada.orilla-0.18"/>
+    	<gatherRepo name="dakara" repository="org.openscada.dakara.sdk" version="${dakara.version}" job="org.openscada.dakara-0.18"/>
+		<gatherRepo name="deploy" repository="org.openscada.deploy.repo" version="${deploy.version}" job="org.openscada.deploy-0.18"/>
+    </target>
+	
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: gatherRepo          
+         = = = = = = = = = = = = = = = = = -->
+    <macrodef name="gatherRepo">
+        <attribute name="name"/>
+    	<attribute name="job"/>
+    	<attribute name="version"/>
+    	<attribute name="repository"/>
+    	<attribute name="buildType" default="${buildType}"/>
+        <sequential>
+        	<delete dir="${target.base}/download/@{name}/@{buildType}/@{version}" failonerror="false"/>
+        	<mkdir dir="${target.base}/download/@{name}/@{buildType}/@{version}"/>
+        	
+        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{repository}-@{version}-p2repo.zip" usetimestamp="true"/>
+        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{repository}-@{buildType}.@{version}.zip" usetimestamp="true"/>
+        </sequential>
+    </macrodef>
+
+	
+	<!-- ================================= 
+          target: upload              
+         ================================= -->
+    <target name="upload">
+    </target>
+
+</project>
