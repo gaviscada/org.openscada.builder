@@ -18,6 +18,13 @@
 	<dirname file="${ant.file.org.openscada.builder.lib}" property="org.openscada.builder.lib.dir"/>
 	<import file="${org.openscada.builder.lib.dir}/profile.d/profile.${builder.profile}.ant"/>
 	
+	<!-- antlib -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  <classpath>
+	    <pathelement location="${org.openscada.builder.lib.dir}/ant-contrib.jar"/>
+	  </classpath>
+	</taskdef>
+	
 	<!-- ================================= 
           target: default              
          ================================= -->
