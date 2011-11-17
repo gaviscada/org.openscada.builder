@@ -81,24 +81,5 @@
         	</if>
         </sequential>
     </macrodef>
-	
-	<!-- = = = = = = = = = = = = = = = = =
-          macrodef: openscada.upload.repository
-         = = = = = = = = = = = = = = = = = -->
-    <macrodef name="openscada.upload.repository">
-    	<attribute name="base"/>
-    	<attribute name="repository"/>
-        <attribute name="version" default="@{buildId}"/>
-        <sequential>
-        	<ftp 
-        		userid="${env.PUBLISH_USER}"
-        		password="${env.PUBLISH_PASSWORD}"
-        		server="${env.PUBLISH_SERVER"
-        		remotedir="upload/@{base}/${buildType}/@{version}"
-        		>
-        		<fileset dir="${output.dir}"/>
-        	</ftp>
-        </sequential>
-    </macrodef>
 
 </project>
