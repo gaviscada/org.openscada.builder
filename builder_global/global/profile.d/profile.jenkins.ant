@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
+	
+	<echo message="Profile: Jenkins CI" />
+	
 	<property environment="env"/>
 
 	<property file="global.properties"/>
