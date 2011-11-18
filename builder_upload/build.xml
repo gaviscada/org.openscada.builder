@@ -34,6 +34,7 @@
     	<mkdir dir="gather"/>
 
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-0.18"/>
+    	<gatherRepo name="atlantis" repository="org.openscada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-0.18"/>
     	<gatherRepo name="aurora" repository="org.openscada.aurora.sdk" version="${aurora.version}" job="org.openscada.aurora-0.18"/>
 		<gatherRepo name="oxygen" repository="org.openscada.oxygen.sdk" version="${oxygen.version}" job="org.openscada.oxygen-0.18"/>
 		<gatherRepo name="utgard" repository="org.openscada.utgard.sdk" version="${utgard.version}" job="org.openscada.utgard-0.18"/>
