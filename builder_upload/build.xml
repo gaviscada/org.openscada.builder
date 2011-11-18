@@ -83,11 +83,13 @@
     <target name="upload" depends="clean">
     	<exec executable="rsync">
     		<arg value="-avz"/>
+    		<arg value="--delete"/>
     		<arg value="${target.base}/download/"/>
     		<arg value="${env.PUBLISH_TARGET}/download/"/>
     	</exec>
     	<exec executable="rsync">
     		<arg value="-avz"/>
+    		<arg value="--delete"/>
     		<arg value="${target.base}/repo/"/>
     		<arg value="${env.PUBLISH_TARGET}/repo/"/>
     	</exec>
