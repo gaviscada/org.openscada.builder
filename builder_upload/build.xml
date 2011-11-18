@@ -84,7 +84,12 @@
     	<exec executable="rsync">
     		<arg value="-avz"/>
     		<arg value="${target.base}/download/"/>
-    		<arg value="${env.PUBLISH_TARGET}:/var/www/vhosts/openscada.org/download/"/>
+    		<arg value="${env.PUBLISH_TARGET}/download/"/>
+    	</exec>
+    	<exec executable="rsync">
+    		<arg value="-avz"/>
+    		<arg value="${target.base}/repo/"/>
+    		<arg value="${env.PUBLISH_TARGET}/repo/"/>
     	</exec>
     </target>
 
