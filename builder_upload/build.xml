@@ -16,7 +16,7 @@
     <!-- ================================= 
           target: default              
          ================================= -->
-    <target name="default" depends="clean,gather,upload">
+    <target name="default" depends="gather,upload">
     </target>
 	
 	<!-- ================================= 
@@ -30,7 +30,7 @@
 	<!-- ================================= 
           target: gather              
          ================================= -->
-    <target name="gather">
+    <target name="gather" depends="clean">
     	<mkdir dir="gather"/>
 
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-0.18"/>
@@ -64,7 +64,12 @@
 	<!-- ================================= 
           target: upload              
          ================================= -->
-    <target name="upload">
+    <target name="upload" depends="clean">
+    	<exec executable="rsync">
+    		<arg value="-avz"/>
+    		<arg value="${target.base}/download/"/>
+    		<arg value="${env.PUBLISH_TARGET}:/var/www/vhosts/openscada.org/download/"/>
+    	</exec>
     </target>
 
 </project>
