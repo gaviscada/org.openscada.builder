@@ -52,11 +52,26 @@
     	<attribute name="repository"/>
     	<attribute name="buildType" default="${buildType}"/>
         <sequential>
+        	
+        	<!-- create download dir -->
+        	
         	<delete dir="${target.base}/download/@{name}/@{buildType}/@{version}" failonerror="false"/>
         	<mkdir dir="${target.base}/download/@{name}/@{buildType}/@{version}"/>
         	
+        	<!-- copy to download -->
+        	
         	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{repository}-@{version}-p2repo.zip" usetimestamp="true"/>
         	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{repository}-@{buildType}.@{version}.zip" usetimestamp="true"/>
+
+        	<!-- create repo dir -->
+        	
+        	<delete dir="${target.base}/repo/p2/@{name}/@{buildType}/@{version}" failonerror="false"/>
+        	<mkdir dir="${target.base}/repo/p2/@{name}/@{buildType}/@{version}"/>
+
+        	<!-- unzip repo -->
+        	
+        	<unzip dest="${target.base}/repo/p2/@{name}/@{buildType}/@{version}" src="${target.base}/download/@{name}/@{buildType}/@{version}/@{repository}-@{version}-p2repo.zip"/>
+        	
         </sequential>
     </macrodef>
 
