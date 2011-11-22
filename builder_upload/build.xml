@@ -8,6 +8,8 @@
 	<property environment="env"/>
 	<property file="upload.properties"/>
 	
+	<property name="buildType" value="${openscada.release}"/>
+	
 	<property name="target.base" location="target"/>
 	
 	<property name="build.root" location="."/>
@@ -41,6 +43,47 @@
 		<gatherRepo name="orilla" repository="org.openscada.orilla.sdk" version="${orilla.version}" job="org.openscada.orilla-0.18"/>
     	<gatherRepo name="dakara" repository="org.openscada.dakara.sdk" version="${dakara.version}" job="org.openscada.dakara-0.18"/>
 		<gatherRepo name="deploy" repository="org.openscada.deploy.repo" version="${deploy.version}" job="org.openscada.deploy-0.18"/>
+    	
+    	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-0.18"/>
+    </target>
+	
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: gatherProduct          
+         = = = = = = = = = = = = = = = = = -->
+    <macrodef name="gatherProduct">
+    	<attribute name="name"/>
+    	<attribute name="job"/>
+    	<attribute name="version"/>
+    	<attribute name="buildType" default="${buildType}"/>
+        <sequential>
+        	<!-- create download dir -->
+        	        	
+        	<delete dir="${target.base}/download/@{name}/@{buildType}/@{version}" failonerror="false"/>
+        	<mkdir dir="${target.base}/download/@{name}/@{buildType}/@{version}"/>
+        	
+        	<!-- copy to download -->
+        	
+        	<foreach list="${configs}" delimiter="&amp;" param="config" trim="true" target="targetGatherProduct">
+        		<param name="job" value="@{job}"/>
+        		<param name="name" value="@{name}"/>
+        		<param name="version" value="@{version}"/>
+        		<param name="buildType" value="@{buildType}"/>
+        	</foreach>
+        	
+        </sequential>
+    </macrodef>
+	
+	<!-- ================================= 
+          target: targetGatherProduct              
+         ================================= -->
+    <target name="targetGatherProduct">
+    	<propertyregex property="configCleaned1" input="${config}" regexp=" +" replace=""/>
+    	<propertyregex property="configCleaned" input="${configCleaned1}" regexp="," replace="."/>
+    	<echo message="Processing config: ${configCleaned}"/>
+		<get
+			dest="${target.base}/download/${name}/${buildType}/${version}"
+			src="${env.JENKINS_URL}/job/${job}/lastSuccessfulBuild/artifact/output/${name}/${name}-${configCleaned}.zip"
+			usetimestamp="true"/>
     </target>
 	
 	<!-- = = = = = = = = = = = = = = = = =
