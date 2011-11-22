@@ -60,19 +60,19 @@
         <sequential>
             <mkdir dir="${target.base}/download/installer/@{name}/@{buildType}"/>
         	
-        	<property url="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties"/>
+        	<property url="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties" prefix="local"/>
         	<echo message="Version: ${version}"/>
         	
         	<!-- x86 version -->
         	<get
         		dest="${target.base}/download/installer/@{name}/@{buildType}"
-        		src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{name}_${version}_win32.win32.x86.msi"
+        		src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{name}_${local.version}_win32.win32.x86.msi"
         		usetimestamp="true"/>
         	
         	<!-- x86_64 version -->
         	<get
         		dest="${target.base}/download/installer/@{name}/@{buildType}"
-        		src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{name}_${version}_win32.win32.x86_64.msi"
+        		src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{name}_${local.version}_win32.win32.x86_64.msi"
         		usetimestamp="true"/>
         	
         </sequential>
