@@ -56,7 +56,6 @@
     <macrodef name="gatherSetup">
         <attribute name="name" />
     	<attribute name="job"/>
-    	<attribute name="version" />
     	<attribute name="buildType" default="${buildType}" />
         <sequential>
             <mkdir dir="${target.base}/download/installer/@{name}/@{buildType}"/>
