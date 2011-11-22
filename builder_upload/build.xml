@@ -60,7 +60,7 @@
         <sequential>
             <mkdir dir="${target.base}/download/installer/@{name}/@{buildType}"/>
         	
-        	<property resource="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties"/>
+        	<property url="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties"/>
         	<echo message="Version: ${version}"/>
         	
         	<!-- x86 version -->
