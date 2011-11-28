@@ -24,7 +24,6 @@
     	
     	<delete dir="${input.dir}" failonerror="false"/>
 		<mkdir dir="${input.dir}"/>
-    	<mkdir dir="${input.dir}/repos"/>
     	
     	<getP2Repo required="${require.external}" jobname="org.openscada.external-0.18" reponame="org.openscada.external.sdk" version="${external.version}"/>
     	<getP2Repo required="${require.aurora}" jobname="org.openscada.aurora-0.18" reponame="org.openscada.aurora.sdk" version="${aurora.version}"/>
@@ -34,6 +33,8 @@
 		<getP2Repo required="${require.orilla}" jobname="org.openscada.orilla-0.18" reponame="org.openscada.orilla.sdk" version="${orilla.version}"/>
 		<getP2Repo required="${require.dakara}" jobname="org.openscada.dakara-0.18" reponame="org.openscada.dakara.sdk" version="${dakara.version}"/>
     	<getP2Repo required="${require.deploy}" jobname="org.openscada.deploy-0.18" reponame="org.openscada.deploy.repo" version="${deploy.version}"/>
+    	
+    	<getProduct required="${require.p2director}" jobname="org.openscada.deploy-0.18" productName="p2director" version="${deploy.version}"/>
     	
     	<downloadP2Repo required="${require.external.gef}" uri="http://download.openscada.org/mirror/GEF-Update-3.7.0.zip"/>
     	<downloadP2Repo required="${require.external.emf}" uri="http://download.openscada.org/mirror/emf-xsd-Update-2.7.0.zip"/>
@@ -56,6 +57,7 @@
         	<if>
         		<equals arg1="@{required}" arg2="true"/>
         		<then>
+        			<mkdir dir="${input.dir}/repos"/>
         			<echo message="Importing external P2 Repository from: @{uri}"/>
 			    	<get dest="${input.dir}/repos" src="@{uri}" usetimestamp="true"/>
         		</then>
@@ -77,10 +79,49 @@
         		<equals arg1="@{required}" arg2="true"/>
         		<then>
         			<echo message="Importing P2 Repository from: ${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
+        			<mkdir dir="${input.dir}/repos"/>
 			    	<get dest="${input.dir}/repos" src="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip" usetimestamp="true"/>
         		</then>
         	</if>
         </sequential>
     </macrodef>
+	
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: getProduct          
+         = = = = = = = = = = = = = = = = = -->
+    <macrodef name="getProduct">
+        <attribute name="productName" />
+    	<attribute name="version" />
+    	<attribute name="required" />
+    	<attribute name="jobName" />
+        <sequential>
+        	<if>
+        		<equals arg1="@{required}" arg2="true"/>
+        		<then>
+        			<echo message="Importing product @{productName} from: ${env.JENKINS_URL}"/>
+                	<foreach list="${configs}" delimiter="&amp;" param="config" trim="true" target="targetGetProduct">
+                		<param name="jobName" value="@{jobName}"/>
+                		<param name="productName" value="@{productName}"/>
+                		<param name="version" value="@{version}"/>
+                	</foreach>
+        		</then>
+        	</if>
+        </sequential>
+    </macrodef>
+	
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: targetGetProduct                      
+         - - - - - - - - - - - - - - - - - -->
+        <target name="targetGetProduct">
+    	<propertyregex property="configCleaned1" input="${config}" regexp=" +" replace=""/>
+    	<propertyregex property="configCleaned" input="${configCleaned1}" regexp="," replace="."/>
+    	<echo message="Processing config: ${configCleaned}"/>
+    	<mkdir dir="${input.dir}/product"/>
+		<get
+			dest="${input.dir}/product"
+			src="${env.JENKINS_URL}/job/${jobName}/lastSuccessfulBuild/artifact/output/${productName}/${productName}-${configCleaned}.zip"
+			usetimestamp="true"/>
+    </target>
 
 </project>
