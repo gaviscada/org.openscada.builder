@@ -33,6 +33,7 @@
     	<getP2Repo required="${require.atlantis}" jobname="org.openscada.atlantis-0.18" reponame="org.openscada.atlantis.sdk" version="${atlantis.version}"/>
 		<getP2Repo required="${require.orilla}" jobname="org.openscada.orilla-0.18" reponame="org.openscada.orilla.sdk" version="${orilla.version}"/>
 		<getP2Repo required="${require.dakara}" jobname="org.openscada.dakara-0.18" reponame="org.openscada.dakara.sdk" version="${dakara.version}"/>
+    	<getP2Repo required="${require.deploy}" jobname="org.openscada.deploy-0.18" reponame="org.openscada.deploy.repo" version="${deploy.version}"/>
     	
     	<downloadP2Repo required="${require.external.gef}" uri="http://download.openscada.org/mirror/GEF-Update-3.7.0.zip"/>
     	<downloadP2Repo required="${require.external.emf}" uri="http://download.openscada.org/mirror/emf-xsd-Update-2.7.0.zip"/>
