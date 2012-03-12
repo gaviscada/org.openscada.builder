@@ -43,6 +43,7 @@
 		<gatherRepo name="orilla" repository="org.openscada.orilla.sdk" version="${orilla.version}" job="org.openscada.orilla-0.18"/>
     	<gatherRepo name="dakara" repository="org.openscada.dakara.sdk" version="${dakara.version}" job="org.openscada.dakara-0.18"/>
 		<gatherRepo name="deploy" repository="org.openscada.deploy.repo" version="${deploy.version}" job="org.openscada.deploy-0.18"/>
+    	<gatherRepo name="tauri" repository="org.openscada.tauri.repo" version="${tauri.version}" job="org.openscada.tauri-0.18"/>
     	
     	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-0.18"/>
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-0.18"/>
