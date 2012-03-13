@@ -49,6 +49,7 @@
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-0.18"/>
     	
     	<gatherSetup name="ostc" job="setup.ostc-0.18"/>
+    	<gatherSetup name="osvi" job="setup.osvi-0.18"/>
     </target>
 	
 	<!-- = = = = = = = = = = = = = = = = =
