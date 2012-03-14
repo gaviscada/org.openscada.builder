@@ -180,8 +180,8 @@
          ================================= -->
     <target name="compositeRepository" depends="clean">
     	
-    	<delete dir="${target.base}/repo/p2/org.openscada/${buildType}/${version}" failonerror="false"/>
-    	<mkdir dir="${target.base}/repo/p2/org.openscada/${buildType}/${version}"/>
+    	<delete dir="${target.base}/repo/p2/org.openscada/${buildType}/${atlantis.version}" failonerror="false"/>
+    	<mkdir dir="${target.base}/repo/p2/org.openscada/${buildType}/${atlantis.version}"/>
     	
     	<java jar="${startup}" failonerror="true" maxmemory="1024m" fork="true">
     		<jvmarg value="-XX:MaxPermSize=256m"/>
