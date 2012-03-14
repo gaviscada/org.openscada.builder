@@ -191,7 +191,7 @@
     		
     		<arg value="-buildfile" />
 	   		<arg value="eclipseBuild.xml" />
-    		<arg value="-Doutput.dir=${target.base}/repo/p2/org.openscada/${buildType}/${version}"/>
+    		<arg value="-Doutput.dir=${target.base}/repo/p2/org.openscada/${buildType}/${atlantis.version}"/>
     		
         	<syspropertyset>
         		<propertyref builtin="all"/>
