@@ -28,11 +28,10 @@
         <delete dir="gather" failonerror="false"/>
     </target>
 
-
 	<!-- ================================= 
           target: gather              
          ================================= -->
-    <target name="gather" depends="clean">
+    <target name="gather" depends="clean,compositeRepository">
     	<mkdir dir="gather"/>
 
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-0.18"/>
@@ -171,6 +170,31 @@
     		<arg value="${target.base}/repo/"/>
     		<arg value="${env.PUBLISH_TARGET}/repo/"/>
     	</exec>
+    </target>
+	
+    <!-- ================================= 
+          target: compositeRepository              
+         ================================= -->
+    <target name="compositeRepository" depends="clean">
+    	
+    	<delete dir="${target.base}/repo/p2/org.openscada/@{buildType}/@{version}" failonerror="false"/>
+    	<mkdir dir="${target.base}/repo/p2/org.openscada/@{buildType}/@{version}"/>
+    	
+    	<java jar="${startup}" failonerror="true" maxmemory="1024m" fork="true">
+    		<jvmarg value="-XX:MaxPermSize=256m"/>
+    		
+			<arg value="-application" />
+		    <arg value="org.eclipse.ant.core.antRunner" />
+    		
+    		<arg value="-buildfile" />
+	   		<arg value="eclipseBuild.xml" />
+    		<arg value="-Doutput.dir=${target.base}/repo/p2/org.openscada/@{buildType}/@{version}"/>
+    		
+        	<syspropertyset>
+        		<propertyref builtin="all"/>
+        	</syspropertyset>
+		</java>
+    	
     </target>
 
 </project>
