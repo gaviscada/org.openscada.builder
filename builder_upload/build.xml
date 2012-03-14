@@ -17,10 +17,17 @@
 	<import file="global/profile.d/profile.${builder.profile}.ant"/>
 	
 	<import file="${build.root}/global/lib.xml"/>
+
+	<condition property="skip.download">
+		<equals arg1="${noDownload}" arg2="true"/>
+	</condition>
+	<condition property="skip.repo">
+		<equals arg1="${noRepo}" arg2="true"/>
+	</condition>
 	
 	<echo message="Skip Download: ${skip.download}"/>
 	<echo message="Skip Repostories: ${skip.repo}"/>
-
+	
     <!-- ================================= 
           target: default              
          ================================= -->
