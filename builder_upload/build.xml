@@ -17,6 +17,9 @@
 	<import file="global/profile.d/profile.${builder.profile}.ant"/>
 	
 	<import file="${build.root}/global/lib.xml"/>
+	
+	<echo message="Skip Download: ${skip.download}"/>
+	<echo message="Skip Repostories: ${skip.repo}"/>
 
     <!-- ================================= 
           target: default              
