@@ -8,12 +8,12 @@
 	<property environment="env"/>
 	<property file="upload.properties"/>
 	
-	<property name="buildType" value="${openscada.release}"/>
-	
 	<property name="target.base" location="target"/>
 	
-	<property name="build.root" location="."/>
-	<import file="global/lib.xml"/>
+	<property name="builder.profile" value="local"/>
+	<import file="global/profile.d/profile.${builder.profile}.ant"/>
+	
+	<import file="${build.root}/global/lib.xml"/>
 
     <!-- ================================= 
           target: default              
