@@ -4,16 +4,39 @@
             External Tasks
     </description>
 	
+	<property environment="ENV" />
+	
 	<property name="build.root" location="../.."/>
 	
 	<property name="builder.profile" value="local"/>	
 	<dirname file="${ant.file.org.openscada.builder.tasks}" property="org.openscada.builder.tasks.dir"/>
 	
 	<!-- antlib -->
+	
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 	  <classpath>
 	    <pathelement location="${org.openscada.builder.tasks.dir}/lib/ant-contrib.jar"/>
 	  </classpath>
+	</taskdef>
+	
+	<!-- SONAR -->
+	
+	<condition property="have.sonar">
+		<and>
+			<isset property="sonar.host.url" />
+			<or>
+				<istrue value="${runSonar}" />
+				<istrue value="${ENV.runSonar}" />
+			</or>
+		</and>
+	</condition>
+	
+	<path id="sonar.lib.path">
+		<fileset dir="${org.openscada.builder.tasks.dir}/lib/sonar" includes="*.jar"/>
+    </path>
+	
+	<!-- Add the Sonar task -->
+	<taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml" classpathref="sonar.lib.path"> 
 	</taskdef>
 	
 	<!-- ================================= 

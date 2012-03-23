@@ -1,0 +1,9 @@
+== Sonar ==
+
+If you want to use sonar you will need to set the property "sonar.host.url" and
+either the environment variable or the system property "runSonar" to true.
+
+By default the postgres jdbc driver is available in the builder global project. If
+you need other database drivers you will need to place them in the
+"global/lib/sonar" directory. The ant task will load all jars in that directory for
+the sonar task.
