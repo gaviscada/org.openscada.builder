@@ -19,6 +19,7 @@
 	<import file="${org.openscada.builder.lib.dir}/profile.d/profile.${builder.profile}.ant"/>
 	
 	<import file="${org.openscada.builder.lib.dir}/tasks.ant"/>
+	<import file="${org.openscada.builder.lib.dir}/lib.sonar.ant"/>
 	
 	<!-- ================================= 
           target: default              
