@@ -103,7 +103,7 @@
         		</else>
         	</if>
         	
-            <exec executable="m4" output="${target.base}/download/installer/@{name}/@{buildType}/update.txt">
+            <exec executable="m4" output="${target.base}/download/installer/@{name}/@{buildType}/update_@{platform}.txt">
             	<arg value="-D__VERSION__=${version}"/>
             	<arg value="-D__NAME__=@{description}"/>
             	<arg value="-D__URL__=http://download.openscada.org/installer/@{name}/@{buildType}/@{name}_${version}_@{platform}.msi"/>
