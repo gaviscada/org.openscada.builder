@@ -60,11 +60,9 @@
     	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-0.18"/>
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-0.18"/>
     	
-    	<gatherSetup name="ostc" job="setup.ostc-0.18"/>
-    	<gatherSetup name="osvi" job="setup.osvi-0.18"/>
-    	<gatherSetup.platform name="driverPackage" job="setup-driver-package-0.18" platform="win32.win32.x86"/>
-    	
-    	<generateUpdate name="driverPackage" job="setup-driver-package-0.18" platform="win32.win32.x86" description="openSCADA Driver Package" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Driver Package\Version"/>
+    	<gatherSetup name="ostc" job="setup.ostc-0.18" description="openSCADA Administration Client" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Administration Client\Version"/>
+    	<gatherSetup name="osvi" job="setup.osvi-0.18" description="openSCADA Visual Interface" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Visual Interface\Version"/>
+    	<gatherSetup.platform name="driverPackage" job="setup-driver-package-0.18" platform="win32.win32.x86" description="openSCADA Driver Package" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Driver Package\Version"/>
     </target>
 	
 	<!-- = = = = = = = = = = = = = = = = =
@@ -94,6 +92,17 @@
         	
         	<checksum algorithm="MD5" property="md5" file="${target.base}/download/installer/@{name}/@{buildType}/@{name}_${version}_@{platform}.msi"/>
         	
+        	<local name="flags"/>
+        	<if>
+        		<equals arg1="win32.win32.x86_64" arg2="@{platform}"/>
+        		<then>
+        			<property name="flags" value="Flags=Sys64|NoCache"/>
+        		</then>
+        		<else>
+        			<property name="flags" value=""/>
+        		</else>
+        	</if>
+        	
             <exec executable="m4" output="${target.base}/download/installer/@{name}/@{buildType}/update.txt">
             	<arg value="-D__VERSION__=${version}"/>
             	<arg value="-D__NAME__=@{description}"/>
@@ -103,6 +112,7 @@
             	<arg value="-D__SIZE__=${size}"/>
             	<arg value="-D__MD5__=${md5}"/>
             	<arg value="-D__TIMESTAMP__=${timestamp}"/>
+            	<arg value="-D__FLAGS__=${flags}"/>
 				<arg file="update.tpl"/>
         	</exec>
         </sequential>
@@ -115,10 +125,13 @@
         <attribute name="name" />
     	<attribute name="job"/>
     	<attribute name="buildType" default="${buildType}" />
+    	<attribute name="description" default="@{name}"/>
+    	<attribute name="regKey"/>
+
         <sequential>
 
-        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86"/>
-        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86_64"/>
+        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86" description="@{description}" regKey="@{regKey}"/>
+        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86_64" description="@{description}" regKey="@{regKey}"/>
         	
         </sequential>
     </macrodef>
@@ -131,6 +144,9 @@
         <attribute name="name" />
     	<attribute name="job"/>
     	<attribute name="buildType" default="${buildType}" />
+    	<attribute name="description" default="@{name}"/>
+    	<attribute name="regKey"/>
+
         <sequential>
         	<mkdir dir="${target.base}/download/installer/@{name}/@{buildType}"/>
         	        	
@@ -143,6 +159,8 @@
         		src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{name}_${version}_@{platform}.msi"
         		usetimestamp="true"/>
           
+        	<generateUpdate name="@{name}" job="@{job}" platform="@{platform}" description="@{description}" regKey="@{regKey}"/>
+        	
         </sequential>
     </macrodef>
 
