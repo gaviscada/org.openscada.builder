@@ -4,6 +4,8 @@ basename="`basename "$1"`"
 updatename="`echo $1 | sed -e 's/\.msi$//' `".update.txt
 version="$2"
 buildType="$3"
+description="$4"
+url="$5"
 
 cat <<EOF
 [$version]

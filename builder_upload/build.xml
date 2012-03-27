@@ -63,7 +63,47 @@
     	<gatherSetup name="ostc" job="setup.ostc-0.18"/>
     	<gatherSetup name="osvi" job="setup.osvi-0.18"/>
     	<gatherSetup.platform name="driverPackage" job="setup-driver-package-0.18" platform="win32.win32.x86"/>
+    	
+    	<generateUpdate name="driverPackage" job="setup-driver-package-0.18" platform="win32.win32.x86"/>
     </target>
+	
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: generateUpdate          
+         = = = = = = = = = = = = = = = = = -->
+    <macrodef name="generateUpdate">
+        <attribute name="name" />
+    	<attribute name="job" />
+    	<attribute name="platform" />
+    	<attribute name="buildType" default="${buildType}" />
+    		
+        <sequential>
+        	
+        	<property url="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties" prefix="import" />
+        	<tstamp>
+        		<format property="timestamp" pattern="dd/MM/yyyy" />
+        	</tstamp>
+        	
+        	<exec outputproperty="size" executable="stat">
+        		<arg value="-c"/>
+        		<arg value="%s"/>
+        		<arg file="${target.base}/download/installer/@{name}/@{buildType}/@{name}_${version}_@{platform}.msi"/>
+        	</exec>
+        	
+        	<checksum algorithm="MD5" property="md5" file="${target.base}/download/installer/@{name}/@{buildType}/@{name}_${version}_@{platform}.msi"/>
+        	
+            <exec executable="m4" output="update.txt">
+            	<arg value="-D__VERSION__=${import.version}"/>
+            	<arg value="-D__NAME__=@{name}"/>
+            	<arg value="-D__URL__="/>
+            	<arg value="-D__REGKEY__="/>
+            	<arg value="-D__FILE__=@{name}_${version}_@{platform}.msi"/>
+            	<arg value="-D__SIZE__=${size}"/>
+            	<arg value="-D__MD5__=${md5}"/>
+            	<arg value="-D__TIMESTAMP__=${timestamp}"/>
+				<arg file="update.tpl"/>
+        	</exec>
+        </sequential>
+    </macrodef>
 	
 	<!-- = = = = = = = = = = = = = = = = =
           macrodef: gatherSetup          
