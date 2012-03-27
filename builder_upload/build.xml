@@ -80,16 +80,20 @@
         	
         	<local name="version"/>
         	<property url="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties"/>
+        	
+        	<local name="timestamp"/>
         	<tstamp>
         		<format property="timestamp" pattern="dd/MM/yyyy" />
         	</tstamp>
         	
+        	<local name="size"/>
         	<exec outputproperty="size" executable="stat">
         		<arg value="-c"/>
         		<arg value="%s"/>
         		<arg file="${target.base}/download/installer/@{name}/@{buildType}/@{name}_${version}_@{platform}.msi"/>
         	</exec>
         	
+        	<local name="md5"/>
         	<checksum algorithm="MD5" property="md5" file="${target.base}/download/installer/@{name}/@{buildType}/@{name}_${version}_@{platform}.msi"/>
         	
         	<local name="flags"/>
@@ -99,7 +103,7 @@
         			<property name="flags" value="Flags=Sys64|NoCache|SilentInstall"/>
         		</then>
         		<else>
-        			<property name="flags" value="SilentInstall"/>
+        			<property name="flags" value="Flags=SilentInstall"/>
         		</else>
         	</if>
         	
