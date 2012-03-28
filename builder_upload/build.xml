@@ -18,7 +18,7 @@
 	
 	<import file="${build.root}/global/lib.xml"/>
 
-	<property name="jobSuffix" value="master"/>
+	<property name="jobSuffix" value="0.18"/>
 
 	<condition property="skip.download">
 		<equals arg1="${noDownload}" arg2="true"/>
