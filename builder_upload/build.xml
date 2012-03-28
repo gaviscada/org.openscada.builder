@@ -18,6 +18,8 @@
 	
 	<import file="${build.root}/global/lib.xml"/>
 
+	<property name="jobSuffix" value="master"/>
+
 	<condition property="skip.download">
 		<equals arg1="${noDownload}" arg2="true"/>
 	</condition>
@@ -47,22 +49,22 @@
     <target name="gather" depends="clean,compositeRepository">
     	<mkdir dir="gather"/>
 
-    	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-0.18"/>
-    	<gatherRepo name="atlantis" repository="org.openscada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-0.18"/>
-    	<gatherRepo name="aurora" repository="org.openscada.aurora.sdk" version="${aurora.version}" job="org.openscada.aurora-0.18"/>
-		<gatherRepo name="oxygen" repository="org.openscada.oxygen.sdk" version="${oxygen.version}" job="org.openscada.oxygen-0.18"/>
-		<gatherRepo name="utgard" repository="org.openscada.utgard.sdk" version="${utgard.version}" job="org.openscada.utgard-0.18"/>
-		<gatherRepo name="orilla" repository="org.openscada.orilla.sdk" version="${orilla.version}" job="org.openscada.orilla-0.18"/>
-    	<gatherRepo name="dakara" repository="org.openscada.dakara.sdk" version="${dakara.version}" job="org.openscada.dakara-0.18"/>
-		<gatherRepo name="deploy" repository="org.openscada.deploy.repo" version="${deploy.version}" job="org.openscada.deploy-0.18"/>
-    	<gatherRepo name="tauri" repository="org.openscada.tauri" version="${tauri.version}" job="org.openscada.tauri-0.18"/>
+    	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-${jobSuffix}"/>
+    	<gatherRepo name="atlantis" repository="org.openscada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-${jobSuffix}"/>
+    	<gatherRepo name="aurora" repository="org.openscada.aurora.sdk" version="${aurora.version}" job="org.openscada.aurora-${jobSuffix}"/>
+		<gatherRepo name="oxygen" repository="org.openscada.oxygen.sdk" version="${oxygen.version}" job="org.openscada.oxygen-${jobSuffix}"/>
+		<gatherRepo name="utgard" repository="org.openscada.utgard.sdk" version="${utgard.version}" job="org.openscada.utgard-${jobSuffix}"/>
+		<gatherRepo name="orilla" repository="org.openscada.orilla.sdk" version="${orilla.version}" job="org.openscada.orilla-${jobSuffix}"/>
+    	<gatherRepo name="dakara" repository="org.openscada.dakara.sdk" version="${dakara.version}" job="org.openscada.dakara-${jobSuffix}"/>
+		<gatherRepo name="deploy" repository="org.openscada.deploy.repo" version="${deploy.version}" job="org.openscada.deploy-${jobSuffix}"/>
+    	<gatherRepo name="tauri" repository="org.openscada.tauri" version="${tauri.version}" job="org.openscada.tauri-${jobSuffix}"/>
     	
-    	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-0.18"/>
-    	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-0.18"/>
+    	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
+    	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
     	
-    	<gatherSetup name="ostc" job="setup.ostc-0.18" description="openSCADA Administration Client" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Administration Client\Version"/>
-    	<gatherSetup name="osvi" job="setup.osvi-0.18" description="openSCADA Visual Interface" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Visual Interface\Version"/>
-    	<gatherSetup.platform name="driverPackage" job="setup-driver-package-0.18" platform="win32.win32.x86" description="openSCADA Driver Package" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Driver Package\Version"/>
+    	<gatherSetup name="ostc" job="setup.ostc-${jobSuffix}" description="openSCADA Administration Client" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Administration Client\Version"/>
+    	<gatherSetup name="osvi" job="setup.osvi-${jobSuffix}" description="openSCADA Visual Interface" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Visual Interface\Version"/>
+    	<gatherSetup.platform name="driverPackage" job="setup-driver-package-${jobSuffix}" platform="win32.win32.x86" description="openSCADA Driver Package" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Driver Package\Version"/>
     </target>
 	
 	<!-- = = = = = = = = = = = = = = = = =
