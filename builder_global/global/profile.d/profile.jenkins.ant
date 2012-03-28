@@ -7,7 +7,7 @@
 	<property name="eclipse.home.dir" location="${env.ECLIPSE_371_HOME}"/>
 	
 	<property name="build.root" location="../.."/>
-	<property name="jobSuffix" value="master"/>
+	<property name="jobSuffix" value="0.18"/>
 	
 	<property name="output.dir" location="${env.WORKSPACE}/output"/>
 	<property name="input.dir" location="${env.WORKSPACE}/input"/>
