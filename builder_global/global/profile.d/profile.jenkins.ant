@@ -7,6 +7,7 @@
 	<property name="eclipse.home.dir" location="${env.ECLIPSE_371_HOME}"/>
 	
 	<property name="build.root" location="../.."/>
+	<property name="jobSuffix" value="0.18"/>
 	
 	<property name="output.dir" location="${env.WORKSPACE}/output"/>
 	<property name="input.dir" location="${env.WORKSPACE}/input"/>
@@ -25,16 +26,16 @@
     	<delete dir="${input.dir}" failonerror="false"/>
 		<mkdir dir="${input.dir}"/>
     	
-    	<getP2Repo required="${require.external}" jobname="org.openscada.external-0.18" reponame="org.openscada.external.sdk" version="${external.version}"/>
-    	<getP2Repo required="${require.aurora}" jobname="org.openscada.aurora-0.18" reponame="org.openscada.aurora.sdk" version="${aurora.version}"/>
-    	<getP2Repo required="${require.oxygen}" jobname="org.openscada.oxygen-0.18" reponame="org.openscada.oxygen.sdk" version="${oxygen.version}"/>
-		<getP2Repo required="${require.utgard}" jobname="org.openscada.utgard-0.18" reponame="org.openscada.utgard.sdk" version="${utgard.version}"/>
-    	<getP2Repo required="${require.atlantis}" jobname="org.openscada.atlantis-0.18" reponame="org.openscada.atlantis.sdk" version="${atlantis.version}"/>
-		<getP2Repo required="${require.orilla}" jobname="org.openscada.orilla-0.18" reponame="org.openscada.orilla.sdk" version="${orilla.version}"/>
-		<getP2Repo required="${require.dakara}" jobname="org.openscada.dakara-0.18" reponame="org.openscada.dakara.sdk" version="${dakara.version}"/>
-    	<getP2Repo required="${require.deploy}" jobname="org.openscada.deploy-0.18" reponame="org.openscada.deploy.repo" version="${deploy.version}"/>
+    	<getP2Repo required="${require.external}" jobname="org.openscada.external-${jobSuffix}" reponame="org.openscada.external.sdk" version="${external.version}"/>
+    	<getP2Repo required="${require.aurora}" jobname="org.openscada.aurora-${jobSuffix}" reponame="org.openscada.aurora.sdk" version="${aurora.version}"/>
+    	<getP2Repo required="${require.oxygen}" jobname="org.openscada.oxygen-${jobSuffix}" reponame="org.openscada.oxygen.sdk" version="${oxygen.version}"/>
+		<getP2Repo required="${require.utgard}" jobname="org.openscada.utgard-${jobSuffix}" reponame="org.openscada.utgard.sdk" version="${utgard.version}"/>
+    	<getP2Repo required="${require.atlantis}" jobname="org.openscada.atlantis-${jobSuffix}" reponame="org.openscada.atlantis.sdk" version="${atlantis.version}"/>
+		<getP2Repo required="${require.orilla}" jobname="org.openscada.orilla-${jobSuffix}" reponame="org.openscada.orilla.sdk" version="${orilla.version}"/>
+		<getP2Repo required="${require.dakara}" jobname="org.openscada.dakara-${jobSuffix}" reponame="org.openscada.dakara.sdk" version="${dakara.version}"/>
+    	<getP2Repo required="${require.deploy}" jobname="org.openscada.deploy-${jobSuffix}" reponame="org.openscada.deploy.repo" version="${deploy.version}"/>
     	
-    	<getProduct required="${require.p2director}" jobname="org.openscada.deploy-0.18" productName="p2director" version="${deploy.version}"/>
+    	<getProduct required="${require.p2director}" jobname="org.openscada.deploy-${jobSuffix}" productName="p2director" version="${deploy.version}"/>
     	
     	<downloadP2Repo required="${require.external.gef}" uri="${openscada.mirror.base}/GEF-Update-3.7.0.zip"/>
     	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-2.7.0.zip"/>
