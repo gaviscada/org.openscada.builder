@@ -106,7 +106,7 @@
         			<property name="flags" value="Flags=Sys64|NoCache|SilentInstall"/>
         		</then>
         		<else>
-        			<property name="flags" value="Flags=SilentInstall"/>
+        			<property name="flags" value="Flags=NoCache|SilentInstall"/>
         		</else>
         	</if>
         	
@@ -125,7 +125,7 @@
             	<arg value="-D__VERSION__=${version}"/>
             	<arg value="-D__NAME__=@{description} ${version}"/>
             	<arg value="-D__URL__=http://download.openscada.org/installer/@{name}/@{buildType}/@{name}_${version}_@{platform}.msi"/>
-            	<arg value="-D__REGKEY__=@{regKey}\${version}"/>
+            	<arg value="-D__REGKEY__=@{regKey}\${version}\Version"/>
             	<arg value="-D__FILE__=@{name}_${version}_@{platform}.msi"/>
             	<arg value="-D__SIZE__=${size}"/>
             	<arg value="-D__MD5__=${md5}"/>
