@@ -1,8 +1,9 @@
 ;aiu;
 
 [__VERSION__]
-Version=__VERSION__
 Name=__NAME__
+ProductVersion=__VERSION__
+Version=__VERSION__
 URL=__URL__
 RegistryKey=__REGKEY__
 Replaces=All
