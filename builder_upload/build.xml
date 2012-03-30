@@ -59,8 +59,8 @@
 		<gatherRepo name="deploy" repository="org.openscada.deploy.repo" version="${deploy.version}" job="org.openscada.deploy-${jobSuffix}"/>
     	<gatherRepo name="tauri" repository="org.openscada.tauri" version="${tauri.version}" job="org.openscada.tauri-${jobSuffix}"/>
     	
-    	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
-    	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
+    	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}" autoClose="[APPDIR]ostc.exe"/>
+    	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}" autoClose="[APPDIR]osvi.exe"/>
     	
     	<gatherSetup name="ostc" job="setup.ostc-${jobSuffix}" description="openSCADA Administration Client" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Administration Client"/>
     	<gatherSetup name="osvi" job="setup.osvi-${jobSuffix}" description="openSCADA Visual Interface" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Visual Interface"/>
@@ -77,6 +77,7 @@
     	<attribute name="buildType" default="${buildType}" />
     	<attribute name="description" default="@{name}"/>
     	<attribute name="regKey"/>
+    	<attribute name="autoClose" default=""/>
     		
         <sequential>
         	
@@ -109,6 +110,17 @@
         		</else>
         	</if>
         	
+        	<local name="autoClose"/>
+        	<if>
+        		<equals arg1="@{autoClose}" arg2=""/>
+        		<then>
+        			<property name="autoClose" value=""/>
+        		</then>
+        		<else>
+        			<property name="autoClose" value="AutoCloseApplication=@{autoClose}"/>
+        		</else>
+        	</if>
+        	
             <exec executable="m4" output="${target.base}/download/installer/@{name}/@{buildType}/update_@{platform}.txt">
             	<arg value="-D__VERSION__=${version}"/>
             	<arg value="-D__NAME__=@{description} ${version}"/>
@@ -119,6 +131,7 @@
             	<arg value="-D__MD5__=${md5}"/>
             	<arg value="-D__TIMESTAMP__=${timestamp}"/>
             	<arg value="-D__FLAGS__=${flags}"/>
+            	<arg value="-D__AUTOCLOSE__=${autoClose}"/>
 				<arg file="update.tpl"/>
         	</exec>
         </sequential>
@@ -133,11 +146,12 @@
     	<attribute name="buildType" default="${buildType}" />
     	<attribute name="description" default="@{name}"/>
     	<attribute name="regKey"/>
+    	<attribute name="autoClose" default=""/>
 
         <sequential>
 
-        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86" description="@{description}" regKey="@{regKey}"/>
-        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86_64" description="@{description}" regKey="@{regKey}"/>
+        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
+        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86_64" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
         	
         </sequential>
     </macrodef>
@@ -152,6 +166,7 @@
     	<attribute name="buildType" default="${buildType}" />
     	<attribute name="description" default="@{name}"/>
     	<attribute name="regKey"/>
+    	<attribute name="autoClose" default=""/>
 
         <sequential>
         	<mkdir dir="${target.base}/download/installer/@{name}/@{buildType}"/>
@@ -165,7 +180,7 @@
         		src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{name}_${version}_@{platform}.msi"
         		usetimestamp="true"/>
           
-        	<generateUpdate name="@{name}" job="@{job}" platform="@{platform}" description="@{description}" regKey="@{regKey}"/>
+        	<generateUpdate name="@{name}" job="@{job}" platform="@{platform}" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
         	
         </sequential>
     </macrodef>

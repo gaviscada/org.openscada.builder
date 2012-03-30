@@ -11,3 +11,4 @@ Size=__SIZE__
 MD5=__MD5__
 ReleaseDate=__TIMESTAMP__
 __FLAGS__
+__AUTOCLOSE__
