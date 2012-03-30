@@ -62,9 +62,9 @@
     	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
     	
-    	<gatherSetup name="ostc" job="setup.ostc-${jobSuffix}" description="openSCADA Administration Client" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Administration Client\Version"/>
-    	<gatherSetup name="osvi" job="setup.osvi-${jobSuffix}" description="openSCADA Visual Interface" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Visual Interface\Version"/>
-    	<gatherSetup.platform name="driverPackage" job="setup-driver-package-${jobSuffix}" platform="win32.win32.x86" description="openSCADA Driver Package" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Driver Package\Version"/>
+    	<gatherSetup name="ostc" job="setup.ostc-${jobSuffix}" description="openSCADA Administration Client" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Administration Client"/>
+    	<gatherSetup name="osvi" job="setup.osvi-${jobSuffix}" description="openSCADA Visual Interface" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Visual Interface"/>
+    	<gatherSetup.platform name="driverPackage" job="setup-driver-package-${jobSuffix}" platform="win32.win32.x86" description="openSCADA Driver Package" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Driver Package"/>
     </target>
 	
 	<!-- = = = = = = = = = = = = = = = = =
@@ -113,7 +113,7 @@
             	<arg value="-D__VERSION__=${version}"/>
             	<arg value="-D__NAME__=@{description}"/>
             	<arg value="-D__URL__=http://download.openscada.org/installer/@{name}/@{buildType}/@{name}_${version}_@{platform}.msi"/>
-            	<arg value="-D__REGKEY__=@{regKey}"/>
+            	<arg value="-D__REGKEY__=@{regKey}\${version}"/>
             	<arg value="-D__FILE__=@{name}_${version}_@{platform}.msi"/>
             	<arg value="-D__SIZE__=${size}"/>
             	<arg value="-D__MD5__=${md5}"/>
