@@ -18,6 +18,12 @@
 	
 	<import file="${build.root}/global/lib.xml"/>
 
+	<!-- 
+	  - The jobSuffix is also used in "gatherSetup.platform"
+	  - for generating the files to delete. If the jobSuffix changes
+	  - to something else then "1.0.*" then "gatherSetup.platform" has
+	  - to be changed as well.
+	  -->
 	<property name="jobSuffix" value="1.0"/>
 
 	<condition property="skip.download">
@@ -174,6 +180,12 @@
         	<local name="version"/>
         	<property url="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties"/>
         	<echo message="Version: ${version}"/>
+        	
+        	<delete>
+        		<fileset dir="${target.base}/download/installer/@{name}/@{buildType}">
+        			<include name="@{name}_${jobSuffix}.*_@{platform}.msi"/>
+        		</fileset>
+        	</delete>
         	
         	<get
         		dest="${target.base}/download/installer/@{name}/@{buildType}"
