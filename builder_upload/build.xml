@@ -18,6 +18,12 @@
 	
 	<import file="${build.root}/global/lib.xml"/>
 
+	<!-- 
+	  - The jobSuffix is also used in "gatherSetup.platform"
+	  - for generating the files to delete. If the jobSuffix changes
+	  - to something else then "1.0.*" then "gatherSetup.platform" has
+	  - to be changed as well.
+	  -->
 	<property name="jobSuffix" value="1.0"/>
 
 	<condition property="skip.download">
@@ -61,6 +67,7 @@
     	
     	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
+    	<gatherProduct name="daserver" version="${deploy.version}" job="org.openscada.deploy-${jobSuffix}"/>
     	
     	<gatherSetup name="ostc" job="setup.ostc-${jobSuffix}" description="openSCADA Administration Client" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Administration Client" autoClose="[APPDIR]ostc.exe"/>
     	<gatherSetup name="osvi" job="setup.osvi-${jobSuffix}" description="openSCADA Visual Interface" regKey="HKLM\Software\TH4 SYSTEMS GmbH\openSCADA Visual Interface" autoClose="[APPDIR]osvi.exe"/>
@@ -174,6 +181,12 @@
         	<local name="version"/>
         	<property url="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties"/>
         	<echo message="Version: ${version}"/>
+        	
+        	<delete>
+        		<fileset dir="${target.base}/download/installer/@{name}/@{buildType}">
+        			<include name="@{name}_${jobSuffix}.*_@{platform}.msi"/>
+        		</fileset>
+        	</delete>
         	
         	<get
         		dest="${target.base}/download/installer/@{name}/@{buildType}"

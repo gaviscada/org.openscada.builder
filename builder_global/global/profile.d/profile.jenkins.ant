@@ -7,10 +7,11 @@
 	<property name="eclipse.home.dir" location="${env.ECLIPSE_371_HOME}"/>
 	
 	<property name="build.root" location="../.."/>
-	<property name="jobSuffix" value="release"/>
+	<property name="jobSuffix" value="1.0"/>
 	
 	<property name="output.dir" location="${env.WORKSPACE}/output"/>
 	<property name="input.dir" location="${env.WORKSPACE}/input"/>
+	<property name="jenkins.download.base" value="${env.JENKINS_URL}"/>
 	
 	<!-- load properties last, since they don't override in ant -->
 	<property file="${build.root}/global.properties"/>
@@ -79,9 +80,9 @@
         	<if>
         		<equals arg1="@{required}" arg2="true"/>
         		<then>
-        			<echo message="Importing P2 Repository from: ${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
+        			<echo message="Importing P2 Repository from: ${jenkins.download.base}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
         			<mkdir dir="${input.dir}/repos"/>
-			    	<get dest="${input.dir}/repos" src="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip" usetimestamp="true"/>
+			    	<get dest="${input.dir}/repos" src="${jenkins.download.base}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip" usetimestamp="true"/>
         		</then>
         	</if>
         </sequential>
@@ -99,7 +100,7 @@
         	<if>
         		<equals arg1="@{required}" arg2="true"/>
         		<then>
-        			<echo message="Importing product @{productName} from: ${env.JENKINS_URL}"/>
+        			<echo message="Importing product @{productName} from: ${jenkins.download.base}"/>
                 	<foreach list="${configs}" delimiter="&amp;" param="config" trim="true" target="targetGetProduct">
                 		<param name="jobName" value="@{jobName}"/>
                 		<param name="productName" value="@{productName}"/>
@@ -121,7 +122,7 @@
     	<mkdir dir="${input.dir}/product"/>
 		<get
 			dest="${input.dir}/product"
-			src="${env.JENKINS_URL}/job/${jobName}/lastSuccessfulBuild/artifact/output/${productName}/${productName}-${configCleaned}.zip"
+			src="${jenkins.download.base}/job/${jobName}/lastSuccessfulBuild/artifact/output/${productName}/${productName}-${configCleaned}.zip"
 			usetimestamp="true"/>
     </target>
 
