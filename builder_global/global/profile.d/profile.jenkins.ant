@@ -45,7 +45,7 @@
     	<downloadP2Repo required="${require.external.ecf}" uri="${openscada.mirror.base}/org.eclipse.ecf.sdk_3.2.0.v20100219-1253.zip"/>
 		<downloadP2Repo required="${require.external.equinox}" uri="${openscada.mirror.base}/equinox-SDK-3.7.zip"/>
 		<downloadP2Repo required="${require.external.albireo}" uri="${openscada.mirror.base}/org.eclipse.albireo.rcp_v20081031.zip"/>
-    	<downloadP2Repo required="${require.external.babel}" uri="${openscada.mirror.base}/BabelLanguagePack-eclipse-de_3.6.0.v20100814043401.zip"/>
+    	<downloadP2Repo required="${require.external.babel}" uri="${openscada.mirror.base}/BabelLanguagePack-eclipse-de_3.7.0.v20110723043401.zip"/>
 
     </target>
 	
