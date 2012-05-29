@@ -5,6 +5,7 @@
 	<property environment="env"/>
 	
 	<property name="eclipse.home.dir" location="${env.ECLIPSE_372_HOME}"/>
+	<property name="openscada.mirror.base" value="${env.OPENSCADA_MIRROR_BASE}"/>
 	
 	<property name="build.root" location="../.."/>
 	<property name="jobSuffix" value="1.0"/>
