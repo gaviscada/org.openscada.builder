@@ -4,7 +4,7 @@
 	
 	<property environment="env"/>
 	
-	<property name="eclipse.home.dir" location="${env.ECLIPSE_371_HOME}"/>
+	<property name="eclipse.home.dir" location="${env.ECLIPSE_372_HOME}"/>
 	
 	<property name="build.root" location="../.."/>
 	<property name="jobSuffix" value="1.0"/>
@@ -38,12 +38,12 @@
     	
     	<getProduct required="${require.p2director}" jobname="org.openscada.deploy-${jobSuffix}" productName="p2director" version="${deploy.version}"/>
     	
-    	<downloadP2Repo required="${require.external.gef}" uri="${openscada.mirror.base}/GEF-Update-3.7.0.zip"/>
-    	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-2.7.0.zip"/>
-		<downloadP2Repo required="${require.external.rcp}" uri="${openscada.mirror.base}/org.eclipse.rcp-3.7.zip"/>
-		<downloadP2Repo required="${require.external.platform}" uri="${openscada.mirror.base}/org.eclipse.platform-3.7.zip"/>
+    	<downloadP2Repo required="${require.external.gef}" uri="${openscada.mirror.base}/GEF-Update-3.7.2.zip"/>
+    	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-2.7.2.zip"/>
+		<downloadP2Repo required="${require.external.rcp}" uri="${openscada.mirror.base}/org.eclipse.rcp-3.7.2.zip"/>
+		<downloadP2Repo required="${require.external.platform}" uri="${openscada.mirror.base}/org.eclipse.platform-3.7.2.zip"/>
     	<downloadP2Repo required="${require.external.ecf}" uri="${openscada.mirror.base}/org.eclipse.ecf.sdk_3.2.0.v20100219-1253.zip"/>
-		<downloadP2Repo required="${require.external.equinox}" uri="${openscada.mirror.base}/equinox-SDK-3.7.zip"/>
+		<downloadP2Repo required="${require.external.equinox}" uri="${openscada.mirror.base}/equinox-SDK-3.7.2.zip"/>
 		<downloadP2Repo required="${require.external.albireo}" uri="${openscada.mirror.base}/org.eclipse.albireo.rcp_v20081031.zip"/>
     	
     	<downloadEclipseArchive required="${require.external.babel}" uri="${openscada.mirror.base}/BabelLanguagePack-eclipse-de_3.7.0.v20110723043401.zip"/>
