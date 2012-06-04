@@ -25,6 +25,7 @@
     	<p2.composite.repository
     			failonexists="true"
     			destination="${output.dir}"
+    			description="openSCADA Composite Repository"
     			>
     			<add location="http://repo.openscada.org/p2/external/${buildType}/${external.version}"/>
     			<add location="http://repo.openscada.org/p2/aurora/${buildType}/${aurora.version}"/>
