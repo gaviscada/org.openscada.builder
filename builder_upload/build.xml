@@ -64,6 +64,7 @@
     	<gatherRepo name="dakara" repository="org.openscada.dakara.sdk" version="${dakara.version}" job="org.openscada.dakara-${jobSuffix}"/>
 		<gatherRepo name="deploy" repository="org.openscada.deploy.repo" version="${deploy.version}" job="org.openscada.deploy-${jobSuffix}"/>
     	<gatherRepo name="tauri" repository="org.openscada.tauri" version="${tauri.version}" job="org.openscada.tauri-${jobSuffix}"/>
+    	<gatherRepo name="orion" repository="org.openscada.orion" version="${orion.version}" job="org.openscada.orion-${jobSuffix}"/>
     	
     	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
