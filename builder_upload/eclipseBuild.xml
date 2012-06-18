@@ -27,6 +27,7 @@
     			destination="${output.dir}"
     			description="openSCADA Composite Repository"
     			>
+    		
     			<add location="http://repo.openscada.org/p2/external/${buildType}/${external.version}"/>
     			<add location="http://repo.openscada.org/p2/aurora/${buildType}/${aurora.version}"/>
     			<add location="http://repo.openscada.org/p2/oxygen/${buildType}/${oxygen.version}"/>
@@ -38,7 +39,7 @@
 				<add location="http://repo.openscada.org/p2/deploy/${buildType}/${deploy.version}"/>
     			<add location="http://repo.openscada.org/p2/tauri/${buildType}/${tauri.version}"/>
     			<add location="http://repo.openscada.org/p2/orion/${buildType}/${orion.version}"/>
-				
+    		
     	</p2.composite.repository>
     </target>
 	
