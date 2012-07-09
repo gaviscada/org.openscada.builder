@@ -37,6 +37,7 @@
 		<getP2Repo required="${require.dakara}" jobname="org.openscada.dakara-${jobSuffix}" reponame="org.openscada.dakara.sdk" version="${dakara.version}"/>
     	<getP2Repo required="${require.deploy}" jobname="org.openscada.deploy-${jobSuffix}" reponame="org.openscada.deploy.repo" version="${deploy.version}"/>
     	<getP2Repo required="${require.orion}" jobname="org.openscada.orion-${jobSuffix}" reponame="org.openscada.orion.sdk" version="${orion.version}"/>
+    	<getP2Repo required="${require.infinity}" jobname="org.openscada.infinity-${jobSuffix}" reponame="org.openscada.infinity.sdk" version="${infinity.version}"/>
     	
     	<getProduct required="${require.p2director}" jobname="org.openscada.deploy-${jobSuffix}" productName="p2director" version="${deploy.version}"/>
     	
