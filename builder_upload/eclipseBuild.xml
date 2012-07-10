@@ -39,6 +39,7 @@
 				<add location="http://repo.openscada.org/p2/deploy/${buildType}/${deploy.version}"/>
     			<add location="http://repo.openscada.org/p2/tauri/${buildType}/${tauri.version}"/>
     			<add location="http://repo.openscada.org/p2/orion/${buildType}/${orion.version}"/>
+    			<add location="http://repo.openscada.org/p2/infinity/${buildType}/${infinity.version}"/>
     		
     	</p2.composite.repository>
     </target>
