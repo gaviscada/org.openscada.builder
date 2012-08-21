@@ -55,7 +55,7 @@
     <target name="gather" depends="clean,compositeRepository">
     	<mkdir dir="gather"/>
 
-    	<gatherUpload name="builder.upload" artifact="builder.global" version="${deploy.version}" job="org.openscada.builder.upload-${jobSuffix}" />
+    	<gatherUpload name="builder.upload" artifact="builder.global" version="${deploy.version}" job="org.openscada.builder-${jobSuffix}" />
     	
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-${jobSuffix}"/>
     	<gatherRepo name="atlantis" repository="org.openscada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-${jobSuffix}"/>
