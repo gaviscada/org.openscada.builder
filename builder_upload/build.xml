@@ -55,6 +55,8 @@
     <target name="gather" depends="clean,compositeRepository">
     	<mkdir dir="gather"/>
 
+    	<gatherUpload name="builder.upload" artifact="builder.global" version="${deploy.version}" job="org.openscada.builder.upload-${jobSuffix}" />
+    	
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-${jobSuffix}"/>
     	<gatherRepo name="atlantis" repository="org.openscada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-${jobSuffix}"/>
     	<gatherRepo name="aurora" repository="org.openscada.aurora.sdk" version="${aurora.version}" job="org.openscada.aurora-${jobSuffix}"/>
@@ -271,6 +273,27 @@
         	
         	<unzip dest="${target.base}/repo/p2/@{name}/@{buildType}/@{version}" src="${target.base}/download/@{name}/@{buildType}/@{version}/@{repository}-@{version}-p2repo.zip"/>
         	
+        </sequential>
+    </macrodef>
+
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: gatherUpload          
+         = = = = = = = = = = = = = = = = = -->
+    <macrodef name="gatherUpload">
+        <attribute name="name"/>
+    	<attribute name="artifact"/>
+    	<attribute name="job"/>
+    	<attribute name="version"/>
+    	<attribute name="buildType" default="${buildType}"/>
+        <sequential>
+        	
+        	<!-- create download dir -->
+        	
+        	<delete dir="${target.base}/download/@{name}/@{buildType}/@{version}" failonerror="false"/>
+        	<mkdir dir="${target.base}/download/@{name}/@{buildType}/@{version}"/>
+        	
+        	<!-- copy to download -->
+        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{artifact}-@{version}.zip" usetimestamp="true"/>
         </sequential>
     </macrodef>
 
