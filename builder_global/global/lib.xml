@@ -78,9 +78,7 @@
         		<arg value="-buildfile" />
 		   		<arg value="${eclipse.home.dir}/plugins/org.eclipse.pde.build${eclipse.builder.version}/scripts/build.xml" />
         		
-        		<!--
         		<arg value="-verbose"/>
-        		-->
         		
 				<arg value="-Dbuilder=${basedir}/@{builder}"/>
         		<arg value="-Dbuild.root=${build.root}"/>
