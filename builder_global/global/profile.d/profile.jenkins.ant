@@ -45,7 +45,7 @@
     	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-2.7.2.zip"/>
 		<downloadP2Repo required="${require.external.rcp}" uri="${openscada.mirror.base}/org.eclipse.rcp-3.7.2.zip"/>
 		<downloadP2Repo required="${require.external.platform}" uri="${openscada.mirror.base}/org.eclipse.platform-3.7.2.zip"/>
-    	<downloadP2Repo required="${require.external.ecf}" uri="${openscada.mirror.base}/org.eclipse.ecf.sdk_3.5.6.v20120610-1946.zip"/>
+    	<downloadP2Repo required="${require.external.ecf}" uri="${openscada.mirror.base}/org.eclipse.ecf.sdk_3.2.0.v20100219-1253.zip"/>
 		<downloadP2Repo required="${require.external.equinox}" uri="${openscada.mirror.base}/equinox-SDK-3.7.2.zip"/>
 		<downloadP2Repo required="${require.external.albireo}" uri="${openscada.mirror.base}/org.eclipse.albireo.rcp_v20081031.zip"/>
     	
