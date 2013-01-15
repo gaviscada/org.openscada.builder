@@ -43,7 +43,7 @@
     	<getProduct required="${require.p2director}" jobname="org.openscada.deploy-${jobSuffix}" productName="p2director" version="${deploy.version}"/>
     	
     	<downloadP2Repo required="${require.external.gef}" uri="${openscada.mirror.base}/GEF-Update-3.8.1.zip"/>
-    	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-3.8.1.zip"/>
+    	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-2.8.1.zip"/>
 		<downloadP2Repo required="${require.external.rcp}" uri="${openscada.mirror.base}/org.eclipse.rcp-3.8.1.zip"/>
 		<downloadP2Repo required="${require.external.platform}" uri="${openscada.mirror.base}/org.eclipse.platform-3.8.1.zip"/>
     	<downloadP2Repo required="${require.external.ecf}" uri="${openscada.mirror.base}/org.eclipse.ecf.sdk_3.2.0.v20100219-1253.zip"/>
