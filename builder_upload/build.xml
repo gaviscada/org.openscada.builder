@@ -27,10 +27,10 @@
 	<property name="jobSuffix" value="1.0"/>
 
 	<condition property="skip.download">
-		<equals arg1="${noDownload}" arg2="true"/>
+		<istrue value="${noDownload}"/>
 	</condition>
 	<condition property="skip.repo">
-		<equals arg1="${noRepo}" arg2="true"/>
+		<istrue value="${noRepo}"/>
 	</condition>
 	
 	<echo message="Skip Download: ${skip.download}"/>
