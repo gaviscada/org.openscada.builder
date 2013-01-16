@@ -39,7 +39,7 @@
     <!-- ================================= 
           target: default              
          ================================= -->
-    <target name="default" depends="gather,upload">
+    <target name="default" depends="gather, upload">
     </target>
 	
 	<!-- ================================= 
@@ -52,7 +52,7 @@
 	<!-- ================================= 
           target: gather              
          ================================= -->
-    <target name="gather" depends="clean,compositeRepository">
+    <target name="gather" depends="clean, compositeRepository">
     	<mkdir dir="gather"/>
 
     	<gatherUpload name="builder.upload" artifact="builder.global" version="${deploy.version}" job="org.openscada.builder-${jobSuffix}" />
@@ -255,24 +255,39 @@
     	<attribute name="buildType" default="${buildType}"/>
         <sequential>
         	
-        	<!-- create download dir -->
+        	<echo message="Checking flag: ${gather.@{name}}"/>
         	
-        	<delete dir="${target.base}/download/@{name}/@{buildType}/@{version}" failonerror="false"/>
-        	<mkdir dir="${target.base}/download/@{name}/@{buildType}/@{version}"/>
+        	<if>
+        		
+        		<or>
+    				<istrue value="${gather.full}"/>
+        			<istrue value="${gather.@{name}}"/>
+        		</or>
+        		
+        		<then>
         	
-        	<!-- copy to download -->
-        	
-        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{repository}-@{version}-p2repo.zip" usetimestamp="true"/>
-        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{repository}-@{buildType}.@{version}.zip" usetimestamp="true"/>
-
-        	<!-- create repo dir -->
-        	
-        	<delete dir="${target.base}/repo/p2/@{name}/@{buildType}/@{version}" failonerror="false"/>
-        	<mkdir dir="${target.base}/repo/p2/@{name}/@{buildType}/@{version}"/>
-
-        	<!-- unzip repo -->
-        	
-        	<unzip dest="${target.base}/repo/p2/@{name}/@{buildType}/@{version}" src="${target.base}/download/@{name}/@{buildType}/@{version}/@{repository}-@{version}-p2repo.zip"/>
+		        	<!-- create download dir -->
+		        	
+		        	<delete dir="${target.base}/download/@{name}/@{buildType}/@{version}" failonerror="false"/>
+		        	<mkdir dir="${target.base}/download/@{name}/@{buildType}/@{version}"/>
+		        	
+		        	<!-- copy to download -->
+		        	
+		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{repository}-@{version}-p2repo.zip" usetimestamp="true"/>
+		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{repository}-@{buildType}.@{version}.zip" usetimestamp="true"/>
+		
+		        	<!-- create repo dir -->
+		        	
+		        	<delete dir="${target.base}/repo/p2/@{name}/@{buildType}/@{version}" failonerror="false"/>
+		        	<mkdir dir="${target.base}/repo/p2/@{name}/@{buildType}/@{version}"/>
+		
+		        	<!-- unzip repo -->
+		        	
+		        	<unzip dest="${target.base}/repo/p2/@{name}/@{buildType}/@{version}" src="${target.base}/download/@{name}/@{buildType}/@{version}/@{repository}-@{version}-p2repo.zip"/>
+        			
+    			</then>
+        		
+        	</if>
         	
         </sequential>
     </macrodef>
