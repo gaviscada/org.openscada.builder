@@ -40,7 +40,7 @@
     	<getP2Repo required="${require.infinity}" jobname="org.openscada.infinity-${jobSuffix}" reponame="org.openscada.infinity.sdk" version="${infinity.version}"/>
     	<getP2Repo required="${require.jinterop}" jobname="org.openscada.jinterop-${jobSuffix}" reponame="org.openscada.jinterop.sdk" version="${jinterop.version}"/>
     	
-    	<getProduct required="${require.p2director}" jobname="org.openscada.deploy-${jobSuffix}" productName="p2director" version="${deploy.version}"/>
+    	<getProduct required="${require.p2director}" jobname="org.openscada.deploy.p2director-${jobSuffix}" productName="p2director" version="${deploy.version}"/>
     	
     	<downloadP2Repo required="${require.external.gef}" uri="${openscada.mirror.base}/GEF-Update-3.8.1.zip"/>
     	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-2.8.1.zip"/>
