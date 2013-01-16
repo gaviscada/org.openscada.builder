@@ -162,8 +162,23 @@
 
         <sequential>
 
-        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
-        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86_64" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
+        	<echo message="Checking flag: ${gather.@{name}} (full: ${gather.full})"/>
+        	
+        	<if>
+        	
+        		<or>
+					<istrue value="${gather.full}"/>
+	    			<istrue value="${gather.@{name}}"/>
+    			</or>
+        		
+        		<then>
+        		
+		        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
+		        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86_64" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
+        	
+        		</then>
+        			
+        	</if>
         	
         </sequential>
     </macrodef>
@@ -214,19 +229,35 @@
     	<attribute name="version"/>
     	<attribute name="buildType" default="${buildType}"/>
         <sequential>
-        	<!-- create download dir -->
-        	        	
-        	<delete dir="${target.base}/download/@{name}/@{buildType}/@{version}" failonerror="false"/>
-        	<mkdir dir="${target.base}/download/@{name}/@{buildType}/@{version}"/>
         	
-        	<!-- copy to download -->
+        	<echo message="Checking flag: ${gather.@{name}} (full: ${gather.full})"/>
         	
-        	<foreach list="${configs}" delimiter="&amp;" param="config" trim="true" target="targetGatherProduct">
-        		<param name="job" value="@{job}"/>
-        		<param name="name" value="@{name}"/>
-        		<param name="version" value="@{version}"/>
-        		<param name="buildType" value="@{buildType}"/>
-        	</foreach>
+        	<if>
+        		
+        		<or>
+    				<istrue value="${gather.full}"/>
+        			<istrue value="${gather.@{name}}"/>	
+        		</or>
+        	
+        		<then>
+        		
+		        	<!-- create download dir -->
+		        	        	
+		        	<delete dir="${target.base}/download/@{name}/@{buildType}/@{version}" failonerror="false"/>
+		        	<mkdir dir="${target.base}/download/@{name}/@{buildType}/@{version}"/>
+		        	
+		        	<!-- copy to download -->
+		        	
+		        	<foreach list="${configs}" delimiter="&amp;" param="config" trim="true" target="targetGatherProduct">
+		        		<param name="job" value="@{job}"/>
+		        		<param name="name" value="@{name}"/>
+		        		<param name="version" value="@{version}"/>
+		        		<param name="buildType" value="@{buildType}"/>
+		        	</foreach>
+        		
+        		</then>
+        			
+    		</if>
         	
         </sequential>
     </macrodef>
@@ -255,7 +286,7 @@
     	<attribute name="buildType" default="${buildType}"/>
         <sequential>
         	
-        	<echo message="Checking flag: ${gather.@{name}}"/>
+        	<echo message="Checking flag: ${gather.@{name}} (full: ${gather.full})"/>
         	
         	<if>
         		
