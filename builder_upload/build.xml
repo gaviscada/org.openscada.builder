@@ -196,24 +196,40 @@
     	<attribute name="autoClose" default=""/>
 
         <sequential>
-        	<mkdir dir="${target.base}/download/installer/@{name}/@{buildType}"/>
-        	        	
-        	<local name="version"/>
-        	<property url="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties"/>
-        	<echo message="Version: ${version}"/>
         	
-        	<delete>
-        		<fileset dir="${target.base}/download/installer/@{name}/@{buildType}">
-        			<include name="@{name}_${jobSuffix}.*_@{platform}.msi"/>
-        		</fileset>
-        	</delete>
+        	<echo message="Checking flag: ${gather.@{name}} (full: ${gather.full})"/>
         	
-        	<get
-        		dest="${target.base}/download/installer/@{name}/@{buildType}"
-        		src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{name}_${version}_@{platform}.msi"
-        		usetimestamp="true"/>
-          
-        	<generateUpdate name="@{name}" job="@{job}" platform="@{platform}" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
+        	<if>
+        	
+        		<or>
+        			<istrue value="${gather.full}"/>
+	    			<istrue value="${gather.@{name}}"/>
+        		</or>
+        		
+        		<then>
+        		
+		        	<mkdir dir="${target.base}/download/installer/@{name}/@{buildType}"/>
+		        	        	
+		        	<local name="version"/>
+		        	<property url="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties"/>
+		        	<echo message="Version: ${version}"/>
+		        	
+		        	<delete>
+		        		<fileset dir="${target.base}/download/installer/@{name}/@{buildType}">
+		        			<include name="@{name}_${jobSuffix}.*_@{platform}.msi"/>
+		        		</fileset>
+		        	</delete>
+		        	
+		        	<get
+		        		dest="${target.base}/download/installer/@{name}/@{buildType}"
+		        		src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{name}_${version}_@{platform}.msi"
+		        		usetimestamp="true"/>
+		          
+		        	<generateUpdate name="@{name}" job="@{job}" platform="@{platform}" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
+        			
+        		</then>
+        		
+        	</if>
         	
         </sequential>
     </macrodef>
@@ -382,7 +398,7 @@
     <!-- ================================= 
           target: compositeRepository              
          ================================= -->
-    <target name="compositeRepository" depends="clean">
+    <target name="compositeRepository" depends="clean" if="gather.full">
     	
     	<delete dir="${target.base}/repo/p2/org.openscada/${buildType}/${atlantis.version}" failonerror="false"/>
     	<mkdir dir="${target.base}/repo/p2/org.openscada/${buildType}/${atlantis.version}"/>
