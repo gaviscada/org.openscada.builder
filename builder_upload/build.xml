@@ -25,7 +25,7 @@
 	  - to be changed as well.
 	  -->
 	<property name="jobSuffix" value="1.0"/>
-
+	
 	<condition property="skip.download">
 		<istrue value="${noDownload}"/>
 	</condition>
@@ -69,6 +69,7 @@
     	<gatherRepo name="orion" repository="org.openscada.orion.sdk" version="${orion.version}" job="org.openscada.orion-${jobSuffix}"/>
     	<gatherRepo name="infinity" repository="org.openscada.infinity.sdk" version="${infinity.version}" job="org.openscada.infinity-${jobSuffix}"/>
     	<gatherRepo name="jinterop" repository="org.openscada.jinterop.sdk" version="${jinterop.version}" job="org.openscada.jinterop-${jobSuffix}"/>
+    	<gatherRepo name="docdocdoc" repository="org.openscada.docdocdoc.sdk" version="${docdocdoc.version}" job="org.openscada.docdocdoc-0.1"/>
     	
     	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
