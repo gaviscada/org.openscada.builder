@@ -35,6 +35,9 @@
     			<add location="http://repo.openscada.org/p2/atlantis/${buildType}/${atlantis.version}"/>
     			<add location="http://repo.openscada.org/p2/orilla/${buildType}/${orilla.version}"/>
     			<add location="http://repo.openscada.org/p2/dakara/${buildType}/${dakara.version}"/>
+    			<add location="http://repo.openscada.org/p2/jinterop/${buildType}/${jinterop.version}"/>
+    		
+    			<add location="http://repo.openscada.org/p2/docdocdoc/${buildType}/${docdocdoc.version}"/>
     		
 				<add location="http://repo.openscada.org/p2/deploy/${buildType}/${deploy.version}"/>
     			<add location="http://repo.openscada.org/p2/tauri/${buildType}/${tauri.version}"/>
