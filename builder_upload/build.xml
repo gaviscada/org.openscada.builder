@@ -51,7 +51,7 @@
 	<!-- ================================= 
           target: gather              
          ================================= -->
-    <target name="gather" depends="clean, compositeRepository">
+    <target name="gather" depends="clean">
     	<mkdir dir="gather"/>
 
     	<gatherUpload name="builder.upload" artifact="builder.global" version="${deploy.version}" job="org.openscada.builder-${jobSuffix}" />
@@ -359,31 +359,5 @@
         	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{artifact}-@{version}.zip" usetimestamp="true"/>
         </sequential>
     </macrodef>
-
-	
-    <!-- ================================= 
-          target: compositeRepository              
-         ================================= -->
-    <target name="compositeRepository" depends="clean" if="gather.full">
-    	
-    	<delete dir="${target.base}/repo/p2/org.openscada/${buildType}/${atlantis.version}" failonerror="false"/>
-    	<mkdir dir="${target.base}/repo/p2/org.openscada/${buildType}/${atlantis.version}"/>
-    	
-    	<java jar="${startup}" failonerror="true" maxmemory="1024m" fork="true">
-    		<jvmarg value="-XX:MaxPermSize=256m"/>
-    		
-			<arg value="-application" />
-		    <arg value="org.eclipse.ant.core.antRunner" />
-    		
-    		<arg value="-buildfile" />
-	   		<arg value="eclipseBuild.xml" />
-    		<arg value="-Doutput.dir=${target.base}/repo/p2/org.openscada/${buildType}/${atlantis.version}"/>
-    		
-        	<syspropertyset>
-        		<propertyref builtin="all"/>
-        	</syspropertyset>
-		</java>
-    	
-    </target>
 
 </project>
