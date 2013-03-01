@@ -29,6 +29,7 @@
     <target name="init" description="Initialize">
     	<echo message="Skip Download: ${skip.download}"/>
     	<echo message="Skip Repostories: ${skip.repo}"/>
+    	<echo message="Target base: ${target.base}"/>
     </target>
 
 	<!-- ================================= 
