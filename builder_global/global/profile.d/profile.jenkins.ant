@@ -4,13 +4,15 @@
 	
 	<property environment="env"/>
 	
-	<property name="eclipse.home.dir" location="${env.ECLIPSE_371_HOME}"/>
+	<property name="eclipse.home.dir" location="${env.ECLIPSE_381_HOME}"/>
+	<property name="openscada.mirror.base" value="${env.OPENSCADA_MIRROR_BASE}"/>
 	
 	<property name="build.root" location="../.."/>
-	<property name="jobSuffix" value="release"/>
+	<property name="jobSuffix" value="1.0"/>
 	
 	<property name="output.dir" location="${env.WORKSPACE}/output"/>
 	<property name="input.dir" location="${env.WORKSPACE}/input"/>
+	<property name="jenkins.download.base" value="${env.JENKINS_URL}"/>
 	
 	<!-- load properties last, since they don't override in ant -->
 	<property file="${build.root}/global.properties"/>
@@ -34,19 +36,42 @@
 		<getP2Repo required="${require.orilla}" jobname="org.openscada.orilla-${jobSuffix}" reponame="org.openscada.orilla.sdk" version="${orilla.version}"/>
 		<getP2Repo required="${require.dakara}" jobname="org.openscada.dakara-${jobSuffix}" reponame="org.openscada.dakara.sdk" version="${dakara.version}"/>
     	<getP2Repo required="${require.deploy}" jobname="org.openscada.deploy-${jobSuffix}" reponame="org.openscada.deploy.repo" version="${deploy.version}"/>
+    	<getP2Repo required="${require.orion}" jobname="org.openscada.orion-${jobSuffix}" reponame="org.openscada.orion.sdk" version="${orion.version}"/>
+    	<getP2Repo required="${require.infinity}" jobname="org.openscada.infinity-${jobSuffix}" reponame="org.openscada.infinity.sdk" version="${infinity.version}"/>
+    	<getP2Repo required="${require.jinterop}" jobname="org.openscada.jinterop-${jobSuffix}" reponame="org.openscada.jinterop.sdk" version="${jinterop.version}"/>
+    	<getP2Repo required="${require.docdocdoc}" jobname="org.openscada.docdocdoc-${jobSuffix}" reponame="org.openscada.docdocdoc.sdk" version="${docdocdoc.version}"/>
     	
-    	<getProduct required="${require.p2director}" jobname="org.openscada.deploy-${jobSuffix}" productName="p2director" version="${deploy.version}"/>
+    	<getProduct required="${require.p2director}" jobname="org.openscada.deploy.p2director-${jobSuffix}" productName="p2director" version="${deploy.version}"/>
     	
-    	<downloadP2Repo required="${require.external.gef}" uri="${openscada.mirror.base}/GEF-Update-3.7.0.zip"/>
-    	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-2.7.0.zip"/>
-		<downloadP2Repo required="${require.external.rcp}" uri="${openscada.mirror.base}/org.eclipse.rcp-3.7.zip"/>
-		<downloadP2Repo required="${require.external.platform}" uri="${openscada.mirror.base}/org.eclipse.platform-3.7.zip"/>
-    	<downloadP2Repo required="${require.external.ecf}" uri="${openscada.mirror.base}/org.eclipse.ecf.sdk_3.2.0.v20100219-1253.zip"/>
-		<downloadP2Repo required="${require.external.equinox}" uri="${openscada.mirror.base}/equinox-SDK-3.7.zip"/>
-		<downloadP2Repo required="${require.external.albireo}" uri="${openscada.mirror.base}/org.eclipse.albireo.rcp_v20081031.zip"/>
-    	<downloadP2Repo required="${require.external.babel}" uri="${openscada.mirror.base}/BabelLanguagePack-eclipse-de_3.6.0.v20100814043401.zip"/>
+    	<downloadP2Repo required="${require.external.gef}" uri="${openscada.mirror.base}/GEF-Update-3.8.1.zip"/>
+    	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-2.8.1.zip"/>
+		<downloadP2Repo required="${require.external.rcp}" uri="${openscada.mirror.base}/org.eclipse.rcp-3.8.1.zip"/>
+		<downloadP2Repo required="${require.external.platform}" uri="${openscada.mirror.base}/org.eclipse.platform-3.8.1.zip"/>
+    	<downloadP2Repo required="${require.external.ecf}" uri="${openscada.mirror.base}/org.eclipse.ecf.sdk_3.5.6.v20120610-1946.zip"/>
+    	<downloadP2Repo required="${require.external.equinox}" uri="${openscada.mirror.base}/equinox-SDK-3.8.1.zip"/>
+    	
+    	<downloadEclipseArchive required="${require.external.babel}" uri="${openscada.mirror.base}/BabelLanguagePack-eclipse-de_4.2.0.v20121120043402.zip"/>
+    	<downloadEclipseArchive required="${require.external.babel}" uri="${openscada.mirror.base}/BabelLanguagePack-rt.equinox-de_4.2.0.v20121120043402.zip"/>
 
     </target>
+	
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: downloadEclipseArchive          
+         = = = = = = = = = = = = = = = = = -->
+    <macrodef name="downloadEclipseArchive">
+    	<attribute name="required" />
+    	<attribute name="uri"/>
+        <sequential>
+        	<if>
+        		<equals arg1="@{required}" arg2="true"/>
+        		<then>
+        			<mkdir dir="${input.dir}/eclipse"/>
+        			<echo message="Importing external Eclipse Archive (non-P2 Repository) from: @{uri}"/>
+			    	<get dest="${input.dir}/eclipse" src="@{uri}" usetimestamp="true"/>
+        		</then>
+        	</if>
+        </sequential>
+    </macrodef>
 	
 	<!-- = = = = = = = = = = = = = = = = =
           macrodef: downloadP2Repo          
@@ -79,9 +104,9 @@
         	<if>
         		<equals arg1="@{required}" arg2="true"/>
         		<then>
-        			<echo message="Importing P2 Repository from: ${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
+        			<echo message="Importing P2 Repository from: ${jenkins.download.base}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip"/>
         			<mkdir dir="${input.dir}/repos"/>
-			    	<get dest="${input.dir}/repos" src="${env.JENKINS_URL}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip" usetimestamp="true"/>
+			    	<get dest="${input.dir}/repos" src="${jenkins.download.base}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}-p2repo.zip" usetimestamp="true"/>
         		</then>
         	</if>
         </sequential>
@@ -99,7 +124,7 @@
         	<if>
         		<equals arg1="@{required}" arg2="true"/>
         		<then>
-        			<echo message="Importing product @{productName} from: ${env.JENKINS_URL}"/>
+        			<echo message="Importing product @{productName} from: ${jenkins.download.base}"/>
                 	<foreach list="${configs}" delimiter="&amp;" param="config" trim="true" target="targetGetProduct">
                 		<param name="jobName" value="@{jobName}"/>
                 		<param name="productName" value="@{productName}"/>
@@ -121,7 +146,7 @@
     	<mkdir dir="${input.dir}/product"/>
 		<get
 			dest="${input.dir}/product"
-			src="${env.JENKINS_URL}/job/${jobName}/lastSuccessfulBuild/artifact/output/${productName}/${productName}-${configCleaned}.zip"
+			src="${jenkins.download.base}/job/${jobName}/lastSuccessfulBuild/artifact/output/${productName}/${productName}-${configCleaned}.zip"
 			usetimestamp="true"/>
     </target>
 

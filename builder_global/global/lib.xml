@@ -43,6 +43,20 @@
         	</copy>
         </sequential>
     </macrodef>
+	
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: openscada.builder.copyPlainFeature          
+         = = = = = = = = = = = = = = = = = -->
+    <macrodef name="openscada.builder.copyPlainFeature">
+        <attribute name="id" />
+    	<attribute name="root" default="${source.root}"/>
+    	<attribute name="buildRoot" default="${buildDirectory}"/>
+        <sequential>
+          	<copy todir="@{buildRoot}/features/@{id}">
+          		<fileset dir="@{root}/@{id}" />
+        	</copy>
+        </sequential>
+    </macrodef>
 
 	<!-- = = = = = = = = = = = = = = = = =
           macrodef: openscada.builder.copyPlugin          
@@ -191,8 +205,8 @@
     <macrodef name="openscada.importEclipseArchive">
         <attribute name="file" />
         <sequential>
-        	<echo message="Import external eclipse archive (non-P2): ${external.repo.root}/@{file}"/>
-            <unzip src="${external.repo.root}/@{file}" dest="${buildDirectory}">
+        	<echo message="Import external eclipse archive (non-P2): ${input.dir}/eclipse/@{file}"/>
+            <unzip src="${input.dir}/eclipse/@{file}" dest="${buildDirectory}">
 				<globmapper from="eclipse/*" to="*"/>
         	</unzip>
         </sequential>
