@@ -23,7 +23,7 @@
 	  - to something else then "1.0.*" then "gatherSetup.platform" has
 	  - to be changed as well.
 	  -->
-	<property name="jobSuffix" value="1.0"/>
+	<property name="jobSuffix" value="release"/>
 	
     <!-- ================================= 
           target: default              
