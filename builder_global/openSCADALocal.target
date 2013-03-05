@@ -21,7 +21,7 @@
 <unit id="org.eclipse.wst.web_ui.feature.feature.group" version="3.4.1.v201208170345-7O7MFsPEMkBJz0wtb-ccsarPSceUIHO9iKk6XVPV"/>
 <repository location="http://download.eclipse.org/releases/juno"/>
 </location>
-<location path="${eclipse_home}" type="Profile"/>
+<location path="${system_property:user.home}/eclipse_build/eclipse382" type="Profile"/>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.ocl.all.sdk.feature.group" version="4.0.2.v20130130-1128"/>
 <unit id="org.eclipse.acceleo.sdk.feature.group" version="3.3.2.201302130808"/>
