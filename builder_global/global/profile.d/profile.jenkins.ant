@@ -4,11 +4,11 @@
 	
 	<property environment="env"/>
 	
-	<property name="eclipse.home.dir" location="${env.ECLIPSE_381_HOME}"/>
+	<property name="eclipse.home.dir" location="${env.ECLIPSE_382_HOME}"/>
 	<property name="openscada.mirror.base" value="${env.OPENSCADA_MIRROR_BASE}"/>
 	
 	<property name="build.root" location="../.."/>
-	<property name="jobSuffix" value="release"/>
+	<property name="jobSuffix" value="1.1"/>
 	
 	<property name="output.dir" location="${env.WORKSPACE}/output"/>
 	<property name="input.dir" location="${env.WORKSPACE}/input"/>
