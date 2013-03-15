@@ -1,43 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="openSCADADev" sequenceNumber="195">
+<?pde version="3.8"?><target name="openSCADADev" sequenceNumber="205">
 <locations>
-<location path="${resource_loc:/builder_external/builder/lib/spring}" type="Directory"/>
 <location path="${resource_loc:/builder_external/builder/lib}" type="Directory"/>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.swt.tools.feature.feature.group" version="1.0.1.201107261526"/>
-<repository location="http://www.eclipse.org/swt/updates/3.7"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.ecf.core.feature.group" version="3.5.6.v20120610-1946"/>
+<unit id="org.eclipse.mylyn.wikitext_feature.feature.group" version="1.7.3.v20130107-0100"/>
 <repository location="http://download.eclipse.org/releases/juno"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.equinox.sdk.feature.group" version="3.8.0.v20121212-203907-7M7fA78g4_y-gDvtH0ZcFvhMPDZJ"/>
-<repository location="http://download.eclipse.org/releases/juno"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.wst.xml_ui.feature.feature.group" version="3.4.1.v201208170345-7H7GFeFDxumUpsw5rgjWnKDrsz0p4ymwjQz00T2S"/>
-<unit id="org.eclipse.wst.common.fproj.feature.group" version="3.4.0.v201202292300-377F8N8s735555393B7B"/>
-<unit id="org.eclipse.wst.web_ui.feature.feature.group" version="3.4.1.v201208170345-7O7MFsPEMkBJz0wtb-ccsarPSceUIHO9iKk6XVPV"/>
-<repository location="http://download.eclipse.org/releases/juno"/>
-</location>
-<location path="${system_property:user.home}/eclipse_build/eclipse382" type="Profile"/>
+<location path="${resource_loc:/builder_external/builder/lib/spring}" type="Directory"/>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.ocl.all.sdk.feature.group" version="4.0.2.v20130130-1128"/>
 <unit id="org.eclipse.acceleo.sdk.feature.group" version="3.3.2.201302130808"/>
 <repository location="http://download.eclipse.org/releases/juno"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.8.3.v20130125-0826"/>
-<repository location="http://download.eclipse.org/releases/juno"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.gef.sdk.feature.group" version="3.9.0.201212170307"/>
-<repository location="http://download.eclipse.org/releases/juno"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.mylyn.wikitext_feature.feature.group" version="1.7.3.v20130107-0100"/>
-<repository location="http://download.eclipse.org/releases/juno"/>
+<unit id="org.eclipse.swt.tools.feature.feature.group" version="1.0.1.201107261526"/>
+<repository location="http://www.eclipse.org/swt/updates/3.7"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.3.1.v201208210947"/>
@@ -54,6 +31,29 @@
 <unit id="org.eclipse.xtend.sdk.feature.group" version="2.3.1.v201208210947"/>
 <repository location="http://download.eclipse.org/releases/juno"/>
 </location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.8.3.v20130125-0826"/>
+<repository location="http://download.eclipse.org/releases/juno"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.ecf.core.feature.group" version="3.5.6.v20120610-1946"/>
+<repository location="http://download.eclipse.org/releases/juno"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.gef.sdk.feature.group" version="3.9.0.201212170307"/>
+<repository location="http://download.eclipse.org/releases/juno"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.wst.xml_ui.feature.feature.group" version="3.4.1.v201208170345-7H7GFeFDxumUpsw5rgjWnKDrsz0p4ymwjQz00T2S"/>
+<unit id="org.eclipse.wst.common.fproj.feature.group" version="3.4.0.v201202292300-377F8N8s735555393B7B"/>
+<unit id="org.eclipse.wst.web_ui.feature.feature.group" version="3.4.1.v201208170345-7O7MFsPEMkBJz0wtb-ccsarPSceUIHO9iKk6XVPV"/>
+<repository location="http://download.eclipse.org/releases/juno"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.8.0.v20121212-203907-7M7fA78g4_y-gDvtH0ZcFvhMPDZJ"/>
+<repository location="http://download.eclipse.org/releases/juno"/>
+</location>
+<location path="${system_property:user.home}/eclipse_build/eclipse382" type="Profile"/>
 </locations>
 <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 </target>
