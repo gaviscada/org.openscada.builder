@@ -8,7 +8,7 @@
 	<property name="openscada.mirror.base" value="${env.OPENSCADA_MIRROR_BASE}"/>
 	
 	<property name="build.root" location="../.."/>
-	<property name="jobSuffix" value="1.1"/>
+	<property name="jobSuffix" value="1.2"/>
 	
 	<property name="output.dir" location="${env.WORKSPACE}/output"/>
 	<property name="input.dir" location="${env.WORKSPACE}/input"/>
