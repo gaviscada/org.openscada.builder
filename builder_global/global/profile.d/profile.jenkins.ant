@@ -4,11 +4,11 @@
 	
 	<property environment="env"/>
 	
-	<property name="eclipse.home.dir" location="${env.ECLIPSE_381_HOME}"/>
+	<property name="eclipse.home.dir" location="${env.ECLIPSE_382_HOME}"/>
 	<property name="openscada.mirror.base" value="${env.OPENSCADA_MIRROR_BASE}"/>
 	
 	<property name="build.root" location="../.."/>
-	<property name="jobSuffix" value="release"/>
+	<property name="jobSuffix" value="1.1"/>
 	
 	<property name="output.dir" location="${env.WORKSPACE}/output"/>
 	<property name="input.dir" location="${env.WORKSPACE}/input"/>
@@ -43,12 +43,15 @@
     	
     	<getProduct required="${require.p2director}" jobname="org.openscada.deploy.p2director-${jobSuffix}" productName="p2director" version="${deploy.version}"/>
     	
-    	<downloadP2Repo required="${require.external.gef}" uri="${openscada.mirror.base}/GEF-Update-3.8.1.zip"/>
-    	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-2.8.1.zip"/>
-		<downloadP2Repo required="${require.external.rcp}" uri="${openscada.mirror.base}/org.eclipse.rcp-3.8.1.zip"/>
-		<downloadP2Repo required="${require.external.platform}" uri="${openscada.mirror.base}/org.eclipse.platform-3.8.1.zip"/>
+    	<downloadP2Repo required="${require.external.wtp}" uri="${openscada.mirror.base}/wtp4x-repo-R-3.4.2-20130208151217.zip"/>
+    	<downloadP2Repo required="${require.external.gef}" uri="${openscada.mirror.base}/GEF-Update-3.8.2.zip"/>
+    	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-2.8.3.zip"/>
+		<downloadP2Repo required="${require.external.rcp}" uri="${openscada.mirror.base}/org.eclipse.rcp-3.8.2.zip"/>
+		<downloadP2Repo required="${require.external.platform}" uri="${openscada.mirror.base}/org.eclipse.platform-3.8.2.zip"/>
     	<downloadP2Repo required="${require.external.ecf}" uri="${openscada.mirror.base}/org.eclipse.ecf.sdk_3.5.6.v20120610-1946.zip"/>
-    	<downloadP2Repo required="${require.external.equinox}" uri="${openscada.mirror.base}/equinox-SDK-3.8.1.zip"/>
+    	
+    	<downloadP2Repo required="${require.external.equinox}" uri="${openscada.mirror.base}/equinox-SDK-3.8.2.zip"/>
+    	<downloadP2Repo required="${require.external.gemini}" uri="${openscada.mirror.base}/gemini-dbaccess-1.1.0.RELEASE-updates.zip"/>
     	
     	<downloadEclipseArchive required="${require.external.babel}" uri="${openscada.mirror.base}/BabelLanguagePack-eclipse-de_4.2.0.v20121120043402.zip"/>
     	<downloadEclipseArchive required="${require.external.babel}" uri="${openscada.mirror.base}/BabelLanguagePack-rt.equinox-de_4.2.0.v20121120043402.zip"/>
