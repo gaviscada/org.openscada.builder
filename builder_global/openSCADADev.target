@@ -2,6 +2,7 @@
 <?pde version="3.8"?><target name="openSCADADev" sequenceNumber="195">
 <locations>
 <location path="${resource_loc:/builder_external/builder/lib}" type="Directory"/>
+<location path="${resource_loc:/builder_external/builder/lib/xmlbeans}" type="Directory"/>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.swt.tools.feature.feature.group" version="1.0.1.201107261526"/>
 <repository location="http://www.eclipse.org/swt/updates/3.7"/>
