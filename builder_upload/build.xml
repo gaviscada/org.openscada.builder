@@ -18,12 +18,11 @@
 	<import file="${build.root}/global/lib.xml"/>
 
 	<!-- 
-	  - The jobSuffix is also used in "gatherSetup.platform"
-	  - for generating the files to delete. If the jobSuffix changes
-	  - to something else then "1.0.*" then "gatherSetup.platform" has
-	  - to be changed as well.
+	  - the jobSuffix is set in the profile
 	  -->
 	<property name="jobSuffix" value="release"/>
+	<property name="configuration.jobSuffix" value="0.1-tycho"/>
+	<property name="configuration.qualifier" value="-SNAPSHOT"/>
 	
     <!-- ================================= 
           target: default              
@@ -44,6 +43,8 @@
     <target name="gather" depends="clean">
     	<mkdir dir="gather"/>
 
+    	<echo message="JobSuffix: ${jobSuffix}"/>
+    	
     	<gatherUpload name="builder.upload" artifact="builder.global" version="${deploy.version}" job="org.openscada.builder-${jobSuffix}" />
     	
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-${jobSuffix}"/>
@@ -58,6 +59,7 @@
     	<gatherRepo name="orion" repository="org.openscada.orion.sdk" version="${orion.version}" job="org.openscada.orion-${jobSuffix}"/>
     	<gatherRepo name="infinity" repository="org.openscada.infinity.sdk" version="${infinity.version}" job="org.openscada.infinity-${jobSuffix}"/>
     	<gatherRepo name="jinterop" repository="org.openscada.jinterop.sdk" version="${jinterop.version}" job="org.openscada.jinterop-${jobSuffix}"/>
+    	<gatherRepo name="configuration" repository="org.openscada.configuration.sdk" version="${configuration.version}${configuration.qualifier}" job="org.openscada.configuration-${configuration.jobSuffix}"/>
     	
     	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
@@ -289,6 +291,8 @@
     	<attribute name="version"/>
     	<attribute name="repository"/>
     	<attribute name="buildType" default="${buildType}"/>
+    	<attribute name="path" default="output" />
+    	<attribute name="suffix" default="-p2repo" />
         <sequential>
         	
         	<echo message="Checking flag: ${gather.@{name}} (full: ${gather.full})"/>
@@ -309,8 +313,8 @@
 		        	
 		        	<!-- copy to download -->
 		        	
-		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{repository}-@{version}-p2repo.zip" usetimestamp="true"/>
-		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{repository}-@{buildType}.@{version}.zip" usetimestamp="true"/>
+		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/@{path}/@{repository}-@{version}@{suffix}.zip" usetimestamp="true"/>
+		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/@{path}/@{repository}-@{buildType}.@{version}.zip" usetimestamp="true" ignoreerrors="true"/>
 		
 		        	<!-- create repo dir -->
 		        	
@@ -319,7 +323,7 @@
 		
 		        	<!-- unzip repo -->
 		        	
-		        	<unzip dest="${target.base}/repo/p2/@{name}/@{buildType}/@{version}" src="${target.base}/download/@{name}/@{buildType}/@{version}/@{repository}-@{version}-p2repo.zip"/>
+		        	<unzip dest="${target.base}/repo/p2/@{name}/@{buildType}/@{version}" src="${target.base}/download/@{name}/@{buildType}/@{version}/@{repository}-@{version}@{suffix}.zip"/>
         			
     			</then>
         		
