@@ -19,26 +19,6 @@
 	  </classpath>
 	</taskdef>
 	
-	<!-- SONAR -->
-	
-	<condition property="have.sonar">
-		<and>
-			<isset property="sonar.host.url" />
-			<or>
-				<istrue value="${runSonar}" />
-				<istrue value="${ENV.runSonar}" />
-			</or>
-		</and>
-	</condition>
-	
-	<path id="sonar.lib.path">
-		<fileset dir="${org.openscada.builder.tasks.dir}/lib/sonar" includes="*.jar"/>
-    </path>
-	
-	<!-- Add the Sonar task -->
-	<taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml" classpathref="sonar.lib.path"> 
-	</taskdef>
-	
 	<!-- ================================= 
           target: default              
          ================================= -->
