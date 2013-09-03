@@ -40,6 +40,7 @@
     	<getP2Repo required="${require.infinity}" jobname="org.openscada.infinity-${jobSuffix}" reponame="org.openscada.infinity.sdk" version="${infinity.version}"/>
     	<getP2Repo required="${require.jinterop}" jobname="org.openscada.jinterop-${jobSuffix}" reponame="org.openscada.jinterop.sdk" version="${jinterop.version}"/>
     	<getP2Repo required="${require.docdocdoc}" jobname="org.openscada.docdocdoc-${jobSuffix}" reponame="org.openscada.docdocdoc.sdk" version="${docdocdoc.version}"/>
+    	<getP2Repo required="${require.contrib}" jobname="org.openscada.contrib-${jobSuffix}" reponame="org.openscada.contrib.sdk" version="${contrib.version}"/>
     	
     	<getProduct required="${require.p2director}" jobname="org.openscada.deploy.p2director-${jobSuffix}" productName="p2director" version="${deploy.version}"/>
     	
