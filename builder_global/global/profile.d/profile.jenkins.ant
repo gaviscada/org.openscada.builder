@@ -43,6 +43,7 @@
     	
     	<getProduct required="${require.p2director}" jobname="org.openscada.deploy.p2director-${jobSuffix}" productName="p2director" version="${deploy.version}"/>
     	
+    	<downloadP2Repo required="${require.external.rap}" uri="${openscada.mirror.base}/rap-2.1.0-R-20130611-2139.zip"/>
     	<downloadP2Repo required="${require.external.wtp}" uri="${openscada.mirror.base}/wtp4x-repo-R-3.4.2-20130208151217.zip"/>
     	<downloadP2Repo required="${require.external.gef}" uri="${openscada.mirror.base}/GEF-Update-3.9.0.zip"/>
     	<downloadP2Repo required="${require.external.emf}" uri="${openscada.mirror.base}/emf-xsd-Update-2.9.0.zip"/>
