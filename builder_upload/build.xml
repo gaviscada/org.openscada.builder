@@ -313,9 +313,12 @@
 		        	<delete dir="${target.base}/download/@{name}/@{buildType}/@{version}" failonerror="false"/>
 		        	<mkdir dir="${target.base}/download/@{name}/@{buildType}/@{version}"/>
 		        	
-		        	<!-- copy to download -->
+		        	<!-- copy p2repo to download -->
 		        	
 		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/@{path}/@{repository}-@{version}@{qualifier}@{suffix}.zip" usetimestamp="true"/>
+        			
+		        	<!-- copy unzipped version to download: we can ignored errors here -->
+        			
 		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/@{path}/@{repository}-@{buildType}.@{version}@{qualifier}.zip" usetimestamp="true" ignoreerrors="true"/>
 		
 		        	<!-- create repo dir -->
