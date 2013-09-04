@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="openSCADADev" sequenceNumber="261">
+<?pde version="3.8"?><target name="openSCADADev" sequenceNumber="282">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.gemini.dbaccess.hsqldb.feature.feature.group" version="1.1.0.RELEASE"/>
@@ -10,27 +10,32 @@
 </location>
 <location path="${system_property:user.home}/eclipse_build/eclipse43" type="Profile"/>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.xsd.sdk.feature.group" version="2.9.0.v20130610-0406"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.9.0.v20130610-0406"/>
+<unit id="org.eclipse.wst.xml_ui.feature.feature.group" version="3.5.0.v201301022000-7H7IFisDxumVt037ridXmVSgs8DdRZKtSyS6PL"/>
+<unit id="org.eclipse.ocl.all.sdk.feature.group" version="4.1.0.v20130611-1511"/>
+<unit id="org.eclipse.ecf.core.feature.group" version="3.6.1.v20130605-1748"/>
+<unit id="org.eclipse.wst.xsl.feature.feature.group" version="1.3.300.v201302282018-7T7_F_uFIqUoKCGIeb62mhZKaH_Lg"/>
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20130604-2047"/>
+<unit id="org.eclipse.wst.web_ui.feature.feature.group" version="3.5.0.v201209252144-7O7QG-6EMkBQ3Bg_peduj80T4Kg8QYEUELicbYyf"/>
+<unit id="org.eclipse.wst.common.fproj.feature.group" version="3.4.0.v201202292300-377F8N8s735555393B7B"/>
+<unit id="org.eclipse.jst.web_ui.feature.feature.group" version="3.5.0.v201303132100-7F7GFUGC27SvlcDqtgjb-_fmALvT7epNrsnxz0Wx"/>
+<unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.7.0.201306111341"/>
+<unit id="org.eclipse.wst.jsdt.feature.feature.group" version="1.5.0.v201301022000-7H7DFhZFC7sReqSz-frflXk"/>
+<unit id="org.eclipse.jst.enterprise_ui.feature.feature.group" version="3.5.0.v201303132100-7b7KIaeFSK2WQtQTAGyA7QXyUmRm"/>
+<unit id="org.eclipse.acceleo.source.feature.group" version="3.4.0.201306101458"/>
+<unit id="org.eclipse.gef.sdk.feature.group" version="3.9.0.201305060205"/>
+<repository location="http://download.eclipse.org/releases/kepler"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.swt.tools.feature.feature.group" version="1.0.1.201107261526"/>
 <repository location="http://www.eclipse.org/swt/updates/3.7"/>
 </location>
 <location path="${resource_loc:/builder_external/builder/lib}" type="Directory"/>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.xsd.sdk.feature.group" version="2.9.0.v20130610-0406"/>
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.9.0.v20130610-0406"/>
-<unit id="org.eclipse.wst.xml_ui.feature.feature.group" version="3.5.0.v201301022000-7H7IFisDxumVt037ridXmVSgs8DdRZKtSyS6PL"/>
-<unit id="org.eclipse.xtend.sdk.feature.group" version="2.4.2.v201306120542"/>
-<unit id="org.eclipse.ocl.all.sdk.feature.group" version="4.1.0.v20130611-1511"/>
-<unit id="org.eclipse.xtext.sdk.feature.group" version="2.4.2.v201306120542"/>
-<unit id="org.eclipse.ecf.core.feature.group" version="3.6.1.v20130605-1748"/>
-<unit id="org.eclipse.wst.xsl.feature.feature.group" version="1.3.300.v201302282018-7T7_F_uFIqUoKCGIeb62mhZKaH_Lg"/>
-<unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20130604-2047"/>
-<unit id="org.eclipse.wst.web_ui.feature.feature.group" version="3.5.0.v201209252144-7O7QG-6EMkBQ3Bg_peduj80T4Kg8QYEUELicbYyf"/>
-<unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.4.0.v201306110341"/>
-<unit id="org.eclipse.jst.web_ui.feature.feature.group" version="3.5.0.v201303132100-7F7GFUGC27SvlcDqtgjb-_fmALvT7epNrsnxz0Wx"/>
-<unit id="org.eclipse.wst.jsdt.feature.feature.group" version="1.5.0.v201301022000-7H7DFhZFC7sReqSz-frflXk"/>
-<unit id="org.eclipse.acceleo.source.feature.group" version="3.4.0.201306101458"/>
-<unit id="org.eclipse.emf.mwe.sdk.feature.group" version="1.3.0.v201306110341"/>
-<unit id="org.eclipse.gef.sdk.feature.group" version="3.9.0.201305060205"/>
+<unit id="org.eclipse.jgit.java7.feature.group" version="3.0.0.201306101825-r"/>
+<unit id="org.eclipse.jgit.feature.group" version="3.0.0.201306101825-r"/>
+<unit id="org.eclipse.egit.feature.group" version="3.0.0.201306101825-r"/>
 <repository location="http://download.eclipse.org/releases/kepler"/>
 </location>
 </locations>
