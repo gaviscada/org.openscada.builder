@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ====================================================================== 
+     openSCADA Java to .NET
+     ====================================================================== -->
+
+<project name="org.openscada.builder.ikvm" default="default" basedir=".">
+	<description>
+		openSCADA Java to .NET
+    </description>
+
+	<property environment="env" />
+
+	<property name="master.version" value="1.2" />
+	
+	<property name="ikvmc.binary" value="ikvmc" />
+	<property name="input.dir" location="input" />
+	<property name="output.dir" location="output" />
+	<property name="jenkins.base" value="${env.JENKINS_URL}" />
+	<property name="build.dir" location="ikvm.temp" />
+
+	<property file="global/global.properties" />
+
+	<!-- ================================= 
+		 target: default              
+		 ================================= -->
+	<target name="default" depends="fetch,clean,build">
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<mkdir dir="${input.dir}" />
+	</target>
+
+	<!-- ================================= 
+          target: fetch
+         ================================= -->
+	<target name="fetch" depends="init">
+		<getSdk name="org.openscada.external" version="${external.version}" />
+		<getSdk name="org.openscada.aurora" version="${aurora.version}" />
+		<getSdk name="org.openscada.oxygen" version="${oxygen.version}" />
+		<getSdk name="org.openscada.atlantis" version="${atlantis.version}" />
+	</target>
+
+	<macrodef name="getSdk">
+		<attribute name="name" />
+		<attribute name="version" />
+		<sequential>
+			<get dest="${input.dir}" src="${jenkins.base}/job/@{name}-${master.version}/lastSuccessfulBuild/artifact/output/@{name}.sdk-${buildType}.@{version}.zip" />
+		</sequential>
+	</macrodef>
+
+	<!-- ================================= 
+          target: build
+         ================================= -->
+	<target name="build">
+		<mkdir dir="${output.dir}" />
+		<mkdir dir="${build.dir}/unpack" />
+
+		<buildAssembly name="org.openscada.external" version="${external.version}"
+			args="-exclude:${basedir}/org.openscada.external.ikvm.excludes"/>
+		<buildAssembly name="org.openscada.aurora" version="${aurora.version}" args="-r:org.openscada.external.dll" />
+		<buildAssembly name="org.openscada.oxygen" version="${oxygen.version}" args="-r:org.openscada.external.dll -r:org.openscada.aurora.dll" />
+		<buildAssembly name="org.openscada.atlantis" version="${atlantis.version}"
+			args="-r:org.openscada.external.dll -r:org.openscada.aurora.dll -r:org.openscada.oxygen.dll -exclude:${basedir}/org.openscada.atlantis.ikvm.excludes" />
+	</target>
+
+	<macrodef name="buildAssembly">
+		<attribute name="name" />
+		<attribute name="version" />
+		<attribute name="args" default="" />
+		<sequential>
+
+			<delete dir="${build.dir}/unpack" />
+			<delete dir="${build.dir}/combined.jar" />
+
+			<unzip dest="${build.dir}/unpack">
+				<fileset dir="${input.dir}" includes="@{name}*.zip" />
+				<patternset>
+					<include name="*.jar" />
+				</patternset>
+			</unzip>
+
+			<echo message="Customizing: @{name}-customize.ant" />
+			<ant antfile="@{name}-customize.ant" inheritall="true" inheritrefs="true" />
+			
+			<zip destfile="${build.dir}/combined-full.jar">
+				<zipgroupfileset dir="${build.dir}/unpack" includes="*.jar">
+				</zipgroupfileset>
+			</zip>
+			
+			<zip destfile="${build.dir}/combined.jar">
+			  <zipfileset src="${build.dir}/combined-full.jar">
+			    <exclude name="META-INF/**"/>
+			  </zipfileset>
+			</zip>
+
+			<exec dir="${build.dir}" executable="${ikvmc.binary}">
+				<arg value="-out:${output.dir}/@{name}.dll" />
+				<arg value="-assembly:@{name}" />
+				<arg value="-lib:${output.dir}" />
+				<arg value="-target:library" />
+				<arg value="-version:@{version}" />
+				<arg value="-debug" />
+				<arg value="-fileversion:@{version}" />
+				<arg line="@{args}" />
+				<arg value="${build.dir}/combined.jar" />
+			</exec>
+
+		</sequential>
+	</macrodef>
+
+
+	<!-- ================================= 
+		 target: clean              
+		 ================================= -->
+	<target name="clean">
+		<delete dir="${output.dir}" />
+		<delete dir="${build.dir}" />
+	</target>
+
+</project>

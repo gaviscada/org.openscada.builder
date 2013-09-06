@@ -1,0 +1,3 @@
+org.openscada.da.client.net.Activator
+org.openscada.da.client.ngp.Activator
+org.openscada.da.client.sfp.Activator

@@ -1,0 +1,13 @@
+ch.qos.logback.core.net.SMTPAppenderBase
+ch.qos.logback.classic.net.JMSTopicAppender
+ch.qos.logback.classic.net.JMSQueueAppender
+ch.qos.logback.classic.net.JMSTopicSink
+ch.qos.logback.classic.net.SMTPAppender
+ch.qos.logback.classic.net.JMSQueueSink
+ch.qos.logback.core.net.LoginAuthenticator
+ch.qos.logback.core.status.ViewStatusMessagesServletBase
+ch.qos.logback.classic.ViewStatusMessagesServlet
+org.slf4j.instrumentation.JavassistHelper
+org.slf4j.instrumentation.LogTransformer
+org.slf4j.agent.AgentPremain
+org.slf4j.cal10n.LocLogger

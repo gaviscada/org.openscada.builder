@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="org.openscada.oxygen-customize" default="default">
+    
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default">
+    	<delete>
+			<fileset dir="${build.dir}/unpack">
+				<include name="**/org.openscada.*.source_*.jar"/>
+				<include name="**/org.openscada.protocol.ngp.model*.jar"/>
+			</fileset>
+    	</delete>
+    </target>
+
+</project>

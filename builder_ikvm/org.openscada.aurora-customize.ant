@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="org.openscada.aurora-customize" default="default">
+    
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default">
+    	<delete>
+			<fileset dir="${build.dir}/unpack">
+				<include name="**/org.openscada.*.source_*.jar"/>
+				<include name="**/org.openscada.utils.osgi*.jar"/>
+				<include name="**/org.openscada.ds*.jar"/>
+				<include name="**/org.openscada.sec.equinox_*.jar"/>
+				<include name="**/org.openscada.sec.osgi_*.jar"/>
+				<include name="**/org.openscada.sec.provider.*.jar"/>
+				<include name="**/org.openscada.sec.authn.osgi.*.jar"/>
+			</fileset>
+    	</delete>
+    </target>
+
+</project>

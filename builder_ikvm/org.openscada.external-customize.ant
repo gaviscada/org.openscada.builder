@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="org.openscada.external-customize" default="default">
+    
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default">   
+    	<delete>
+			<fileset dir="${build.dir}/unpack">
+				<include name="**/bcprov*"/>
+				<include name="**/org.h2*"/>
+				<include name="**/javax.*"/>
+				<include name="**/org.apache.xml*"/>
+				<include name="**/org.apache.xerces*"/>
+				<include name="**/org.apache.poi*"/>
+				<include name="**/org.openscada.external.postgres*"/>
+				<include name="**/org.openscada.external.odfdom*"/>
+				<include name="**/*jcifs*"/>
+				<include name="**/org.apache.*dbcp*"/>
+				<include name="**/org.apache.*http*"/>
+				<include name="**/org.openscada.external.jdbc*"/>
+				<include name="**/org.eclipse.gemini*"/>
+			</fileset>
+    	</delete>
+    </target>
+
+</project>
