@@ -23,7 +23,7 @@
 	<property name="jobSuffix" value="release"/>
 	<property name="configuration.jobSuffix" value="0.1-tycho"/>
 	<property name="configuration.qualifier" value="-SNAPSHOT"/>
-	<property name="ikvm.version" value="${deploy.version"/>
+	<property name="ikvm.version" value="${deploy.version}"/>
 	
     <!-- ================================= 
           target: default              
