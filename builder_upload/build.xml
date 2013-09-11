@@ -78,7 +78,7 @@
     <target name="gather.ikvm">
 		<delete dir="${target.base}/download/ikvm/${buildType}/${ikvm.version}" failonerror="false"/>
 		<mkdir dir="${target.base}/download/ikvm/${buildType}/${ikvm.version}"/>
-    	<get src="${env.JENKINS_URL}/job/org.openscada.buider.ikvm-${jobSuffix}/lastSuccessfulBuild/artifact/builder_ikvm/output/*zip*/output.zip" dest="${target.base}/download/ikvm/${buildType}/org.openscada.ikvm-${buildType}-${deploy.version}.zip"/>
+    	<get src="${env.JENKINS_URL}/job/org.openscada.buider.ikvm-${jobSuffix}/lastSuccessfulBuild/artifact/builder_ikvm/output/*zip*/output.zip" dest="${target.base}/download/ikvm/${buildType}/${ikvm.version}/org.openscada.ikvm-${buildType}-${ikvm.version}.zip"/>
     </target>
 	
 	<!-- = = = = = = = = = = = = = = = = =
