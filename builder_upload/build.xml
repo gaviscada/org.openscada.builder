@@ -50,7 +50,7 @@
     	
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-${jobSuffix}"/>
     	<gatherRepo name="atlantis" repository="org.openscada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-${jobSuffix}"/>
-    	<gatherRepo name="aurora" repository="org.openscada.aurora.sdk" version="${aurora.version}" job="org.openscada.aurora-${jobSuffix}"/>
+    	<gatherRepo name="aurora" repository="org.eclipse.scada.aurora.sdk" version="${aurora.version}" job="org.openscada.aurora-${jobSuffix}"/>
 		<gatherRepo name="oxygen" repository="org.openscada.oxygen.sdk" version="${oxygen.version}" job="org.openscada.oxygen-${jobSuffix}"/>
 		<gatherRepo name="utgard" repository="org.openscada.utgard.sdk" version="${utgard.version}" job="org.openscada.utgard-${jobSuffix}"/>
 		<gatherRepo name="orilla" repository="org.openscada.orilla.sdk" version="${orilla.version}" job="org.openscada.orilla-${jobSuffix}"/>
