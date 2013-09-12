@@ -46,10 +46,10 @@
 
 	<macrodef name="getSdk">
 		<attribute name="name" />
-		<attribute name="jobName" default="@{name}-${master.version}"/>
+		<attribute name="jobName" default="@{name}"/>
 		<attribute name="version" />
 		<sequential>
-			<get dest="${input.dir}" src="${jenkins.base}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{name}.sdk-${buildType}.@{version}.zip" />
+			<get dest="${input.dir}" src="${jenkins.base}/job/@{jobName}-${master.version}/lastSuccessfulBuild/artifact/output/@{name}.sdk-${buildType}.@{version}.zip" />
 		</sequential>
 	</macrodef>
 
