@@ -65,7 +65,6 @@
     	
     	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
-    	<gatherProduct name="daserver" version="${deploy.version}" job="org.openscada.deploy-${jobSuffix}"/>
     	
     	<gatherSetup name="ostc" job="setup.ostc-${jobSuffix}" description="openSCADA Administration Client" regKey="HKLM\Software\openSCADA.org\openSCADA Administration Client" autoClose="[APPDIR]ostc.exe"/>
     	<gatherSetup name="osvi" job="setup.osvi-${jobSuffix}" description="openSCADA Visual Interface" regKey="HKLM\Software\openSCADA.org\openSCADA Visual Interface" autoClose="[APPDIR]osvi.exe"/>
