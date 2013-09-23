@@ -28,8 +28,8 @@
     	<delete dir="${input.dir}" failonerror="false"/>
 		<mkdir dir="${input.dir}"/>
     	
-    	<getP2Repo required="${require.utils}" jobname="org.eclipse.scada.utils-master" reponame="org.eclipse.scada.utils.sdk" version="0.1.0-SNAPSHOT" suffix=""/>
-    	<getP2Repo required="${require.base}" jobname="org.eclipse.scada.base-master" reponame="org.eclipse.scada.base.sdk" version="0.1.0-SNAPSHOT" suffix=""/>
+    	<getP2Repo required="${require.utils}" jobname="org.eclipse.scada.utils-master" reponame="org.eclipse.scada.utils" version="0.1.0" qualifier="-SNAPSHOT" suffix=""/>
+    	<getP2Repo required="${require.base}" jobname="org.eclipse.scada.base-master" reponame="org.eclipse.scada.base" version="0.1.0" qualifier="-SNAPSHOT" suffix=""/>
     	
     	<getP2Repo required="${require.external}" jobname="org.openscada.external-${jobSuffix}" reponame="org.openscada.external.sdk" version="${external.version}"/>
     	<getP2Repo required="${require.aurora}" jobname="org.openscada.aurora-${jobSuffix}" reponame="org.eclipse.scada.aurora.sdk" version="${aurora.version}"/>
@@ -106,6 +106,7 @@
     <macrodef name="getP2Repo">
         <attribute name="repoName" />
     	<attribute name="version" />
+    	<attribute name="qualifier" default=""/>
     	<attribute name="jobName" default="@{repoName}-@{version}" />
     	<attribute name="required" />
     	<attribute name="suffix" default="-p2repo"/>
@@ -113,9 +114,9 @@
         	<if>
         		<equals arg1="@{required}" arg2="true"/>
         		<then>
-        			<echo message="Importing P2 Repository from: ${jenkins.download.base}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}@{suffix}.zip"/>
+        			<echo message="Importing P2 Repository from: ${jenkins.download.base}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}@{qualifier}@{suffix}.zip"/>
         			<mkdir dir="${input.dir}/repos"/>
-			    	<get dest="${input.dir}/repos" src="${jenkins.download.base}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}@{suffix}.zip" usetimestamp="true"/>
+			    	<get dest="${input.dir}/repos" src="${jenkins.download.base}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}@{qualifier}@{suffix}.zip" usetimestamp="true"/>
         		</then>
         	</if>
         </sequential>
