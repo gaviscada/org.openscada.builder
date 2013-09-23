@@ -28,8 +28,8 @@
     	<delete dir="${input.dir}" failonerror="false"/>
 		<mkdir dir="${input.dir}"/>
     	
-    	<getP2Repo required="${require.utils}" jobname="org.eclipse.scada.utils-master" reponame="org.eclipse.scada.utils" version="0.1.0" qualifier="-SNAPSHOT" suffix=""/>
-    	<getP2Repo required="${require.base}" jobname="org.eclipse.scada.base-master" reponame="org.eclipse.scada.base" version="0.1.0" qualifier="-SNAPSHOT" suffix=""/>
+    	<getP2Repo required="${require.utils}" jobname="org.eclipse.scada.utils-master" reponame="org.eclipse.scada.utils.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix=""/>
+    	<getP2Repo required="${require.base}" jobname="org.eclipse.scada.base-master" reponame="org.eclipse.scada.base.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix=""/>
     	
     	<getP2Repo required="${require.external}" jobname="org.openscada.external-${jobSuffix}" reponame="org.openscada.external.sdk" version="${external.version}"/>
     	<getP2Repo required="${require.aurora}" jobname="org.openscada.aurora-${jobSuffix}" reponame="org.eclipse.scada.aurora.sdk" version="${aurora.version}"/>
