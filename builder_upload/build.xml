@@ -48,8 +48,8 @@
     	
     	<gatherUpload name="builder.upload" artifact="builder.global" version="${deploy.version}" job="org.openscada.builder-${jobSuffix}" />
     	
-    	<gatherRepo name="utils" repository="org.eclipse.scada.utils.p2" version="0.1.0-SNAPSHOT" job="org.eclipse.scada.utils-master" suffix=""/>
-    	<gatherRepo name="base" repository="org.eclipse.scada.base.p2" version="0.1.0-SNAPSHOT" job="org.eclipse.scada.base-master" suffix=""/>
+    	<gatherRepo name="utils" repository="org.eclipse.scada.utils" version="0.1.0" qualifier="-SNAPSHOT" suffix="" />
+    	<gatherRepo name="base" repository="org.eclipse.scada.base" version="0.1.0" qualifier="-SNAPSHOT" suffix=""/>
     	
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-${jobSuffix}"/>
     	<gatherRepo name="atlantis" repository="org.openscada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-${jobSuffix}"/>
@@ -348,7 +348,7 @@
         	
         </sequential>
     </macrodef>
-
+	
 	<!-- = = = = = = = = = = = = = = = = =
           macrodef: gatherUpload          
          = = = = = = = = = = = = = = = = = -->
