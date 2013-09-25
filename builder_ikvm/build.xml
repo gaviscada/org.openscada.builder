@@ -40,6 +40,7 @@
 	<target name="fetch" depends="init">
 		<getSdk name="org.openscada.external" version="${external.version}" />
 		<getSdk name="org.eclipse.scada.utils" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.utils-master" version="0.1.0" qualifier="-SNAPSHOT" />
+		<getSdk name="org.eclipse.scada.base" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.base-master" version="0.1.0" qualifier="-SNAPSHOT" />
 		<getSdk name="org.openscada.oxygen" version="${oxygen.version}" />
 		<getSdk name="org.openscada.atlantis" version="${atlantis.version}" />
 	</target>
@@ -66,10 +67,11 @@
 
 		<buildAssembly name="org.openscada.external" version="${external.version}"
 			args="-exclude:${basedir}/org.openscada.external.ikvm.excludes"/>
-		<buildAssembly name="org.eclipse.scada.aurora" version="${aurora.version}" args="-r:org.openscada.external.dll" />
-		<buildAssembly name="org.openscada.oxygen" version="${oxygen.version}" args="-r:org.openscada.external.dll -r:org.eclipse.scada.aurora.dll" />
+		<buildAssembly name="org.eclipse.scada.utils" version="0.1.0" args="-r:org.openscada.external.dll" />
+		<buildAssembly name="org.eclipse.scada.base" version="0.1.0" args="-r:org.openscada.external.dll -r:org.eclipse.scada.utils.dll" />
+		<buildAssembly name="org.openscada.oxygen" version="${oxygen.version}" args="-r:org.openscada.external.dll -r:org.eclipse.scada.utils.dll -r:org.eclipse.scada.base.dll" />
 		<buildAssembly name="org.openscada.atlantis" version="${atlantis.version}"
-			args="-r:org.openscada.external.dll -r:org.eclipse.scada.aurora.dll -r:org.openscada.oxygen.dll -exclude:${basedir}/org.openscada.atlantis.ikvm.excludes" />
+			args="-r:org.openscada.external.dll  -r:org.eclipse.scada.utils.dll -r:org.eclipse.scada.base.dll -r:org.openscada.oxygen.dll -exclude:${basedir}/org.openscada.atlantis.ikvm.excludes" />
 	</target>
 
 	<macrodef name="buildAssembly">
