@@ -53,7 +53,7 @@
 		<attribute name="buildType" default="-${buildType}"/>
 		<attribute name="path" default="/output"/>
 		<sequential>
-			<get dest="${input.dir}" src="${jenkins.base}/job/@{jobName}/lastSuccessfulBuild/artifact@{path}/@{name}@{artifactSuffix}@{buildType}.@{version}@{qualifier}.zip" />
+			<get dest="${input.dir}" src="${jenkins.base}/job/@{jobName}/lastSuccessfulBuild/artifact@{path}/@{name}@{artifactSuffix}@{buildType}-@{version}@{qualifier}.zip" />
 		</sequential>
 	</macrodef>
 
