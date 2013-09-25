@@ -48,7 +48,7 @@
 		<attribute name="name" />
 		<attribute name="jobName" default="@{name}-${master.version}"/>
 		<attribute name="version" />
-		<attribute name="qualifier" />
+		<attribute name="qualifier" default="" />
 		<attribute name="artifactSuffix" default=".sdk" />
 		<attribute name="buildType" default="-${buildType}"/>
 		<attribute name="path" default="/output"/>
