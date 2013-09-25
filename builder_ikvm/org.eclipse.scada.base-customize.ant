@@ -8,7 +8,6 @@
     	<delete>
 			<fileset dir="${build.dir}/unpack">
 				<include name="**/org.openscada.*.source_*.jar"/>
-				<include name="**/org.openscada.utils.osgi*.jar"/>
 				<include name="**/org.openscada.ds*.jar"/>
 				<include name="**/org.openscada.sec.equinox_*.jar"/>
 				<include name="**/org.openscada.sec.osgi_*.jar"/>
