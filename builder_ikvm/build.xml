@@ -41,7 +41,7 @@
 		<getSdk name="org.openscada.external" version="${external.version}" />
 		<getSdk name="org.eclipse.scada.utils" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.utils-master" version="0.1.0" qualifier="-SNAPSHOT" />
 		<getSdk name="org.eclipse.scada.base" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.base-master" version="0.1.0" qualifier="-SNAPSHOT" />
-		<getSdk name="org.openscada.oxygen" version="${oxygen.version}" />
+		<getSdk name="org.eclipse.scada.protocols" jobName="org.openscada.oxygen-1.2" version="${oxygen.version}" />
 		<getSdk name="org.eclipse.scada.atlantis" jobName="org.openscada.atlantis-1.2" version="${atlantis.version}" />
 	</target>
 
