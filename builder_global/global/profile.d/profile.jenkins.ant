@@ -36,7 +36,7 @@
     	<getP2Repo required="${require.oxygen}" jobname="org.openscada.oxygen-${jobSuffix}" reponame="org.eclipse.scada.protocols.sdk" version="${oxygen.version}"/>
 		<getP2Repo required="${require.utgard}" jobname="org.openscada.utgard-${jobSuffix}" reponame="org.openscada.utgard.sdk" version="${utgard.version}"/>
     	<getP2Repo required="${require.atlantis}" jobname="org.openscada.atlantis-${jobSuffix}" reponame="org.eclipse.scada.atlantis.sdk" version="${atlantis.version}"/>
-		<getP2Repo required="${require.orilla}" jobname="org.openscada.orilla-${jobSuffix}" reponame="org.openscada.orilla.sdk" version="${orilla.version}"/>
+		<getP2Repo required="${require.orilla}" jobname="org.openscada.orilla-${jobSuffix}" reponame="org.eclipse.scada.orilla.sdk" version="${orilla.version}"/>
 		<getP2Repo required="${require.dakara}" jobname="org.openscada.dakara-${jobSuffix}" reponame="org.openscada.dakara.sdk" version="${dakara.version}"/>
     	<getP2Repo required="${require.deploy}" jobname="org.openscada.deploy-${jobSuffix}" reponame="org.openscada.deploy.repo" version="${deploy.version}"/>
     	<getP2Repo required="${require.orion}" jobname="org.openscada.orion-${jobSuffix}" reponame="org.openscada.orion.sdk" version="${orion.version}"/>
