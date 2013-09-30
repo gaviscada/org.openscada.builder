@@ -7,12 +7,12 @@
     <target name="default">
     	<delete>
 			<fileset dir="${build.dir}/unpack">
-				<include name="**/org.openscada.*.source_*.jar"/>
-				<include name="**/org.openscada.ds*.jar"/>
-				<include name="**/org.openscada.sec.equinox_*.jar"/>
-				<include name="**/org.openscada.sec.osgi_*.jar"/>
-				<include name="**/org.openscada.sec.provider.*.jar"/>
-				<include name="**/org.openscada.sec.authn.osgi.*.jar"/>
+				<include name="**/org.eclipse.scada.*.source_*.jar"/>
+				<include name="**/org.eclipse.scada.ds*.jar"/>
+				<include name="**/org.eclipse.scada.sec.equinox_*.jar"/>
+				<include name="**/org.eclipse.scada.sec.osgi_*.jar"/>
+				<include name="**/org.eclipse.scada.sec.provider.*.jar"/>
+				<include name="**/org.eclipse.scada.sec.authn.osgi.*.jar"/>
 			</fileset>
     	</delete>
     </target>

@@ -7,20 +7,20 @@
     <target name="default">
     	<delete>
 			<fileset dir="${build.dir}/unpack">
-				<exclude name="org.openscada.da.net_*.jar"/>
-				<exclude name="org.openscada.core_*.jar"/>
-				<exclude name="org.openscada.core.ngp_*.jar"/>
-				<exclude name="org.openscada.core.net_*.jar"/>
-				<exclude name="org.openscada.core.client*"/>
-				<exclude name="org.openscada.da.common*"/>
-				<exclude name="org.openscada.da.core.common_*"/>
-				<exclude name="org.openscada.da.client*"/>
-				<exclude name="org.openscada.core_*.jar"/>
-				<exclude name="org.openscada.net_*.jar"/>
+				<exclude name="org.eclipse.scada.da.net_*.jar"/>
+				<exclude name="org.eclipse.scada.core_*.jar"/>
+				<exclude name="org.eclipse.scada.core.ngp_*.jar"/>
+				<exclude name="org.eclipse.scada.core.net_*.jar"/>
+				<exclude name="org.eclipse.scada.core.client*"/>
+				<exclude name="org.eclipse.scada.da.common*"/>
+				<exclude name="org.eclipse.scada.da.core.common_*"/>
+				<exclude name="org.eclipse.scada.da.client*"/>
+				<exclude name="org.eclipse.scada.core_*.jar"/>
+				<exclude name="org.eclipse.scada.net_*.jar"/>
 			</fileset>
     		<fileset dir="${build.dir}/unpack">
-    			<include name="**/org.openscada.*.source_*.jar"/>
-				<include name="org.openscada.*.connection.service_*"/>
+    			<include name="**/org.eclipse.scada.*.source_*.jar"/>
+				<include name="org.eclipse.scada.*.connection.service_*"/>
     		</fileset>
     	</delete>
     	
