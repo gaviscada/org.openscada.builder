@@ -92,6 +92,7 @@
 
 			<echo message="Customizing: @{name}-customize.ant" />
 			<ant antfile="@{name}-customize.ant" inheritall="true" inheritrefs="true" />
+			<echo message="Customizing: @{name}-customize.ant complete" />
 			
 			<zip destfile="${build.dir}/combined-full.jar">
 				<zipgroupfileset dir="${build.dir}/unpack" includes="*.jar">
