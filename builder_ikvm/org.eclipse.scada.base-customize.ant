@@ -9,6 +9,8 @@
 			<fileset dir="${build.dir}/unpack">
 				<include name="**/org.eclipse.scada.*.source_*.jar"/>
 				<include name="**/org.eclipse.scada.ds*.jar"/>
+				<include name="**/org.eclipse.scada.sec.audit.*.jar"/>
+				<include name="**/org.eclipse.scada.sec.auth.*.jar"/>
 				<include name="**/org.eclipse.scada.sec.equinox_*.jar"/>
 				<include name="**/org.eclipse.scada.sec.osgi_*.jar"/>
 				<include name="**/org.eclipse.scada.sec.provider.*.jar"/>

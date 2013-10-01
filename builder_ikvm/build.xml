@@ -69,6 +69,7 @@
 			args="-exclude:${basedir}/org.openscada.external.ikvm.excludes"/>
 		<buildAssembly name="org.eclipse.scada.utils" version="0.1.0" args="-r:org.openscada.external.dll" />
 		<buildAssembly name="org.eclipse.scada.base" version="0.1.0" args="-r:org.openscada.external.dll -r:org.eclipse.scada.utils.dll" />
+
 		<buildAssembly name="org.eclipse.scada.protocols" version="${oxygen.version}" args="-r:org.openscada.external.dll -r:org.eclipse.scada.utils.dll -r:org.eclipse.scada.base.dll" />
 		<buildAssembly name="org.eclipse.scada.atlantis" version="${atlantis.version}"
 			args="-r:org.openscada.external.dll  -r:org.eclipse.scada.utils.dll -r:org.eclipse.scada.base.dll -r:org.eclipse.scada.protocols.dll -exclude:${basedir}/org.eclipse.scada.atlantis.ikvm.excludes" />
@@ -86,8 +87,11 @@
 			<unzip dest="${build.dir}/unpack">
 				<fileset dir="${input.dir}" includes="@{name}*.zip" />
 				<patternset>
-					<include name="*.jar" />
+					<exclude name="artifacts.jar"/>
+					<exclude name="content.jar"/>
+					<include name="**/*.jar" />
 				</patternset>
+				<mapper type="flatten"/>
 			</unzip>
 
 			<echo message="Customizing: @{name}-customize.ant" />
