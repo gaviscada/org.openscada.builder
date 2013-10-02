@@ -28,7 +28,7 @@
     	<delete dir="${input.dir}" failonerror="false"/>
 		<mkdir dir="${input.dir}"/>
     	
-    	<getP2Repo required="${require.utils}" jobname="org.eclipse.scada.utils-master" reponame="org.eclipse.scada.utils.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix=""/>
+    	<getP2Repo required="${require.utils}" jobname="org.eclipse.scada.utils-master" reponame="org.eclipse.scada.utils.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
     	<getP2Repo required="${require.base}" jobname="org.eclipse.scada.base-master" reponame="org.eclipse.scada.base.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix=""/>
     	
     	<getP2Repo required="${require.external}" jobname="org.openscada.external-${jobSuffix}" reponame="org.openscada.external.sdk" version="${external.version}"/>
@@ -104,6 +104,7 @@
           macrodef: getP2Repo          
          = = = = = = = = = = = = = = = = = -->
     <macrodef name="getP2Repo">
+    	<attribute name="server" default="${jenkins.download.base}" />
         <attribute name="repoName" />
     	<attribute name="version" />
     	<attribute name="qualifier" default=""/>
@@ -114,9 +115,9 @@
         	<if>
         		<equals arg1="@{required}" arg2="true"/>
         		<then>
-        			<echo message="Importing P2 Repository from: ${jenkins.download.base}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}@{qualifier}@{suffix}.zip"/>
+        			<echo message="Importing P2 Repository from: @{server}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}@{qualifier}@{suffix}.zip"/>
         			<mkdir dir="${input.dir}/repos"/>
-			    	<get dest="${input.dir}/repos" src="${jenkins.download.base}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}@{qualifier}@{suffix}.zip" usetimestamp="true"/>
+			    	<get dest="${input.dir}/repos" src="@{server}/job/@{jobName}/lastSuccessfulBuild/artifact/output/@{repoName}-@{version}@{qualifier}@{suffix}.zip" usetimestamp="true"/>
         		</then>
         	</if>
         </sequential>
