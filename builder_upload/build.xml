@@ -57,7 +57,7 @@
 		<gatherRepo name="oxygen" repository="org.eclipse.scada.protocols.sdk" version="${oxygen.version}" job="org.openscada.oxygen-${jobSuffix}"/>
 		<gatherRepo name="utgard" repository="org.openscada.utgard.sdk" version="${utgard.version}" job="org.openscada.utgard-${jobSuffix}"/>
 		<gatherRepo name="orilla" repository="org.eclipse.scada.orilla.sdk" version="${orilla.version}" job="org.openscada.orilla-${jobSuffix}"/>
-    	<gatherRepo name="dakara" repository="org.openscada.dakara.sdk" version="${dakara.version}" job="org.openscada.dakara-${jobSuffix}"/>
+    	<gatherRepo name="dakara" repository="org.eclipse.scada.dakara.sdk" version="${dakara.version}" job="org.openscada.dakara-${jobSuffix}"/>
 		<gatherRepo name="deploy" repository="org.openscada.deploy.repo" version="${deploy.version}" job="org.openscada.deploy-${jobSuffix}"/>
     	<gatherRepo name="tauri" repository="org.openscada.tauri" version="${tauri.version}" job="org.openscada.tauri-${jobSuffix}"/>
     	<gatherRepo name="orion" repository="org.openscada.orion.sdk" version="${orion.version}" job="org.openscada.orion-${jobSuffix}"/>
