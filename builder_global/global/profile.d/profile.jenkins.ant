@@ -31,16 +31,16 @@
     	<getP2Repo required="${require.utils}" jobname="org.eclipse.scada.utils-master" reponame="org.eclipse.scada.utils.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
     	<getP2Repo required="${require.base}" jobname="org.eclipse.scada.base-master" reponame="org.eclipse.scada.base.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
     	<getP2Repo required="${require.infinity}" jobname="org.eclipse.scada.chart-master" reponame="org.eclipse.scada.chart.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
+    	<getP2Repo required="${require.protocols}" jobname="org.eclipse.scada.protocols-master" reponame="org.eclipse.scada.protocols.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
+    	<getP2Repo required="${require.core}" jobname="org.eclipse.scada.core-master" reponame="org.eclipse.scada.core.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
+    	<getP2Repo required="${require.hmi}" jobname="org.eclipse.scada.hmi-master" reponame="org.eclipse.scada.hmi.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
     	
+    	<getP2Repo required="${require.external}" jobname="org.eclipse.scada.external-master" reponame="org.eclipse.scada.external.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
     	<getP2Repo required="${require.external}" jobname="org.openscada.external-${jobSuffix}" reponame="org.openscada.external.sdk" version="${external.version}"/>
-    	<getP2Repo required="${require.aurora}" jobname="org.openscada.aurora-${jobSuffix}" reponame="org.eclipse.scada.aurora.sdk" version="${aurora.version}"/>
-    	<getP2Repo required="${require.oxygen}" jobname="org.openscada.oxygen-${jobSuffix}" reponame="org.eclipse.scada.protocols.sdk" version="${oxygen.version}"/>
+
 		<getP2Repo required="${require.utgard}" jobname="org.openscada.utgard-${jobSuffix}" reponame="org.openscada.utgard.sdk" version="${utgard.version}"/>
     	<getP2Repo required="${require.atlantis}" jobname="org.openscada.atlantis-${jobSuffix}" reponame="org.eclipse.scada.atlantis.sdk" version="${atlantis.version}"/>
-		<getP2Repo required="${require.orilla}" jobname="org.openscada.orilla-${jobSuffix}" reponame="org.eclipse.scada.orilla.sdk" version="${orilla.version}"/>
-		<getP2Repo required="${require.dakara}" jobname="org.openscada.dakara-${jobSuffix}" reponame="org.eclipse.scada.dakara.sdk" version="${dakara.version}"/>
     	<getP2Repo required="${require.deploy}" jobname="org.openscada.deploy-${jobSuffix}" reponame="org.openscada.deploy.repo" version="${deploy.version}"/>
-    	<getP2Repo required="${require.orion}" jobname="org.openscada.orion-${jobSuffix}" reponame="org.openscada.orion.sdk" version="${orion.version}"/>
     	
     	<getP2Repo required="${require.jinterop}" jobname="org.openscada.jinterop-${jobSuffix}" reponame="org.openscada.jinterop.sdk" version="${jinterop.version}"/>
     	<getP2Repo required="${require.docdocdoc}" jobname="org.openscada.docdocdoc-${jobSuffix}" reponame="org.openscada.docdocdoc.sdk" version="${docdocdoc.version}"/>
