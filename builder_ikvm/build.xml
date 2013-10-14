@@ -41,8 +41,8 @@
 		<getSdk name="org.openscada.external" version="${external.version}" />
 		<getSdk name="org.eclipse.scada.utils" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.utils-master" version="0.1.0" qualifier="-SNAPSHOT" />
 		<getSdk name="org.eclipse.scada.base" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.base-master" version="0.1.0" qualifier="-SNAPSHOT" />
-		<getSdk name="org.eclipse.scada.protocols" jobName="org.openscada.oxygen-1.2" version="${oxygen.version}" />
-		<getSdk name="org.eclipse.scada.atlantis" jobName="org.openscada.atlantis-1.2" version="${atlantis.version}" />
+		<getSdk name="org.eclipse.scada.protocols" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.protocols-master" version="0.1.0"  qualifier="-SNAPSHOT" />
+		<getSdk name="org.eclipse.scada.core" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.core-master" version="0.1.0"  qualifier="-SNAPSHOT" />
 	</target>
 
 	<macrodef name="getSdk">
@@ -70,9 +70,9 @@
 		<buildAssembly name="org.eclipse.scada.utils" version="0.1.0" args="-r:org.openscada.external.dll" />
 		<buildAssembly name="org.eclipse.scada.base" version="0.1.0" args="-r:org.openscada.external.dll -r:org.eclipse.scada.utils.dll" />
 
-		<buildAssembly name="org.eclipse.scada.protocols" version="${oxygen.version}" args="-r:org.openscada.external.dll -r:org.eclipse.scada.utils.dll -r:org.eclipse.scada.base.dll" />
-		<buildAssembly name="org.eclipse.scada.atlantis" version="${atlantis.version}"
-			args="-r:org.openscada.external.dll  -r:org.eclipse.scada.utils.dll -r:org.eclipse.scada.base.dll -r:org.eclipse.scada.protocols.dll -exclude:${basedir}/org.eclipse.scada.atlantis.ikvm.excludes" />
+		<buildAssembly name="org.eclipse.scada.protocols" version="0.1.0" args="-r:org.openscada.external.dll -r:org.eclipse.scada.utils.dll -r:org.eclipse.scada.base.dll" />
+		<buildAssembly name="org.eclipse.scada.core" version="0.1.0"
+			args="-r:org.openscada.external.dll  -r:org.eclipse.scada.utils.dll -r:org.eclipse.scada.base.dll -r:org.eclipse.scada.protocols.dll -exclude:${basedir}/org.eclipse.scada.core.ikvm.excludes" />
 	</target>
 
 	<macrodef name="buildAssembly">
