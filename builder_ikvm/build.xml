@@ -38,7 +38,8 @@
           target: fetch
          ================================= -->
 	<target name="fetch" depends="init">
-		<getSdk name="org.openscada.external" version="${external.version}" />
+		<getSdk name="org.openscada.external" version="${external.version}" jenkinsBase="http://builder.intra"/>
+		
 		<getSdk name="org.eclipse.scada.utils" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.utils-master" version="0.1.0" qualifier="-SNAPSHOT" />
 		<getSdk name="org.eclipse.scada.base" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.base-master" version="0.1.0" qualifier="-SNAPSHOT" />
 		<getSdk name="org.eclipse.scada.protocols" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.protocols-master" version="0.1.0"  qualifier="-SNAPSHOT" />
@@ -53,8 +54,9 @@
 		<attribute name="artifactSuffix" default=".sdk" />
 		<attribute name="buildType" default="${buildType}."/>
 		<attribute name="path" default="/output"/>
+		<attribute name="jenkinsBase" default="${jenkins.base}"/>
 		<sequential>
-			<get dest="${input.dir}" src="${jenkins.base}/job/@{jobName}/lastSuccessfulBuild/artifact@{path}/@{name}@{artifactSuffix}-@{buildType}@{version}@{qualifier}.zip" />
+			<get dest="${input.dir}" src="@{jenkinsBase}/job/@{jobName}/lastSuccessfulBuild/artifact@{path}/@{name}@{artifactSuffix}-@{buildType}@{version}@{qualifier}.zip" />
 		</sequential>
 	</macrodef>
 
