@@ -48,15 +48,15 @@
     	
     	<gatherUpload name="builder.upload" artifact="builder.global" version="${deploy.version}" job="org.openscada.builder-${jobSuffix}" />
     	
-    	<gatherRepo name="utils" repository="org.eclipse.scada.utils.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.utils-master"/>
-    	<gatherRepo name="base" repository="org.eclipse.scada.base.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.base-master"/>
-    	<gatherRepo name="chart" repository="org.eclipse.scada.chart.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.chart-master"/>
-    	<gatherRepo name="protocols" repository="org.eclipse.scada.protocols.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.protocols-master"/>
-    	<gatherRepo name="core" repository="org.eclipse.scada.core.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.core-master"/>
-    	<gatherRepo name="hmi" repository="org.eclipse.scada.hmi.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.hmi-master"/>
+    	<gatherRepo name="utils" repository="org.eclipse.scada.utils.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.utils-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	<gatherRepo name="base" repository="org.eclipse.scada.base.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.base-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	<gatherRepo name="chart" repository="org.eclipse.scada.chart.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.chart-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	<gatherRepo name="protocols" repository="org.eclipse.scada.protocols.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.protocols-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	<gatherRepo name="core" repository="org.eclipse.scada.core.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.core-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	<gatherRepo name="hmi" repository="org.eclipse.scada.hmi.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.hmi-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
     	
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-${jobSuffix}"/>
-    	<gatherRepo name="atlantis" repository="org.eclipse.scada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-${jobSuffix}"/>
+    	<gatherRepo name="atlantis" repository="org.openscada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-${jobSuffix}"/>
     	
     	<!--
     	<gatherRepo name="aurora" repository="org.eclipse.scada.aurora.sdk" version="${aurora.version}" job="org.openscada.aurora-${jobSuffix}"/>
@@ -316,6 +316,7 @@
     	<attribute name="path" default="output" />
     	<attribute name="suffix" default="-p2repo" />
     	<attribute name="qualifier" default="" />
+    	<attribute name="jenkinsBase" default="${env.JENKINS_URL}" />
         <sequential>
         	
         	<echo message="Checking flag: ${gather.@{name}} (full: ${gather.full})"/>
@@ -336,11 +337,11 @@
 		        	
 		        	<!-- copy p2repo to download -->
 		        	
-		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/@{path}/@{repository}-@{version}@{qualifier}@{suffix}.zip" usetimestamp="true"/>
+		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="@{jenkinsBase}/job/@{job}/lastSuccessfulBuild/artifact/@{path}/@{repository}-@{version}@{qualifier}@{suffix}.zip" usetimestamp="true"/>
         			
 		        	<!-- copy unzipped version to download: we can ignored errors here -->
         			
-		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/@{path}/@{repository}-@{buildType}.@{version}@{qualifier}.zip" usetimestamp="true" ignoreerrors="true"/>
+		        	<get dest="${target.base}/download/@{name}/@{buildType}/@{version}" src="@{jenkinsBase}/job/@{job}/lastSuccessfulBuild/artifact/@{path}/@{repository}-@{buildType}.@{version}@{qualifier}.zip" usetimestamp="true" ignoreerrors="true"/>
 		
 		        	<!-- create repo dir -->
 		        	
