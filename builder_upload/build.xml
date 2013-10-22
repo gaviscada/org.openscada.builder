@@ -74,7 +74,7 @@
     	<gatherRepo name="jinterop" repository="org.openscada.jinterop.sdk" version="${jinterop.version}" job="org.openscada.jinterop-${jobSuffix}"/>
     	<gatherRepo name="contrib" repository="org.openscada.contrib.sdk" version="${contrib.version}" job="org.openscada.contrib-${jobSuffix}"/>
 
-    	<gatherRepo name="configuration" repository="org.eclipse.scada.configuration.p2" version="0.1.0" qualifier="-SNAPSHOT" job="org.openscada.configuration-master" path="org.eclipse.scada.configuration-p2/target" suffix=""/>
+    	<gatherRepo name="configuration" repository="org.eclipse.scada.configuration.p2" version="0.1.0" qualifier="-SNAPSHOT" job="org.openscada.configuration-0.1-tycho" path="org.eclipse.scada.configuration-p2/target" suffix=""/>
     	
     	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
