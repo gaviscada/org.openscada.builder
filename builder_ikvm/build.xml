@@ -40,10 +40,10 @@
 	<target name="fetch" depends="init">
 		<getSdk name="org.openscada.external" version="${external.version}" jenkinsBase="http://builder.intra"/>
 		
-		<getSdk name="org.eclipse.scada.utils" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.utils-master" version="0.1.0" qualifier="-SNAPSHOT" />
-		<getSdk name="org.eclipse.scada.base" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.base-master" version="0.1.0" qualifier="-SNAPSHOT" />
-		<getSdk name="org.eclipse.scada.protocols" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.protocols-master" version="0.1.0"  qualifier="-SNAPSHOT" />
-		<getSdk name="org.eclipse.scada.core" artifactsuffix=".p2" buildType="" jobName="org.eclipse.scada.core-master" version="0.1.0"  qualifier="-SNAPSHOT" />
+		<getSdk name="org.eclipse.scada.utils" artifactsuffix=".p2-incubation" buildType="" jobName="org.eclipse.scada.utils-master" version="0.1.0" qualifier="-SNAPSHOT" />
+		<getSdk name="org.eclipse.scada.base" artifactsuffix=".p2-incubation" buildType="" jobName="org.eclipse.scada.base-master" version="0.1.0" qualifier="-SNAPSHOT" />
+		<getSdk name="org.eclipse.scada.protocols" artifactsuffix=".p2-incubation" buildType="" jobName="org.eclipse.scada.protocols-master" version="0.1.0"  qualifier="-SNAPSHOT" />
+		<getSdk name="org.eclipse.scada.core" artifactsuffix=".p2-incubation" buildType="" jobName="org.eclipse.scada.core-master" version="0.1.0"  qualifier="-SNAPSHOT" />
 	</target>
 
 	<macrodef name="getSdk">
