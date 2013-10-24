@@ -48,12 +48,12 @@
     	
     	<gatherUpload name="builder.upload" artifact="builder.global" version="${deploy.version}" job="org.openscada.builder-${jobSuffix}" />
     	
-    	<gatherRepo name="utils" repository="org.eclipse.scada.utils.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.utils-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	<gatherRepo name="base" repository="org.eclipse.scada.base.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.base-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	<gatherRepo name="chart" repository="org.eclipse.scada.chart.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.chart-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	<gatherRepo name="protocols" repository="org.eclipse.scada.protocols.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.protocols-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	<gatherRepo name="core" repository="org.eclipse.scada.core.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.core-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	<gatherRepo name="hmi" repository="org.eclipse.scada.hmi.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.hmi-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	<gatherRepo name="utils" repository="org.eclipse.scada.utils.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.utils-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	<gatherRepo name="base" repository="org.eclipse.scada.base.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.base-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	<gatherRepo name="chart" repository="org.eclipse.scada.chart.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.chart-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	<gatherRepo name="protocols" repository="org.eclipse.scada.protocols.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.protocols-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	<gatherRepo name="core" repository="org.eclipse.scada.core.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.core-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	<gatherRepo name="hmi" repository="org.eclipse.scada.hmi.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.hmi-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
     	
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-${jobSuffix}"/>
     	<gatherRepo name="atlantis" repository="org.openscada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-${jobSuffix}"/>
@@ -74,7 +74,7 @@
     	<gatherRepo name="jinterop" repository="org.openscada.jinterop.sdk" version="${jinterop.version}" job="org.openscada.jinterop-${jobSuffix}"/>
     	<gatherRepo name="contrib" repository="org.openscada.contrib.sdk" version="${contrib.version}" job="org.openscada.contrib-${jobSuffix}"/>
 
-    	<gatherRepo name="configuration" repository="org.eclipse.scada.configuration.p2" version="0.1.0" qualifier="-SNAPSHOT" job="org.openscada.configuration-0.1-tycho" path="org.eclipse.scada.configuration-p2/target" suffix=""/>
+    	<gatherRepo name="configuration" repository="org.eclipse.scada.configuration.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" job="org.openscada.configuration-0.1-tycho" path="org.eclipse.scada.configuration-p2/target" suffix=""/>
     	
     	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
