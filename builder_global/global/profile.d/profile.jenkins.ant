@@ -28,14 +28,14 @@
     	<delete dir="${input.dir}" failonerror="false"/>
 		<mkdir dir="${input.dir}"/>
     	
-    	<getP2Repo required="${require.utils}" jobname="org.eclipse.scada.utils-master" reponame="org.eclipse.scada.utils.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
-    	<getP2Repo required="${require.base}" jobname="org.eclipse.scada.base-master" reponame="org.eclipse.scada.base.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
-    	<getP2Repo required="${require.infinity}" jobname="org.eclipse.scada.chart-master" reponame="org.eclipse.scada.chart.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
-    	<getP2Repo required="${require.protocols}" jobname="org.eclipse.scada.protocols-master" reponame="org.eclipse.scada.protocols.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
-    	<getP2Repo required="${require.core}" jobname="org.eclipse.scada.core-master" reponame="org.eclipse.scada.core.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
-    	<getP2Repo required="${require.hmi}" jobname="org.eclipse.scada.hmi-master" reponame="org.eclipse.scada.hmi.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
+    	<getP2Repo required="${require.utils}" jobname="org.eclipse.scada.utils-master" reponame="org.eclipse.scada.utils.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
+    	<getP2Repo required="${require.base}" jobname="org.eclipse.scada.base-master" reponame="org.eclipse.scada.base.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
+    	<getP2Repo required="${require.infinity}" jobname="org.eclipse.scada.chart-master" reponame="org.eclipse.scada.chart.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
+    	<getP2Repo required="${require.protocols}" jobname="org.eclipse.scada.protocols-master" reponame="org.eclipse.scada.protocols.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
+    	<getP2Repo required="${require.core}" jobname="org.eclipse.scada.core-master" reponame="org.eclipse.scada.core.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
+    	<getP2Repo required="${require.hmi}" jobname="org.eclipse.scada.hmi-master" reponame="org.eclipse.scada.hmi.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
     	
-    	<getP2Repo required="${require.external}" jobname="org.eclipse.scada.external-master" reponame="org.eclipse.scada.external.p2" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
+    	<getP2Repo required="${require.external}" jobname="org.eclipse.scada.external-master" reponame="org.eclipse.scada.external.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" server="https://hudson.eclipse.org/scada"/>
     	<getP2Repo required="${require.external}" jobname="org.openscada.external-${jobSuffix}" reponame="org.openscada.external.sdk" version="${external.version}"/>
 
 		<getP2Repo required="${require.utgard}" jobname="org.openscada.utgard-${jobSuffix}" reponame="org.openscada.utgard.sdk" version="${utgard.version}"/>
