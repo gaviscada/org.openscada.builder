@@ -67,11 +67,14 @@
     	<gatherRepo name="infinity" repository="org.eclipse.scada.chart.sdk" version="${infinity.version}" job="org.openscada.infinity-${jobSuffix}"/>
 		-->
     	
-		<gatherRepo name="utgard" repository="org.openscada.utgard.sdk" version="${utgard.version}" job="org.openscada.utgard-${jobSuffix}"/>
+        <gatherRepo name="jinterop" repository="org.openscada.jinterop.p2" version="${jinterop.version}" job="org.openscada.jinterop-${jobSuffix}-tycho" suffix=""/>
+		<gatherRepo name="utgard" repository="org.openscada.utgard.p2" version="${utgard.version}" job="org.openscada.utgard-${jobSuffix}-tycho" suffix=""/>
+        <gatherRepo name="atlantis" repository="org.openscada.atlantis.p2" version="${atlantis.version}" job="org.openscada.atlantis-${jobSuffix}-tycho" suffix=""/>
+            
 		<gatherRepo name="deploy" repository="org.openscada.deploy.repo" version="${deploy.version}" job="org.openscada.deploy-${jobSuffix}"/>
     	<gatherRepo name="tauri" repository="org.openscada.tauri" version="${tauri.version}" job="org.openscada.tauri-${jobSuffix}"/>
 
-    	<gatherRepo name="jinterop" repository="org.openscada.jinterop.sdk" version="${jinterop.version}" job="org.openscada.jinterop-${jobSuffix}"/>
+    	
     	<gatherRepo name="contrib" repository="org.openscada.contrib.sdk" version="${contrib.version}" job="org.openscada.contrib-${jobSuffix}"/>
 
     	<gatherRepo name="ide" repository="org.eclipse.scada.ide.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" job="org.eclipse.scada.ide-master" suffix="" jenkinsBase="https://hudson.eclipse.org/scada/"/>
