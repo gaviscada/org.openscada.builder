@@ -7,7 +7,14 @@ ch.qos.logback.classic.net.JMSQueueSink
 ch.qos.logback.core.net.LoginAuthenticator
 ch.qos.logback.core.status.ViewStatusMessagesServletBase
 ch.qos.logback.classic.ViewStatusMessagesServlet
+ch.qos.logback.classic.helpers.MDCInsertingServletFilter
+ch.qos.logback.classic.selector.servlet.ContextDetachingSCL
+ch.qos.logback.classic.selector.servlet.LoggerContextFilter
 org.slf4j.instrumentation.JavassistHelper
 org.slf4j.instrumentation.LogTransformer
 org.slf4j.agent.AgentPremain
 org.slf4j.cal10n.LocLogger
+org.apache.commons.logging.impl.AvalonLogger
+org.apache.commons.logging.impl.LogKitLogger
+org.apache.commons.logging.impl.Log4JLogger
+org.apache.commons.logging.impl.ServletContextCleaner

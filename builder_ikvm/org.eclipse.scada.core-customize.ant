@@ -7,16 +7,20 @@
     <target name="default">
     	<delete>
 			<fileset dir="${build.dir}/unpack">
-				<exclude name="org.eclipse.scada.da.net_*.jar"/>
+			    <exclude name="org.eclipse.scada.*.data_*.jar"/>
 				<exclude name="org.eclipse.scada.core_*.jar"/>
-				<exclude name="org.eclipse.scada.core.ngp_*.jar"/>
-				<exclude name="org.eclipse.scada.core.net_*.jar"/>
-				<exclude name="org.eclipse.scada.core.client*"/>
+			    <exclude name="org.eclipse.scada.core.ngp_*.jar"/>
+			    <exclude name="org.eclipse.scada.core.ngp.common*.jar"/>
+				<exclude name="org.eclipse.scada.core.client_*"/>
+			    <exclude name="org.eclipse.scada.core.client.common_*"/>
+			    <exclude name="org.eclipse.scada.core.client.ngp_*"/>
+			    <exclude name="org.eclipse.scada.core.protocol*"/>
 				<exclude name="org.eclipse.scada.da.common*"/>
 				<exclude name="org.eclipse.scada.da.core.common_*"/>
-				<exclude name="org.eclipse.scada.da.client*"/>
-				<exclude name="org.eclipse.scada.core_*.jar"/>
-				<exclude name="org.eclipse.scada.net_*.jar"/>
+				<exclude name="org.eclipse.scada.da.client_*"/>
+			    <exclude name="org.eclipse.scada.da.client.ngp_*"/>
+			    <exclude name="org.eclipse.scada.da.protocol*"/>
+				
 			</fileset>
     		<fileset dir="${build.dir}/unpack">
     			<include name="**/org.eclipse.scada.*.source_*.jar"/>
