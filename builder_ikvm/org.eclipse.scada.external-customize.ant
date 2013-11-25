@@ -13,12 +13,8 @@
 				<include name="**/org.apache.xml*"/>
 				<include name="**/org.apache.xerces*"/>
 				<include name="**/org.apache.poi*"/>
-				<include name="**/org.openscada.external.postgres*"/>
-				<include name="**/org.openscada.external.odfdom*"/>
-				<include name="**/*jcifs*"/>
 				<include name="**/org.apache.*dbcp*"/>
 				<include name="**/org.apache.*http*"/>
-				<include name="**/org.openscada.external.jdbc*"/>
 				<include name="**/org.eclipse.gemini*"/>
 			</fileset>
     	</delete>
