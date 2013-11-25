@@ -69,7 +69,7 @@
 		<mkdir dir="${output.dir}" />
 		<mkdir dir="${build.dir}/unpack" />
 
-		<buildAssembly name="org.eclipse.scada.external" version="${external.version}"
+		<buildAssembly name="org.eclipse.scada.external" version="0.1.0"
 			args="-exclude:${basedir}/org.eclipse.scada.external.ikvm.excludes"/>
 		<buildAssembly name="org.eclipse.scada.utils" version="0.1.0" args="-r:org.eclipse.scada.external.dll" />
 		<buildAssembly name="org.eclipse.scada.base" version="0.1.0" args="-r:org.eclipse.scada.external.dll -r:org.eclipse.scada.utils.dll" />
