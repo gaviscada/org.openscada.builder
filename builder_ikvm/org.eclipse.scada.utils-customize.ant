@@ -9,6 +9,7 @@
 			<fileset dir="${build.dir}/unpack">
 				<include name="**/org.eclipse.scada.*.source_*.jar"/>
 				<include name="**/org.eclipse.scada.utils.osgi*.jar"/>
+			    <include name="**/org.eclipse.scada.ui*.jar"/>
 			</fileset>
     	</delete>
     </target>
