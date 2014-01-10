@@ -4,7 +4,7 @@
 	
 	<property environment="env"/>
 	
-	<property name="eclipse.home.dir" location="${env.ECLIPSE_430_HOME}"/>
+	<property name="eclipse.home.dir" location="${env.ECLIPSE_431_HOME}"/>
 	<property name="openscada.mirror.base" value="${env.OPENSCADA_MIRROR_BASE}"/>
 	
 	<property name="build.root" location="../.."/>
