@@ -10,16 +10,17 @@
     </description>
 
 	<property environment="env" />
-
-	<property name="master.version" value="1.2" />
-	
+	<property file="global/global.properties" />
+    
 	<property name="ikvmc.binary" value="ikvmc" />
 	<property name="input.dir" location="input" />
 	<property name="output.dir" location="output" />
 	<property name="jenkins.base" value="${env.JENKINS_URL}" />
 	<property name="build.dir" location="ikvm.temp" />
-
-	<property file="global/global.properties" />
+    
+	<property name="buildId" value="S201401220726"/>
+	<property name="baseVersion" value="0.1.0"/>
+    <property name="version" value="${baseVersion}.M3"/>
 
 	<!-- ================================= 
 		 target: default              
@@ -38,29 +39,12 @@
           target: fetch
          ================================= -->
 	<target name="fetch" depends="init">
-	    <!--
-	    <get dest="${input.dir}" src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada.external/drops/0.1.0/S201311220927/pack/org.eclipse.scada.external.p2-incubation-0.1.0.M1.zip" usetimestamp="true"/>
-	    -->
-        <get dest="${input.dir}" src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada.external/drops/0.1.0/N201311280600/pack/org.eclipse.scada.external.p2-incubation-0.1.0-SNAPSHOT.zip" usetimestamp="true"/>
-	    <get dest="${input.dir}" src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada.utils/drops/0.1.0/S201311220927/pack/org.eclipse.scada.utils.p2-incubation-0.1.0.M1.zip" usetimestamp="true"/>
-	    <get dest="${input.dir}" src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada.base/drops/0.1.0/S201311220927/pack/org.eclipse.scada.base.p2-incubation-0.1.0.M1.zip" usetimestamp="true"/>
-	    <get dest="${input.dir}" src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada.protocols/drops/0.1.0/S201311220927/pack/org.eclipse.scada.protocols.p2-incubation-0.1.0.M1.zip" usetimestamp="true"/>
-	    <get dest="${input.dir}" src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada.core/drops/0.1.0/S201311220927/pack/org.eclipse.scada.core.p2-incubation-0.1.0.M1.zip" usetimestamp="true"/>
+        <get dest="${input.dir}" src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada.external/drops/${baseVersion}/${buildId}/pack/org.eclipse.scada.external.p2-incubation-${version}.zip" usetimestamp="true"/>
+	    <get dest="${input.dir}" src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada.utils/drops/${baseVersion}/${buildId}/pack/org.eclipse.scada.utils.p2-incubation-${version}.zip" usetimestamp="true"/>
+	    <get dest="${input.dir}" src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada.base/drops/${baseVersion}/${buildId}/pack/org.eclipse.scada.base.p2-incubation-${version}.zip" usetimestamp="true"/>
+	    <get dest="${input.dir}" src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada.protocols/drops/${baseVersion}/${buildId}/pack/org.eclipse.scada.protocols.p2-incubation-${version}.zip" usetimestamp="true"/>
+	    <get dest="${input.dir}" src="http://download.eclipse.org/eclipsescada/downloads/org.eclipse.scada.core/drops/${baseVersion}/${buildId}/pack/org.eclipse.scada.core.p2-incubation-${version}.zip" usetimestamp="true"/>
 	</target>
-
-	<macrodef name="getSdk">
-		<attribute name="name" />
-		<attribute name="jobName" default="@{name}-${master.version}"/>
-		<attribute name="version" />
-		<attribute name="qualifier" default="" />
-		<attribute name="artifactSuffix" default=".sdk" />
-		<attribute name="buildType" default="${buildType}."/>
-		<attribute name="path" default="/output"/>
-		<attribute name="jenkinsBase" default="${jenkins.base}"/>
-		<sequential>
-			<get dest="${input.dir}" src="@{jenkinsBase}/job/@{jobName}/lastSuccessfulBuild/artifact@{path}/@{name}@{artifactSuffix}-@{buildType}@{version}@{qualifier}.zip" />
-		</sequential>
-	</macrodef>
 
 	<!-- ================================= 
           target: build
@@ -69,19 +53,21 @@
 		<mkdir dir="${output.dir}" />
 		<mkdir dir="${build.dir}/unpack" />
 
-		<buildAssembly name="org.eclipse.scada.external" version="0.1.0"
+		<buildAssembly name="org.eclipse.scada.external"
 			args="-exclude:${basedir}/org.eclipse.scada.external.ikvm.excludes"/>
-		<buildAssembly name="org.eclipse.scada.utils" version="0.1.0" args="-r:org.eclipse.scada.external.dll" />
-		<buildAssembly name="org.eclipse.scada.base" version="0.1.0" args="-r:org.eclipse.scada.external.dll -r:org.eclipse.scada.utils.dll" />
-
-		<buildAssembly name="org.eclipse.scada.protocols" version="0.1.0" args="-r:org.eclipse.scada.external.dll -r:org.eclipse.scada.utils.dll -r:org.eclipse.scada.base.dll" />
-		<buildAssembly name="org.eclipse.scada.core" version="0.1.0"
+		<buildAssembly name="org.eclipse.scada.utils"
+		    args="-r:org.eclipse.scada.external.dll" />
+		<buildAssembly name="org.eclipse.scada.base"
+		    args="-r:org.eclipse.scada.external.dll -r:org.eclipse.scada.utils.dll" />
+		<buildAssembly name="org.eclipse.scada.protocols"
+		    args="-r:org.eclipse.scada.external.dll -r:org.eclipse.scada.utils.dll -r:org.eclipse.scada.base.dll" />
+		<buildAssembly name="org.eclipse.scada.core"
 			args="-r:org.eclipse.scada.external.dll  -r:org.eclipse.scada.utils.dll -r:org.eclipse.scada.base.dll -r:org.eclipse.scada.protocols.dll -exclude:${basedir}/org.eclipse.scada.core.ikvm.excludes" />
 	</target>
 
 	<macrodef name="buildAssembly">
 		<attribute name="name" />
-		<attribute name="version" />
+		<attribute name="version" default="${baseVersion}" />
 		<attribute name="args" default="" />
 		<sequential>
 
