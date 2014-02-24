@@ -34,7 +34,7 @@
     			<add location="http://repo.openscada.org/p2/jinterop/${buildType}/${jinterop.version}"/>
     		
     			<add location="http://repo.openscada.org/p2/docdocdoc/${buildType}/${docdocdoc.version}"/>
-    	    	<add location="http://download.eclipse.org/eclipsescada/updates/${buildTypeLong}"/>
+    	    	<add location="http://download.eclipse.org/eclipsescada/updates/milestone/0.1.0"/>
     	</p2.composite.repository>
     </target>
 	
