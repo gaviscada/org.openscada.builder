@@ -32,6 +32,7 @@
     			<add location="http://repo.openscada.org/p2/utgard/${buildType}/${utgard.version}"/>
     			<add location="http://repo.openscada.org/p2/atlantis/${buildType}/${atlantis.version}"/>
     			<add location="http://repo.openscada.org/p2/jinterop/${buildType}/${jinterop.version}"/>
+    			<add location="http://repo.openscada.org/p2/ide/${buildType}/${configuration.version}"/>
     		
     			<add location="http://repo.openscada.org/p2/docdocdoc/${buildType}/${docdocdoc.version}"/>
     	    	<add location="http://download.eclipse.org/eclipsescada/updates/milestone/0.1.0"/>
