@@ -91,6 +91,7 @@
     	<gatherSetup.platform name="driverPackage" job="setup-driver-package-${jobSuffix}" platform="win32.win32.x86" description="openSCADA Driver Package" regKey="HKLM\Software\openSCADA.org\openSCADA Driver Package"/>
     	-->
         
+        <mkdir dir="${target.base}/download/installer/openscada_common_driver_extension/${buildType}"/>
         <get src="${env.HUDSON_URL}/job/setup-openscada-common-driver-extension-1.2/lastSuccessfulBuild/artifact/setup_openscada_common_drivers/openscada_common_driver_extensions_1.2.0-SNAPSHOT_x86.msi" dest="${target.base}/download/installer/openscada_common_driver_extension/${buildType}"/>
         <get src="${env.HUDSON_URL}/job/setup-openscada-common-driver-extension-1.2/lastSuccessfulBuild/artifact/setup_openscada_common_drivers/openscada_common_driver_extensions_1.2.0-SNAPSHOT_x64.msi" dest="${target.base}/download/installer/openscada_common_driver_extension/${buildType}"/>
     </target>
