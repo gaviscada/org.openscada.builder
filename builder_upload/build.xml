@@ -47,16 +47,20 @@
     	<echo message="JobSuffix: ${jobSuffix}"/>
     	
     	<gatherUpload name="builder.upload" artifact="builder.global" version="${deploy.version}" job="org.openscada.builder-${jobSuffix}" />
-    	
+
+        <!--
     	<gatherRepo name="utils" repository="org.eclipse.scada.utils.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.utils-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
     	<gatherRepo name="base" repository="org.eclipse.scada.base.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.base-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
     	<gatherRepo name="chart" repository="org.eclipse.scada.chart.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.chart-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
     	<gatherRepo name="protocols" repository="org.eclipse.scada.protocols.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.protocols-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
     	<gatherRepo name="core" repository="org.eclipse.scada.core.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.core-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
     	<gatherRepo name="hmi" repository="org.eclipse.scada.hmi.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.hmi-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
+    	-->
     	
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-${jobSuffix}"/>
+        <!--
     	<gatherRepo name="atlantis" repository="org.openscada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-${jobSuffix}"/>
+    	-->
     	
     	<!--
     	<gatherRepo name="aurora" repository="org.eclipse.scada.aurora.sdk" version="${aurora.version}" job="org.openscada.aurora-${jobSuffix}"/>
@@ -73,18 +77,22 @@
             
 		<gatherRepo name="deploy" repository="org.openscada.deploy.repo" version="${deploy.version}" job="org.openscada.deploy-${jobSuffix}"/>
     	<gatherRepo name="tauri" repository="org.openscada.tauri" version="${tauri.version}" job="org.openscada.tauri-${jobSuffix}"/>
-
     	
     	<gatherRepo name="contrib" repository="org.openscada.contrib.sdk" version="${contrib.version}" job="org.openscada.contrib-${jobSuffix}"/>
 
     	<gatherRepo name="ide" repository="org.eclipse.scada.ide.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" job="org.eclipse.scada.ide-master" suffix="" jenkinsBase="https://hudson.eclipse.org/scada/"/>
     	
+        <!--
     	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
     	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
     	
     	<gatherSetup name="ostc" job="setup.ostc-${jobSuffix}" description="openSCADA Administration Client" regKey="HKLM\Software\openSCADA.org\openSCADA Administration Client" autoClose="[APPDIR]ostc.exe"/>
     	<gatherSetup name="osvi" job="setup.osvi-${jobSuffix}" description="openSCADA Visual Interface" regKey="HKLM\Software\openSCADA.org\openSCADA Visual Interface" autoClose="[APPDIR]osvi.exe"/>
     	<gatherSetup.platform name="driverPackage" job="setup-driver-package-${jobSuffix}" platform="win32.win32.x86" description="openSCADA Driver Package" regKey="HKLM\Software\openSCADA.org\openSCADA Driver Package"/>
+    	-->
+        
+        <get src="${env.HUDSON_URL}/job/setup-openscada-common-driver-extension-1.2/lastSuccessfulBuild/artifact/setup_openscada_common_drivers/openscada_common_server_extensions_1.2.0-SNAPSHOT_x86.msi" dest="${target.base}/download/installer/openscada_common_driver_extension/${buildType}"/>
+        <get src="${env.HUDSON_URL}/job/setup-openscada-common-driver-extension-1.2/lastSuccessfulBuild/artifact/setup_openscada_common_drivers/openscada_common_server_extensions_1.2.0-SNAPSHOT_x64.msi" dest="${target.base}/download/installer/openscada_common_driver_extension/${buildType}"/>
     </target>
 	
 	<!-- - - - - - - - - - - - - - - - - - 
