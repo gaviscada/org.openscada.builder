@@ -21,8 +21,6 @@
 	  - the jobSuffix is set in the profile
 	  -->
 	<property name="jobSuffix" value="release"/>
-	<property name="configuration.jobSuffix" value="0.1-tycho"/>
-	<property name="configuration.qualifier" value="-SNAPSHOT"/>
 	<property name="ikvm.version" value="${deploy.version}"/>
 	
     <!-- ================================= 
@@ -48,52 +46,18 @@
     	
     	<gatherUpload name="builder.upload" artifact="builder.global" version="${deploy.version}" job="org.openscada.builder-${jobSuffix}" />
 
-        <!--
-    	<gatherRepo name="utils" repository="org.eclipse.scada.utils.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.utils-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	<gatherRepo name="base" repository="org.eclipse.scada.base.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.base-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	<gatherRepo name="chart" repository="org.eclipse.scada.chart.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.chart-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	<gatherRepo name="protocols" repository="org.eclipse.scada.protocols.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.protocols-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	<gatherRepo name="core" repository="org.eclipse.scada.core.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.core-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	<gatherRepo name="hmi" repository="org.eclipse.scada.hmi.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" suffix="" job="org.eclipse.scada.hmi-master" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	-->
-    	
     	<gatherRepo name="external" repository="org.openscada.external.sdk" version="${external.version}" job="org.openscada.external-${jobSuffix}"/>
-        <!--
-    	<gatherRepo name="atlantis" repository="org.openscada.atlantis.sdk" version="${atlantis.version}" job="org.openscada.atlantis-${jobSuffix}"/>
-    	-->
-    	
-    	<!--
-    	<gatherRepo name="aurora" repository="org.eclipse.scada.aurora.sdk" version="${aurora.version}" job="org.openscada.aurora-${jobSuffix}"/>
-		<gatherRepo name="oxygen" repository="org.eclipse.scada.protocols.sdk" version="${oxygen.version}" job="org.openscada.oxygen-${jobSuffix}"/>
-		<gatherRepo name="orilla" repository="org.eclipse.scada.orilla.sdk" version="${orilla.version}" job="org.openscada.orilla-${jobSuffix}"/>
-		<gatherRepo name="dakara" repository="org.eclipse.scada.dakara.sdk" version="${dakara.version}" job="org.openscada.dakara-${jobSuffix}"/>
-		<gatherRepo name="orion" repository="org.openscada.orion.sdk" version="${orion.version}" job="org.openscada.orion-${jobSuffix}"/>
-    	<gatherRepo name="infinity" repository="org.eclipse.scada.chart.sdk" version="${infinity.version}" job="org.openscada.infinity-${jobSuffix}"/>
-		-->
-    	
-        <gatherRepo name="jinterop" repository="org.openscada.jinterop.p2" version="${jinterop.version}" qualifier="-SNAPSHOT" job="org.openscada.jinterop-${jobSuffix}-tycho" suffix=""/>
+    	<gatherRepo name="jinterop" repository="org.openscada.jinterop.p2" version="${jinterop.version}" qualifier="-SNAPSHOT" job="org.openscada.jinterop-${jobSuffix}-tycho" suffix=""/>
 		<gatherRepo name="utgard" repository="org.openscada.utgard.p2" version="${utgard.version}" qualifier="-SNAPSHOT"  job="org.openscada.utgard-${jobSuffix}-tycho" suffix=""/>
         <gatherRepo name="atlantis" repository="org.openscada.atlantis.p2" version="${atlantis.version}" qualifier="-SNAPSHOT"  job="org.openscada.atlantis-${jobSuffix}-tycho" suffix=""/>
-            
 		<gatherRepo name="deploy" repository="org.openscada.deploy.repo" version="${deploy.version}" job="org.openscada.deploy-${jobSuffix}"/>
     	<gatherRepo name="tauri" repository="org.openscada.tauri" version="${tauri.version}" job="org.openscada.tauri-${jobSuffix}"/>
-    	
     	<gatherRepo name="contrib" repository="org.openscada.contrib.sdk" version="${contrib.version}" job="org.openscada.contrib-${jobSuffix}"/>
-
-    	<gatherRepo name="ide" repository="org.eclipse.scada.ide.p2-incubation" version="0.1.0" qualifier="-SNAPSHOT" job="org.eclipse.scada.ide-master" suffix="" jenkinsBase="https://hudson.eclipse.org/scada/"/>
-    	
-        <!--
-    	<gatherProduct name="ostc" version="${othala.version}" job="org.openscada.othala-${jobSuffix}"/>
-    	<gatherProduct name="osvi" version="${dakara.version}" job="org.openscada.dakara.product-${jobSuffix}"/>
-    	
-    	<gatherSetup name="ostc" job="setup.ostc-${jobSuffix}" description="openSCADA Administration Client" regKey="HKLM\Software\openSCADA.org\openSCADA Administration Client" autoClose="[APPDIR]ostc.exe"/>
-    	<gatherSetup name="osvi" job="setup.osvi-${jobSuffix}" description="openSCADA Visual Interface" regKey="HKLM\Software\openSCADA.org\openSCADA Visual Interface" autoClose="[APPDIR]osvi.exe"/>
-    	<gatherSetup.platform name="driverPackage" job="setup-driver-package-${jobSuffix}" platform="win32.win32.x86" description="openSCADA Driver Package" regKey="HKLM\Software\openSCADA.org\openSCADA Driver Package"/>
-    	-->
+    	<gatherRepo name="ide" repository="org.openscada.ide.p2" version="1.2.0" qualifier="-SNAPSHOT" job="org.openscada.ide-${jobSuffix}-tycho" suffix=""/>
         
         <mkdir dir="${target.base}/download/installer/openscada_common_driver_extension/${buildType}"/>
-        <get src="${env.HUDSON_URL}/job/setup-openscada-common-driver-extension-1.2/lastSuccessfulBuild/artifact/setup_openscada_common_drivers/openscada_common_driver_extensions_1.2.0-SNAPSHOT_x86.msi" dest="${target.base}/download/installer/openscada_common_driver_extension/${buildType}"/>
-        <get src="${env.HUDSON_URL}/job/setup-openscada-common-driver-extension-1.2/lastSuccessfulBuild/artifact/setup_openscada_common_drivers/openscada_common_driver_extensions_1.2.0-SNAPSHOT_x64.msi" dest="${target.base}/download/installer/openscada_common_driver_extension/${buildType}"/>
+        <get src="${env.HUDSON_URL}/job/setup-openscada-common-driver-extension-${jobSuffix}/lastSuccessfulBuild/artifact/setup_openscada_common_drivers/openscada_common_driver_extensions_${deploy.version}-SNAPSHOT_x86.msi" dest="${target.base}/download/installer/openscada_common_driver_extension/${buildType}"/>
+        <get src="${env.HUDSON_URL}/job/setup-openscada-common-driver-extension-${jobSuffix}/lastSuccessfulBuild/artifact/setup_openscada_common_drivers/openscada_common_driver_extensions_${deploy.version}-SNAPSHOT_x64.msi" dest="${target.base}/download/installer/openscada_common_driver_extension/${buildType}"/>
     </target>
 	
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -103,218 +67,6 @@
 		<delete dir="${target.base}/download/ikvm/${buildType}/${ikvm.version}" failonerror="false"/>
 		<mkdir dir="${target.base}/download/ikvm/${buildType}/${ikvm.version}"/>
     	<get src="${env.JENKINS_URL}/job/org.openscada.builder.ikvm-${jobSuffix}/lastSuccessfulBuild/artifact/builder_ikvm/output/*zip*/output.zip" dest="${target.base}/download/ikvm/${buildType}/${ikvm.version}/org.openscada.ikvm-${buildType}-${ikvm.version}.zip"/>
-    </target>
-	
-	<!-- = = = = = = = = = = = = = = = = =
-          macrodef: generateUpdate          
-         = = = = = = = = = = = = = = = = = -->
-    <macrodef name="generateUpdate">
-        <attribute name="name" />
-    	<attribute name="job" />
-    	<attribute name="platform" />
-    	<attribute name="buildType" default="${buildType}" />
-    	<attribute name="description" default="@{name}"/>
-    	<attribute name="regKey"/>
-    	<attribute name="autoClose" default=""/>
-    		
-        <sequential>
-        	
-        	<local name="version"/>
-        	<property url="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties"/>
-        	
-        	<local name="timestamp"/>
-        	<tstamp>
-        		<format property="timestamp" pattern="dd/MM/yyyy" />
-        	</tstamp>
-        	
-        	<local name="size"/>
-        	<exec outputproperty="size" executable="stat">
-        		<arg value="-c"/>
-        		<arg value="%s"/>
-        		<arg file="${target.base}/download/installer/@{name}/@{buildType}/@{name}_${version}_@{platform}.msi"/>
-        	</exec>
-        	
-        	<local name="md5"/>
-        	<checksum algorithm="MD5" property="md5" file="${target.base}/download/installer/@{name}/@{buildType}/@{name}_${version}_@{platform}.msi"/>
-        	
-        	<local name="flags"/>
-        	<if>
-        		<equals arg1="win32.win32.x86_64" arg2="@{platform}"/>
-        		<then>
-        			<property name="flags" value="Flags=NoCache|SilentInstall|Os64"/>
-        		</then>
-        		<else>
-        			<property name="flags" value="Flags=NoCache|SilentInstall|Os32Only"/>
-        		</else>
-        	</if>
-        	
-        	<local name="autoClose"/>
-        	<if>
-        		<equals arg1="@{autoClose}" arg2=""/>
-        		<then>
-        			<property name="autoClose" value=""/>
-        		</then>
-        		<else>
-        			<property name="autoClose" value="AutoCloseApplication=@{autoClose}"/>
-        		</else>
-        	</if>
-        	
-            <exec executable="m4" output="${target.base}/download/installer/@{name}/@{buildType}/update_@{platform}.txt">
-            	<arg value="-D__VERSION__=${version}"/>
-            	<arg value="-D__NAME__=@{description} ${version}"/>
-            	<arg value="-D__URL__=http://download.openscada.org/installer/@{name}/@{buildType}/@{name}_${version}_@{platform}.msi"/>
-            	<arg value="-D__REGKEY__=@{regKey}\${version}\Version"/>
-            	<arg value="-D__FILE__=@{name}_${version}_@{platform}.msi"/>
-            	<arg value="-D__SIZE__=${size}"/>
-            	<arg value="-D__MD5__=${md5}"/>
-            	<arg value="-D__TIMESTAMP__=${timestamp}"/>
-            	<arg value="-D__FLAGS__=${flags}"/>
-            	<arg value="-D__AUTOCLOSE__=${autoClose}"/>
-				<arg file="update.tpl"/>
-        	</exec>
-        </sequential>
-    </macrodef>
-	
-	<!-- = = = = = = = = = = = = = = = = =
-          macrodef: gatherSetup          
-         = = = = = = = = = = = = = = = = = -->
-    <macrodef name="gatherSetup">
-        <attribute name="name" />
-    	<attribute name="job"/>
-    	<attribute name="buildType" default="${buildType}" />
-    	<attribute name="description" default="@{name}"/>
-    	<attribute name="regKey"/>
-    	<attribute name="autoClose" default=""/>
-
-        <sequential>
-
-        	<echo message="Checking flag: ${gather.@{name}} (full: ${gather.full})"/>
-        	
-        	<if>
-        	
-        		<or>
-					<istrue value="${gather.full}"/>
-	    			<istrue value="${gather.@{name}}"/>
-    			</or>
-        		
-        		<then>
-        		
-		        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
-		        	<gatherSetup.platform name="@{name}" job="@{job}" buildType="@{buildType}" platform="win32.win32.x86_64" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
-        	
-        		</then>
-        			
-        	</if>
-        	
-        </sequential>
-    </macrodef>
-	
-	<!-- = = = = = = = = = = = = = = = = =
-          macrodef: gatherSetup.platform          
-         = = = = = = = = = = = = = = = = = -->
-    <macrodef name="gatherSetup.platform">
-        <attribute name="platform" />
-        <attribute name="name" />
-    	<attribute name="job"/>
-    	<attribute name="buildType" default="${buildType}" />
-    	<attribute name="description" default="@{name}"/>
-    	<attribute name="regKey"/>
-    	<attribute name="autoClose" default=""/>
-
-        <sequential>
-        	
-        	<echo message="Checking flag: ${gather.@{name}} (full: ${gather.full})"/>
-        	
-        	<if>
-        	
-        		<or>
-        			<istrue value="${gather.full}"/>
-	    			<istrue value="${gather.@{name}}"/>
-        		</or>
-        		
-        		<then>
-        		
-		        	<mkdir dir="${target.base}/download/installer/@{name}/@{buildType}"/>
-		        	        	
-		        	<local name="version"/>
-		        	<property url="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/version.properties"/>
-		        	<echo message="Version: ${version}"/>
-		        	
-		        	<delete>
-		        		<fileset dir="${target.base}/download/installer/@{name}/@{buildType}">
-		        			<include name="@{name}_${jobSuffix}.*_@{platform}.msi"/>
-		        		</fileset>
-		        	</delete>
-		        	
-		        	<get
-		        		dest="${target.base}/download/installer/@{name}/@{buildType}"
-		        		src="${env.JENKINS_URL}/job/@{job}/lastSuccessfulBuild/artifact/output/@{name}_${version}_@{platform}.msi"
-		        		usetimestamp="true"/>
-		          
-		        	<generateUpdate name="@{name}" job="@{job}" platform="@{platform}" description="@{description}" regKey="@{regKey}" autoClose="@{autoClose}"/>
-        			
-        		</then>
-        		
-        	</if>
-        	
-        </sequential>
-    </macrodef>
-
-
-	
-	<!-- = = = = = = = = = = = = = = = = =
-          macrodef: gatherProduct          
-         = = = = = = = = = = = = = = = = = -->
-    <macrodef name="gatherProduct">
-    	<attribute name="name"/>
-    	<attribute name="job"/>
-    	<attribute name="version"/>
-    	<attribute name="buildType" default="${buildType}"/>
-        <sequential>
-        	
-        	<echo message="Checking flag: ${gather.@{name}} (full: ${gather.full})"/>
-        	
-        	<if>
-        		
-        		<or>
-    				<istrue value="${gather.full}"/>
-        			<istrue value="${gather.@{name}}"/>	
-        		</or>
-        	
-        		<then>
-        		
-		        	<!-- create download dir -->
-		        	        	
-		        	<delete dir="${target.base}/download/@{name}/@{buildType}/@{version}" failonerror="false"/>
-		        	<mkdir dir="${target.base}/download/@{name}/@{buildType}/@{version}"/>
-		        	
-		        	<!-- copy to download -->
-		        	
-		        	<foreach list="${configs}" delimiter="&amp;" param="config" trim="true" target="targetGatherProduct">
-		        		<param name="job" value="@{job}"/>
-		        		<param name="name" value="@{name}"/>
-		        		<param name="version" value="@{version}"/>
-		        		<param name="buildType" value="@{buildType}"/>
-		        	</foreach>
-        		
-        		</then>
-        			
-    		</if>
-        	
-        </sequential>
-    </macrodef>
-	
-	<!-- ================================= 
-          target: targetGatherProduct              
-         ================================= -->
-    <target name="targetGatherProduct">
-    	<propertyregex property="configCleaned1" input="${config}" regexp=" +" replace=""/>
-    	<propertyregex property="configCleaned" input="${configCleaned1}" regexp="," replace="."/>
-    	<echo message="Processing config: ${configCleaned}"/>
-		<get
-			dest="${target.base}/download/${name}/${buildType}/${version}"
-			src="${env.JENKINS_URL}/job/${job}/lastSuccessfulBuild/artifact/output/${name}/${name}-${configCleaned}.zip"
-			usetimestamp="true"/>
     </target>
 	
 	<!-- = = = = = = = = = = = = = = = = =
