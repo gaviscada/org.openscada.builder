@@ -6,7 +6,7 @@
 
 <project name="org.openscada.builder.ikvm" default="default" basedir=".">
 	<description>
-		openSCADA Java to .NET
+		Eclipse SCADA Java to .NET
     </description>
 
 	<property environment="env" />
@@ -18,9 +18,9 @@
 	<property name="jenkins.base" value="${env.JENKINS_URL}" />
 	<property name="build.dir" location="ikvm.temp" />
     
-	<property name="buildId" value="S201401220726"/>
+	<property name="buildId" value="S201403210728"/>
 	<property name="baseVersion" value="0.1.0"/>
-    <property name="version" value="${baseVersion}.M3"/>
+    <property name="version" value="${baseVersion}.M5"/>
 
 	<!-- ================================= 
 		 target: default              
