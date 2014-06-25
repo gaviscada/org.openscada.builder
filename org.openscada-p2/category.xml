@@ -24,6 +24,18 @@
    <feature url="features/org.openscada.utgard.sdk_1.2.0.qualifier.jar" id="org.openscada.utgard.sdk" version="1.2.0.qualifier">
       <category name="org.openscada.sdk.category"/>
    </feature>
+   <feature url="features/org.openscada.configuration.opc_1.2.0.qualifier.jar" id="org.openscada.configuration.opc" version="1.2.0.qualifier">
+      <category name="org.openscada.category"/>
+   </feature>
+   <feature url="features/org.openscada.configuration.snmp_1.2.0.qualifier.jar" id="org.openscada.configuration.snmp" version="1.2.0.qualifier">
+      <category name="org.openscada.category"/>
+   </feature>
+   <feature url="features/org.openscada.ide_1.2.0.qualifier.jar" id="org.openscada.ide" version="1.2.0.qualifier">
+      <category name="org.openscada.category"/>
+   </feature>
+   <feature url="features/org.openscada.ide.sdk_1.2.0.qualifier.jar" id="org.openscada.ide.sdk" version="1.2.0.qualifier">
+      <category name="org.openscada.sdk.category"/>
+   </feature>
    <category-def name="org.openscada.category" label="openSCADA">
       <description>
          All binaries.

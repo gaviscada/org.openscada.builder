@@ -10,6 +10,9 @@ location "http://download.eclipse.org/eclipsescada/updates/release/0.1.0" {
 	org.eclipse.scada.protocols.sdk.feature.group
 	org.eclipse.scada.base.sdk.feature.group
 	org.eclipse.scada.core.sdk.feature.group
+	org.eclipse.scada.chart.sdk.feature.group
+	org.eclipse.scada.hmi.sdk.feature.group
+	org.eclipse.scada.configuration.sdk.feature.group
 }
 
 location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/" {
@@ -18,4 +21,6 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2014052502125
 	osgi.enterprise;version=[4.2.0,5.0.0)
 	org.apache.commons.beanutils
 	org.apache.commons.collections
+	com.google.gson
+	com.jcraft.jzlib
 }

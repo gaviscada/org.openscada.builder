@@ -10,23 +10,16 @@
 	</parent>
 
 	<groupId>org.openscada</groupId>
-	<artifactId>deb</artifactId>
+	<artifactId>rpm</artifactId>
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>postgres</module>
 		<module>p2</module>
-		<module>apt</module>
+		<module>postgres</module>
+		<module>yum</module>
 	</modules>
 
 	<build>
-		<extensions>
-			<extension>
-				<groupId>org.vafer</groupId>
-				<artifactId>jdeb</artifactId>
-			</extension>
-		</extensions>
-
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -37,5 +30,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

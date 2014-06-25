@@ -10,7 +10,7 @@
 		<relativePath>..</relativePath>
 	</parent>
 
-	<groupId>org.openscada</groupId>
+	<groupId>org.openscada.deb</groupId>
 	<artifactId>org.openscada.jdbc.postgres</artifactId>
 	<packaging>deb</packaging>
 
@@ -23,7 +23,7 @@
 				<executions>
 					<execution>
 						<id>copy-postgres</id>
-						<phase>package</phase>
+						<phase>compile</phase>
 						<goals>
 							<goal>copy</goal>
 						</goals>
@@ -44,27 +44,20 @@
 			<plugin>
 				<artifactId>jdeb</artifactId>
 				<groupId>org.vafer</groupId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>jdeb</goal>
-						</goals>
-						<configuration>
-							<dataSet>
-								<data>
-									<src>${project.build.directory}/jar</src>
-									<type>directory</type>
-									<includes>*.jar</includes>
-									<mapper>
-										<type>perm</type>
-										<prefix>/usr/jar</prefix>
-									</mapper>
-								</data>
-							</dataSet>
-						</configuration>
-					</execution>
-				</executions>
+				<configuration>
+					<snapshotExpand>true</snapshotExpand>
+					<dataSet>
+						<data>
+							<src>${project.build.directory}/jar</src>
+							<type>directory</type>
+							<includes>*.jar</includes>
+							<mapper>
+								<type>perm</type>
+								<prefix>/usr/jar</prefix>
+							</mapper>
+						</data>
+					</dataSet>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

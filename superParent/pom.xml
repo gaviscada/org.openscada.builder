@@ -23,7 +23,8 @@
 	</distributionManagement>
 
 	<properties>
-		<eclipse.scada.release>0.1</eclipse.scada.release>
+		<openscada.release>1.2</openscada.release>
+		<openscada.releaseType>nightly</openscada.releaseType>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 

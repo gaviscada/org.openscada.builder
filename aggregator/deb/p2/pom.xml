@@ -10,15 +10,16 @@
 		<relativePath>..</relativePath>
 	</parent>
 
-	<groupId>org.openscada</groupId>
+	<groupId>org.openscada.deb</groupId>
 	<artifactId>org.openscada.p2</artifactId>
 	<packaging>deb</packaging>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.openscada</groupId>
-			<artifactId>p2</artifactId>
+			<groupId>org.openscada.p2</groupId>
+			<artifactId>org.openscada</artifactId>
 			<version>${project.version}</version>
+			<type>zip</type>
 		</dependency>
 	</dependencies>
 
@@ -27,19 +28,18 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.8</version>
 				<executions>
 					<execution>
 						<id>copy-p2</id>
-						<phase>package</phase>
+						<phase>compile</phase>
 						<goals>
 							<goal>copy</goal>
 						</goals>
 						<configuration>
 							<artifactItems>
 								<artifactItem>
-									<groupId>org.openscada</groupId>
-									<artifactId>p2</artifactId>
+									<groupId>org.openscada.p2</groupId>
+									<artifactId>org.openscada</artifactId>
 									<version>${project.version}</version>
 									<type>zip</type>
 								</artifactItem>
@@ -54,26 +54,19 @@
 			<plugin>
 				<artifactId>jdeb</artifactId>
 				<groupId>org.vafer</groupId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>jdeb</goal>
-						</goals>
-						<configuration>
-							<dataSet>
-								<data>
-									<src>${project.build.directory}/data/p2.zip</src>
-									<type>archive</type>
-									<mapper>
-										<type>perm</type>
-										<prefix>/usr/share/eclipsescada/p2/org.openscada</prefix>
-									</mapper>
-								</data>
-							</dataSet>
-						</configuration>
-					</execution>
-				</executions>
+				<configuration>
+					<snapshotExpand>true</snapshotExpand>
+					<dataSet>
+						<data>
+							<src>${project.build.directory}/data/org.openscada.zip</src>
+							<type>archive</type>
+							<mapper>
+								<type>perm</type>
+								<prefix>/usr/share/eclipsescada/p2/org.openscada</prefix>
+							</mapper>
+						</data>
+					</dataSet>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
