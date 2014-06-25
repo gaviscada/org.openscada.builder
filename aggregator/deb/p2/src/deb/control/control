@@ -1,0 +1,9 @@
+Package: [[name]]
+Version: [[version]]
+Section: misc
+Priority: optional
+Architecture: all
+Depends: java7-runtime
+Maintainer: Jens Reimann <jens.reimann@ibh-systems.com>
+Description: openSCADA P2 repository
+Distribution: main
