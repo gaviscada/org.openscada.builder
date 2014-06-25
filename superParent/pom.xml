@@ -14,7 +14,7 @@
 	</organization>
 
 	<distributionManagement>
-		<downloadUrl>http://neutronium.openscada.org</downloadUrl>
+		<downloadUrl>http://neutronium.openscada.org/maven</downloadUrl>
 		<repository>
 			<id>openscada-neutronium</id>
 			<name>openSCADA Maven Repository</name>
