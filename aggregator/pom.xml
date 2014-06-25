@@ -10,5 +10,6 @@
 	
 	<modules>
 		<module>../superParent</module>
+		<module>../../org.openscada.external/org.openscada.external-parent</module>
 	</modules>
 </project>
