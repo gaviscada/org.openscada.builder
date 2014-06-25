@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="openSCADA Target Platform (Development)" sequenceNumber="1403706587">
+<target name="openSCADA Target Platform (Development)" sequenceNumber="1403706758">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20140221-1852"/>
@@ -34,6 +34,7 @@
       <unit id="javax.transaction" version="1.1.1.v201105210645"/>
       <unit id="osgi.enterprise" version="4.2.0.v201108120515"/>
       <unit id="org.apache.commons.beanutils" version="1.8.0.v201205091237"/>
+      <unit id="org.apache.commons.collections" version="3.2.0.v2013030210310"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
     </location>
   </locations>

@@ -12,5 +12,7 @@
 		<module>../org.openscada-p2</module>
 		<module>../../org.openscada.external/org.openscada.external-parent</module>
 		<module>../../org.openscada.jinterop/org.openscada.jinterop-parent</module>
+		<module>../../org.openscada.utgard/org.openscada.utgard-parent</module>
+		<module>../../org.openscada.atlantis/org.openscada.atlantis-parent</module>
 	</modules>
 </project>
