@@ -18,7 +18,7 @@
 		<repository>
 			<id>openscada-neutronium</id>
 			<name>openSCADA Maven Repository</name>
-			<url>scp://openscada.org/neutronium.openscada.org/maven</url>
+			<url>scpexe://openscada.org/neutronium.openscada.org/maven</url>
 		</repository>
 	</distributionManagement>
 
@@ -41,6 +41,11 @@
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-ssh</artifactId>
+				<version>2.6</version>
+			</extension>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh-external</artifactId>
 				<version>2.6</version>
 			</extension>
 		</extensions>
