@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.openscada.external_1.2.0.qualifier.jar" id="org.openscada.external" version="1.2.0.qualifier">
+      <category name="org.openscada.category"/>
+   </feature>
+   <feature url="features/org.openscada.jinterop_1.2.0.qualifier.jar" id="org.openscada.jinterop" version="1.2.0.qualifier">
+      <category name="org.openscada.category"/>
+   </feature>
+   <category-def name="org.openscada.category" label="openSCADA">
+      <description>
+         External dependencies.
+      </description>
+   </category-def>
+</site>
