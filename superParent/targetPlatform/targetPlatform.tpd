@@ -1,0 +1,19 @@
+target "openSCADA Target Platform (Development)"
+
+include "base.tpd"
+
+with source, allEnvironments
+
+location "http://download.eclipse.org/eclipsescada/updates/release/0.1.0" {
+	org.eclipse.scada.external.sdk.feature.group
+	org.eclipse.scada.utils.sdk.feature.group
+	org.eclipse.scada.protocols.sdk.feature.group
+	org.eclipse.scada.base.sdk.feature.group
+	org.eclipse.scada.core.sdk.feature.group
+}
+
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/" {
+	org.slf4j.log4j;version=[1.7.2,1.7.3)
+	javax.transaction;version=[1.1.0,1.2.0)
+	osgi.enterprise;version=[4.2.0,5.0.0)
+}
