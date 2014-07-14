@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>org.openscada.deb</groupId>
-	<artifactId>org.openscada.jdbc.postgres</artifactId>
+	<artifactId>org.openscada.jdbc.postgresql</artifactId>
 	<packaging>deb</packaging>
 
 	<build>

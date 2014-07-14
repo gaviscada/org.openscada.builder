@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>org.openscada.rpm</groupId>
-	<artifactId>org.openscada.jdbc.postgres</artifactId>
+	<artifactId>org.openscada.jdbc.postgresql</artifactId>
 	<packaging>pom</packaging>
 
 	<build>
