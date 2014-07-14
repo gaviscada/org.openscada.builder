@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+REPOS="builder external jinterop utgard atlantis ide"
+
+. profile
+
+test ! -z "$GIT_BASE" || die "GIT_BASE is not set" 
+
+mkdir workspace
+pushd workspace
+
+for i in $REPOS; do
+	git clone "$GIT_BASE/org.openscada.$i.git" -b $branch
+done
+
+popd

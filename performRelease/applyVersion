@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+. profile
+
+pushd workspace
+
+mvn org.eclipse.scada.releng:build-helper:${buildHelperVersion}:set-version \
+	-U -llr \
+	-Dpackagings=pom \
+	-Dpoms=org.openscada.builder/aggregator/pom.xml,org.openscada.builder/superParent/pom.xml \
+	-DnewVersion=$release
+
+popd
+
