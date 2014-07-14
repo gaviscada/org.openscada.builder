@@ -152,4 +152,25 @@
 
 	</build>
 
+	<profiles>
+		<profile>
+			<id>milestone</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<openscada.releaseType>milestone</openscada.releaseType>
+			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<openscada.releaseType>release</openscada.releaseType>
+			</properties>
+		</profile>
+	</profiles>
+
 </project>
