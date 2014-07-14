@@ -90,6 +90,9 @@
 					<group>Application/System</group>
 					<packager>openSCADA</packager>
 					<prefix>/usr/local</prefix>
+					<obsoletes>
+						<obsolete>org.openscada.p2.repo.main</obsolete>
+					</obsoletes>
 					<defineStatements>
 						<defineStatement>_unpackaged_files_terminate_build 0</defineStatement>
 					</defineStatements>

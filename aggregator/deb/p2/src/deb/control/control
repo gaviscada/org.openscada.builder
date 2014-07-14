@@ -4,6 +4,8 @@ Section: misc
 Priority: optional
 Architecture: all
 Depends: java7-runtime
+Conflicts: org.openscada.p2.repo.main
+Replaces: org.openscada.p2.repo.main
 Maintainer: Jens Reimann <jens.reimann@ibh-systems.com>
 Description: openSCADA P2 repository
 Distribution: main
