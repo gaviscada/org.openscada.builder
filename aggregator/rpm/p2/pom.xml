@@ -99,6 +99,9 @@
 					<mappings>
 						<mapping>
 							<directory>/usr/share/eclipsescada/p2/org.openscada</directory>
+							<filemode>0755</filemode>
+							<username>root</username>
+							<groupname>root</groupname>
 							<sources>
 								<source>
 									<location>target/data</location>
