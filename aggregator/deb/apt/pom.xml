@@ -24,7 +24,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.openscada.deb</groupId>
-			<artifactId>org.openscada.jdbc.postgres</artifactId>
+			<artifactId>org.openscada.jdbc.postgresql</artifactId>
 			<type>deb</type>
 			<version>${project.version}</version>
 		</dependency>
