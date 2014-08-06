@@ -63,6 +63,8 @@
 							<mapper>
 								<type>perm</type>
 								<prefix>/usr/share/eclipsescada/p2/org.openscada</prefix>
+								<filemode>0644</filemode>
+								<dirmode>0755</dirmode>
 							</mapper>
 						</data>
 					</dataSet>
