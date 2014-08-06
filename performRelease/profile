@@ -1,7 +1,7 @@
 buildHelperVersion=0.0.18-SNAPSHOT
 
 version=1.2.0
-release=$version.M2
+release=$version.M3
 branch=1.2
 buildProfile=milestone
 
