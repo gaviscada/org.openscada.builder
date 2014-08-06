@@ -4,7 +4,7 @@ set -e
 
 . profile
 
-pushd workspace/org.eclipse.scada.builder
+pushd workspace/org.openscada.builder
 
 pushd superParent
 mvn clean deploy -P$buildProfile
