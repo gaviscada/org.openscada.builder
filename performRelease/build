@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+. profile
+
+pushd workspace/org.openscada.builder
+
+pushd superParent
+mvn clean install -P$buildProfile
+popd
+
+pushd aggregator
+mvn clean install -P$buildProfile
+popd
+
+
+popd
