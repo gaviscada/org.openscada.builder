@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+. profile
+
+pushd workspace/org.eclipse.scada.builder
+
+pushd superParent
+mvn clean deploy -P$buildProfile
+popd
+
+pushd aggregator
+mvn clean deploy -P$buildProfile
+popd
+
+
+popd

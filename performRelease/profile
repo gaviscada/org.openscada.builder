@@ -3,6 +3,7 @@ buildHelperVersion=0.0.18-SNAPSHOT
 version=1.2.0
 release=$version.M2
 branch=1.2
+buildProfile=milestone
 
 function die {
         echo "$@" 1>&2 # echo to stderr
