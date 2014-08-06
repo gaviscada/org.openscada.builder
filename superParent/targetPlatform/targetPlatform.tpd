@@ -28,4 +28,5 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2014052502125
 location "http://hstaudacher.github.io/osgi-jax-rs-connector" {
 	com.eclipsesource.jaxrs.publisher
 	com.eclipsesource.jaxrs.provider.gson
+	com.eclipsesource.jaxrs.jersey-all
 }
