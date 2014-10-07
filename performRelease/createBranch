@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ ! -n "$1" ];
+then
+  echo "please supply branch name as argument"
+  exit 1
+fi
+
+for REPO in atlantis builder external ide jinterop releng utgard
+do
+  if [ ! -d org.openscada.$REPO ];
+  then
+    echo "repository org.openscada.$REPO" does not exist
+    exit 2
+  fi
+done
+
+for REPO in atlantis builder external ide jinterop releng utgard
+do
+  pushd org.openscada.$REPO
+  git checkout -b $1
+  popd
+done
+
