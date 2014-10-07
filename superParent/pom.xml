@@ -23,7 +23,7 @@
 	</distributionManagement>
 
 	<properties>
-		<openscada.release>1.2</openscada.release>
+		<openscada.release>1.3</openscada.release>
 		<openscada.releaseType>nightly</openscada.releaseType>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
