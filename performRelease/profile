@@ -1,8 +1,8 @@
 buildHelperVersion=0.0.18-SNAPSHOT
 
 version=1.3.0
-release=$version.M1
-branch=1.2
+release=$version.M2
+branch=1.3
 buildProfile=milestone
 
 function die {
