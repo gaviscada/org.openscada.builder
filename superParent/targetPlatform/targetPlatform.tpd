@@ -4,7 +4,7 @@ include "base.tpd"
 
 with source, allEnvironments
 
-location "http://download.eclipse.org/eclipsescada/updates/release/0.1.0" {
+location "http://download.eclipse.org/eclipsescada/updates/milestone/0.2" {
 	org.eclipse.scada.external.sdk.feature.group
 	org.eclipse.scada.utils.sdk.feature.group
 	org.eclipse.scada.protocols.sdk.feature.group
