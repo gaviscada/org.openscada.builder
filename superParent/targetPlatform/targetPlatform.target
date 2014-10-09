@@ -27,6 +27,7 @@
 <unit id="org.eclipse.scada.core.sdk.feature.group" version="0.2.0.v20141007-1308"/>
 <unit id="org.eclipse.scada.chart.sdk.feature.group" version="0.2.0.v20140723-0935"/>
 <unit id="org.eclipse.scada.hmi.sdk.feature.group" version="0.2.0.v20140924-0800"/>
+<unit id="org.eclipse.scada.ide.feature.group" version="0.2.0.v20141002-1002"/>
 <unit id="org.eclipse.scada.configuration.sdk.feature.group" version="0.2.0.v20141007-1310"/>
 <repository location="http://download.eclipse.org/eclipsescada/updates/milestone/0.2"/>
 </location>
