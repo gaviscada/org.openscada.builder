@@ -22,6 +22,7 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2014052502125
 	org.apache.commons.beanutils
 	org.apache.commons.collections
 	com.google.gson
+	com.google.guava
 	com.jcraft.jzlib
 }
 
