@@ -1,52 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="openSCADA Target Platform (Development)" sequenceNumber="1407347278">
-<locations>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20140221-1852"/>
-<unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.7.0.201306111341"/>
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.9.2.v20140203-1126"/>
-<unit id="org.eclipse.ecf.core.feature.group" version="3.6.1.v20130605-1748"/>
-<unit id="org.eclipse.ocl.all.sdk.feature.group" version="4.1.1.v20140210-1137"/>
-<unit id="org.eclipse.platform.feature.group" version="4.3.2.v20140221-1852"/>
-<unit id="org.eclipse.pde.feature.group" version="3.9.1.v20140221-1700"/>
-<unit id="org.eclipse.wst.web_ui.feature.feature.group" version="3.5.2.v201401062113-7O7QG3wEMkBS3Graz0gRCYqCz-PVayJqBmOpb93L"/>
-<unit id="org.eclipse.acceleo.feature.group" version="3.4.2.201401221203"/>
-<unit id="org.eclipse.gef.sdk.feature.group" version="3.9.1.201308190730"/>
-<unit id="org.eclipse.jdt.feature.group" version="3.9.2.v20140221-1700"/>
-<repository location="http://download.eclipse.org/releases/kepler"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="bcprov" version="1.50.0"/>
-<repository location="http://neutronium.openscada.org/p2.wrapper/1.2/nightly"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.scada.external.sdk.feature.group" version="0.2.0.v20140519-1028"/>
-<unit id="org.eclipse.scada.utils.sdk.feature.group" version="0.2.0.v20141007-1231"/>
-<unit id="org.eclipse.scada.protocols.sdk.feature.group" version="0.2.0.v20141006-1510"/>
-<unit id="org.eclipse.scada.base.sdk.feature.group" version="0.2.0.v20141002-0851"/>
-<unit id="org.eclipse.scada.core.sdk.feature.group" version="0.2.0.v20141007-1308"/>
-<unit id="org.eclipse.scada.chart.sdk.feature.group" version="0.2.0.v20140723-0935"/>
-<unit id="org.eclipse.scada.hmi.sdk.feature.group" version="0.2.0.v20140924-0800"/>
-<unit id="org.eclipse.scada.ide.feature.group" version="0.2.0.v20141002-1002"/>
-<unit id="org.eclipse.scada.configuration.sdk.feature.group" version="0.2.0.v20141007-1310"/>
-<repository location="http://download.eclipse.org/eclipsescada/updates/milestone/0.2"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.slf4j.log4j" version="1.7.2.v20130115-1340"/>
-<unit id="javax.transaction" version="1.1.1.v201105210645"/>
-<unit id="osgi.enterprise" version="4.2.0.v201108120515"/>
-<unit id="org.apache.commons.beanutils" version="1.8.0.v201205091237"/>
-<unit id="org.apache.commons.collections" version="3.2.0.v2013030210310"/>
-<unit id="com.google.gson" version="2.2.4.v201311231704"/>
-<unit id="com.google.guava" version="15.0.0.v201403281430"/>
-<unit id="com.jcraft.jzlib" version="1.1.1.v201205102305"/>
-<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="com.eclipsesource.jaxrs.publisher" version="4.1.0.201407131319"/>
-<unit id="com.eclipsesource.jaxrs.provider.gson" version="2.0.0.201407131319"/>
-<unit id="com.eclipsesource.jaxrs.jersey-all" version="2.10.1.SR1"/>
-<repository location="http://hstaudacher.github.io/osgi-jax-rs-connector"/>
-</location>
-</locations>
+<?pde?>
+<!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
+<target name="openSCADA Target Platform (Development)" sequenceNumber="1412859703">
+  <locations>
+    <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20140221-1852"/>
+      <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.7.0.201306111341"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="2.9.2.v20140203-1126"/>
+      <unit id="org.eclipse.ecf.core.feature.group" version="3.6.1.v20130605-1748"/>
+      <unit id="org.eclipse.ocl.all.sdk.feature.group" version="4.1.1.v20140210-1137"/>
+      <unit id="org.eclipse.platform.feature.group" version="4.3.2.v20140221-1852"/>
+      <unit id="org.eclipse.pde.feature.group" version="3.9.1.v20140221-1700"/>
+      <unit id="org.eclipse.wst.web_ui.feature.feature.group" version="3.5.2.v201401062113-7O7QG3wEMkBS3Graz0gRCYqCz-PVayJqBmOpb93L"/>
+      <unit id="org.eclipse.acceleo.feature.group" version="3.4.2.201401221203"/>
+      <unit id="org.eclipse.gef.sdk.feature.group" version="3.9.1.201308190730"/>
+      <unit id="org.eclipse.jdt.feature.group" version="3.9.2.v20140221-1700"/>
+      <repository location="http://download.eclipse.org/releases/kepler"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="bcprov" version="1.50.0"/>
+      <repository location="http://neutronium.openscada.org/p2.wrapper/1.2/nightly"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.scada.external.sdk.feature.group" version="0.2.0.v20140519-1028"/>
+      <unit id="org.eclipse.scada.utils.sdk.feature.group" version="0.2.0.v20141007-1231"/>
+      <unit id="org.eclipse.scada.protocols.sdk.feature.group" version="0.2.0.v20141006-1510"/>
+      <unit id="org.eclipse.scada.base.sdk.feature.group" version="0.2.0.v20141002-0851"/>
+      <unit id="org.eclipse.scada.core.sdk.feature.group" version="0.2.0.v20141007-1308"/>
+      <unit id="org.eclipse.scada.chart.sdk.feature.group" version="0.2.0.v20140723-0935"/>
+      <unit id="org.eclipse.scada.hmi.sdk.feature.group" version="0.2.0.v20140924-0800"/>
+      <unit id="org.eclipse.scada.ide.feature.group" version="0.2.0.v20141002-1002"/>
+      <unit id="org.eclipse.scada.configuration.sdk.feature.group" version="0.2.0.v20141007-1310"/>
+      <repository location="http://download.eclipse.org/eclipsescada/updates/milestone/0.2"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.slf4j.log4j" version="1.7.2.v20130115-1340"/>
+      <unit id="javax.transaction" version="1.1.1.v201105210645"/>
+      <unit id="osgi.enterprise" version="4.2.0.v201108120515"/>
+      <unit id="org.apache.commons.beanutils" version="1.8.0.v201205091237"/>
+      <unit id="org.apache.commons.collections" version="3.2.0.v2013030210310"/>
+      <unit id="com.google.gson" version="2.2.4.v201311231704"/>
+      <unit id="com.google.guava" version="15.0.0.v201403281430"/>
+      <unit id="com.jcraft.jzlib" version="1.1.1.v201205102305"/>
+      <unit id="org.apache.mina.core" version="2.0.7.v201401071602"/>
+      <unit id="org.apache.mina.filter.compression" version="2.0.7.v201401141305"/>
+      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="com.eclipsesource.jaxrs.publisher" version="4.1.0.201407131319"/>
+      <unit id="com.eclipsesource.jaxrs.provider.gson" version="2.0.0.201407131319"/>
+      <unit id="com.eclipsesource.jaxrs.jersey-all" version="2.10.1.SR1"/>
+      <repository location="http://hstaudacher.github.io/osgi-jax-rs-connector"/>
+    </location>
+  </locations>
 </target>
