@@ -6,6 +6,10 @@ set -e
 
 pushd workspace
 
+mvn org.apache.maven.plugins:maven-dependency-plugin:2.8:get \
+        -Dartifact=org.eclipse.scada.releng:build-helper:${buildHelperVersion} \
+        -DremoteRepositories=https://repo.eclipse.org/content/repositories/eclipsescada-releases
+
 mvn org.eclipse.scada.releng:build-helper:${buildHelperVersion}:set-version \
 	-U -llr \
 	-Dpackagings=pom \
