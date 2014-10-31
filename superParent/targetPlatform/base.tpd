@@ -19,6 +19,13 @@ location "http://download.eclipse.org/releases/kepler" {
 	
 	org.eclipse.gef.sdk.feature.group
 	org.eclipse.jdt.feature.group
+
+}
+
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/" {
+	ch.qos.logback.classic
+	ch.qos.logback.core
+	ch.qos.logback.slf4j
 }
 
 location "http://neutronium.openscada.org/p2.wrapper/1.2/nightly" {

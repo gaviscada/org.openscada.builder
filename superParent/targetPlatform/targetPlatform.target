@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="openSCADA Target Platform (Development)" sequenceNumber="1412859889">
+<target name="openSCADA Target Platform (Development)" sequenceNumber="1413213928">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20140221-1852"/>
@@ -45,6 +45,9 @@
       <unit id="com.jcraft.jzlib" version="1.1.1.v201205102305"/>
       <unit id="org.apache.mina.core" version="2.0.7.v201401071602"/>
       <unit id="org.apache.mina.filter.compression" version="2.0.7.v201401141305"/>
+      <unit id="ch.qos.logback.classic" version="1.0.7.v20121108-1250"/>
+      <unit id="ch.qos.logback.core" version="1.0.7.v20121108-1250"/>
+      <unit id="ch.qos.logback.slf4j" version="1.0.7.v20121108-1250"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
