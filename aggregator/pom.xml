@@ -15,10 +15,14 @@
 
 	<modules>
 		<module>../org.openscada-p2</module>
-		<module>../../org.openscada.external/org.openscada.external-parent</module>
-		<module>../../org.openscada.jinterop/org.openscada.jinterop-parent</module>
-		<module>../../org.openscada.utgard/org.openscada.utgard-parent</module>
-		<module>../../org.openscada.atlantis/org.openscada.atlantis-parent</module>
+		<module>../../org.openscada.external/org.openscada.external-parent
+		</module>
+		<module>../../org.openscada.jinterop/org.openscada.jinterop-parent
+		</module>
+		<module>../../org.openscada.utgard/org.openscada.utgard-parent
+		</module>
+		<module>../../org.openscada.atlantis/org.openscada.atlantis-parent
+		</module>
 		<module>../../org.openscada.ide/org.openscada.ide-parent</module>
 		<module>deb</module>
 		<module>rpm</module>
@@ -70,5 +74,28 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>aggregate</goal>
+							<goal>aggregate-jar</goal>
+						</goals>
+						<phase>verify</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<doctitle>openSCADA ${project.version}</doctitle>
+					<excludePackageNames>org.apache:org.openscada.configuration
+					</excludePackageNames>
+					<finalName>org.openscada</finalName>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
