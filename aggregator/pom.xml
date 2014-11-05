@@ -15,14 +15,10 @@
 
 	<modules>
 		<module>../org.openscada-p2</module>
-		<module>../../org.openscada.external/org.openscada.external-parent
-		</module>
-		<module>../../org.openscada.jinterop/org.openscada.jinterop-parent
-		</module>
-		<module>../../org.openscada.utgard/org.openscada.utgard-parent
-		</module>
-		<module>../../org.openscada.atlantis/org.openscada.atlantis-parent
-		</module>
+		<module>../../org.openscada.external/org.openscada.external-parent</module>
+		<module>../../org.openscada.jinterop/org.openscada.jinterop-parent</module>
+		<module>../../org.openscada.utgard/org.openscada.utgard-parent</module>
+		<module>../../org.openscada.atlantis/org.openscada.atlantis-parent</module>
 		<module>../../org.openscada.ide/org.openscada.ide-parent</module>
 		<module>deb</module>
 		<module>rpm</module>
