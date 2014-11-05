@@ -21,6 +21,12 @@
 			<version>${project.version}</version>
 			<type>zip</type>
 		</dependency>
+		<dependency>
+			<groupId>org.openscada</groupId>
+			<artifactId>aggregator</artifactId>
+			<version>${project.version}</version>
+			<type>javadoc</type>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -47,6 +53,24 @@
 							<outputDirectory>${project.build.directory}/zip</outputDirectory>
 						</configuration>
 					</execution>
+					<execution>
+						<id>copy-javadoc</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.openscada</groupId>
+									<artifactId>aggregator</artifactId>
+									<version>${project.version}</version>
+									<type>javadoc</type>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>${project.build.directory}/javadoc</outputDirectory>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 
@@ -63,6 +87,7 @@
 								<unzip dest="${project.build.directory}/p2">
 									<fileset dir="${project.build.directory}/zip" includes="*.zip" />
 								</unzip>
+								<mkdir dir="${project.build.directory}/javadoc"/>
 							</target>
 						</configuration>
 						<goals>
@@ -88,6 +113,7 @@
 							<commands>
 								<command>rm -Rf "/neutronium.openscada.org/download/${openscada.release}/${openscada.releaseType}"</command>
 								<command>rm -Rf "/neutronium.openscada.org/p2/${openscada.release}/${openscada.releaseType}"</command>
+								<command>rm -Rf "/neutronium.openscada.org/javadoc/${openscada.release}/${openscada.releaseType}"</command>
 							</commands>
 						</configuration>
 					</execution>
@@ -113,6 +139,18 @@
 							<serverId>openscada-neutronium</serverId>
 							<url>scpexe://openscada.org/neutronium.openscada.org/p2/${openscada.release}/${openscada.releaseType}</url>
 							<fromDir>${project.build.directory}/p2</fromDir>
+						</configuration>
+					</execution>
+					<execution>
+						<id>upload-javadoc</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>upload</goal>
+						</goals>
+						<configuration>
+							<serverId>openscada-neutronium</serverId>
+							<url>scpexe://openscada.org/neutronium.openscada.org/javadoc/${openscada.release}/${openscada.releaseType}</url>
+							<fromDir>${project.build.directory}/javadoc</fromDir>
 						</configuration>
 					</execution>
 				</executions>
