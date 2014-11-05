@@ -68,7 +68,7 @@
 									<type>javadoc</type>
 								</artifactItem>
 							</artifactItems>
-							<outputDirectory>${project.build.directory}/javadoc</outputDirectory>
+							<outputDirectory>${project.build.directory}/jd</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
@@ -88,6 +88,13 @@
 									<fileset dir="${project.build.directory}/zip" includes="*.zip" />
 								</unzip>
 								<mkdir dir="${project.build.directory}/javadoc"/>
+								<copy todir="${project.build.directory}/javadoc">
+									<fileset dir="${project.build.directory}/jd" include="*-javadoc.jar"/>
+									<mapper type="merge" to="org.openscada-javadoc.jar"/>
+								</copy>
+								<unzip dest="${project.build.directory}/javadoc">
+									<fileset dir="${project.build.directory}/jd" includes="*-javadoc.jar" />
+								</unzip>
 							</target>
 						</configuration>
 						<goals>
