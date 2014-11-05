@@ -89,7 +89,7 @@
 								</unzip>
 								<mkdir dir="${project.build.directory}/javadoc"/>
 								<copy todir="${project.build.directory}/javadoc">
-									<fileset dir="${project.build.directory}/jd" include="*-javadoc.jar"/>
+									<fileset dir="${project.build.directory}/jd" includes="*-javadoc.jar"/>
 									<mapper type="merge" to="org.openscada-javadoc.jar"/>
 								</copy>
 								<unzip dest="${project.build.directory}/javadoc">
