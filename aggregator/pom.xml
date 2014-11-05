@@ -87,8 +87,7 @@
 				</executions>
 				<configuration>
 					<doctitle>openSCADA ${project.version}</doctitle>
-					<excludePackageNames>org.apache:org.openscada.configuration
-					</excludePackageNames>
+					<excludePackageNames>ndr:jcifs:rpc:org.apache:org.jinterop:org.odftoolkit:org.snmp4j:org.openscada.configuration</excludePackageNames>
 					<finalName>org.openscada</finalName>
 				</configuration>
 			</plugin>
