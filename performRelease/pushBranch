@@ -6,7 +6,7 @@ then
   exit 1
 fi
 
-for REPO in atlantis builder external ide jinterop releng utgard
+for REPO in atlantis builder external ide jinterop releng utgard asgard deploy
 do
   if [ ! -d org.openscada.$REPO ];
   then
@@ -15,7 +15,7 @@ do
   fi
 done
 
-for REPO in atlantis builder external ide jinterop releng utgard
+for REPO in atlantis builder external ide jinterop releng utgard asgard deploy
 do
   pushd org.openscada.$REPO
   git push origin $1
