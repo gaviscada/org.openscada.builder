@@ -21,6 +21,12 @@
 			<version>${project.version}</version>
 			<type>zip</type>
 		</dependency>
+		<dependency>
+			<groupId>org.openscada</groupId>
+			<artifactId>aggregator</artifactId>
+			<version>${project.version}</version>
+			<type>javadoc</type>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -47,7 +53,42 @@
 							<outputDirectory>${project.build.directory}/zip</outputDirectory>
 						</configuration>
 					</execution>
+					<execution>
+						<id>copy-javadoc</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.openscada</groupId>
+									<artifactId>aggregator</artifactId>
+									<version>${project.version}</version>
+									<type>javadoc</type>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>${project.build.directory}/jd</outputDirectory>
+						</configuration>
+					</execution>
 				</executions>
+			</plugin>
+			
+			<plugin>
+			    <artifactId>maven-antrun-plugin</artifactId>
+			    <executions>
+			        <execution>
+			            <phase>generate-resources</phase>
+			            <goals>
+			                <goal>run</goal>
+			            </goals>
+			            <configuration>
+			                <tasks>
+			                    <echo>${openscada.version}</echo>
+			                </tasks>
+			            </configuration>
+			        </execution>
+			    </executions>
 			</plugin>
 
 			<plugin>
@@ -62,6 +103,14 @@
 								<mkdir dir="${project.build.directory}/p2" />
 								<unzip dest="${project.build.directory}/p2">
 									<fileset dir="${project.build.directory}/zip" includes="*.zip" />
+								</unzip>
+								<mkdir dir="${project.build.directory}/javadoc"/>
+								<copy todir="${project.build.directory}/javadoc">
+									<fileset dir="${project.build.directory}/jd" includes="*-javadoc.jar"/>
+									<mapper type="merge" to="org.openscada-javadoc.jar"/>
+								</copy>
+								<unzip dest="${project.build.directory}/javadoc">
+									<fileset dir="${project.build.directory}/jd" includes="*-javadoc.jar" />
 								</unzip>
 							</target>
 						</configuration>
@@ -86,8 +135,9 @@
 							<serverId>openscada-neutronium</serverId>
 							<url>scpexe://openscada.org</url>
 							<commands>
-								<command>rm -Rf "/neutronium.openscada.org/download/${openscada.release}/${openscada.releaseType}"</command>
+								<command>rm -Rf "/neutronium.openscada.org/download/${openscada.release}/${openscada.releaseType}/${project.version}"</command>
 								<command>rm -Rf "/neutronium.openscada.org/p2/${openscada.release}/${openscada.releaseType}"</command>
+								<command>rm -Rf "/neutronium.openscada.org/javadoc/${openscada.release}/${openscada.releaseType}"</command>
 							</commands>
 						</configuration>
 					</execution>
@@ -99,7 +149,7 @@
 						</goals>
 						<configuration>
 							<serverId>openscada-neutronium</serverId>
-							<url>scpexe://openscada.org/neutronium.openscada.org/download/${openscada.release}/${openscada.releaseType}</url>
+							<url>scpexe://openscada.org/neutronium.openscada.org/download/${openscada.release}/${openscada.releaseType}/${project.version}</url>
 							<fromDir>${project.build.directory}/zip</fromDir>
 						</configuration>
 					</execution>
@@ -113,6 +163,18 @@
 							<serverId>openscada-neutronium</serverId>
 							<url>scpexe://openscada.org/neutronium.openscada.org/p2/${openscada.release}/${openscada.releaseType}</url>
 							<fromDir>${project.build.directory}/p2</fromDir>
+						</configuration>
+					</execution>
+					<execution>
+						<id>upload-javadoc</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>upload</goal>
+						</goals>
+						<configuration>
+							<serverId>openscada-neutronium</serverId>
+							<url>scpexe://openscada.org/neutronium.openscada.org/javadoc/${openscada.release}/${openscada.releaseType}</url>
+							<fromDir>${project.build.directory}/javadoc</fromDir>
 						</configuration>
 					</execution>
 				</executions>
