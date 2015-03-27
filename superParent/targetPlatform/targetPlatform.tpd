@@ -4,7 +4,7 @@ include "base.tpd"
 
 with source, allEnvironments
 
-location "http://download.eclipse.org/eclipsescada/updates/milestone/0.2" {
+location "http://download.eclipse.org/eclipsescada/updates/release/0.2" {
 	org.eclipse.scada.external.sdk.feature.group
 	org.eclipse.scada.utils.sdk.feature.group
 	org.eclipse.scada.protocols.sdk.feature.group
@@ -31,7 +31,7 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2014052502125
 }
 
 location "http://hstaudacher.github.io/osgi-jax-rs-connector" {
-	com.eclipsesource.jaxrs.publisher
-	com.eclipsesource.jaxrs.provider.gson
-	com.eclipsesource.jaxrs.jersey-all
+	com.eclipsesource.jaxrs.publisher [4.1.0,4.2.0)
+	com.eclipsesource.jaxrs.provider.gson [2.0.0,2.1.0)
+	com.eclipsesource.jaxrs.jersey-all [2.10.1,2.11.0)
 }
