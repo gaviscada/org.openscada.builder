@@ -18,6 +18,7 @@ location "http://download.eclipse.org/eclipsescada/updates/release/0.2" {
 
 location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/" {
 	org.slf4j.log4j
+	org.slf4j.ext
 	javax.transaction
 	osgi.enterprise
 	org.apache.commons.beanutils
