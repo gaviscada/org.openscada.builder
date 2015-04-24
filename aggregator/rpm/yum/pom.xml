@@ -71,7 +71,8 @@
 						</goals>
 						<configuration>
 							<executable>createrepo</executable>
-							<workingDirectory>${project.build.directory}/repo</workingDirectory>
+							<workingDirectory>${project.build.directory}/repo
+							</workingDirectory>
 							<arguments>
 								<argument>.</argument>
 							</arguments>
@@ -79,39 +80,56 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>wagon-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>clean</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>sshexec</goal>
-						</goals>
-						<configuration>
-							<serverId>openscada-neutronium</serverId>
-							<url>scpexe://openscada.org</url>
-							<commands>
-								<command>rm -Rf "/neutronium.openscada.org/yum/${openscada.release}/${openscada.releaseType}"</command>
-							</commands>
-						</configuration>
-					</execution>
-					<execution>
-						<id>upload</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>upload</goal>
-						</goals>
-						<configuration>
-							<serverId>openscada-neutronium</serverId>
-							<url>scpexe://openscada.org/neutronium.openscada.org/yum/${openscada.release}/${openscada.releaseType}</url>
-							<fromDir>${project.build.directory}/repo</fromDir>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>upload</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>repo.upload</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>wagon-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>clean</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>sshexec</goal>
+								</goals>
+								<configuration>
+									<serverId>openscada-neutronium</serverId>
+									<url>scpexe://openscada.org</url>
+									<commands>
+										<command>rm -Rf "/neutronium.openscada.org/yum/${openscada.release}/${openscada.releaseType}"
+										</command>
+									</commands>
+								</configuration>
+							</execution>
+							<execution>
+								<id>upload</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>upload</goal>
+								</goals>
+								<configuration>
+									<serverId>openscada-neutronium</serverId>
+									<url>scpexe://openscada.org/neutronium.openscada.org/yum/${openscada.release}/${openscada.releaseType}</url>
+									<fromDir>${project.build.directory}/repo</fromDir>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+	</profiles>
 </project>

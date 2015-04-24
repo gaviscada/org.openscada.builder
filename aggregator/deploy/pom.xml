@@ -73,7 +73,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -87,10 +87,10 @@
 								<unzip dest="${project.build.directory}/p2">
 									<fileset dir="${project.build.directory}/zip" includes="*.zip" />
 								</unzip>
-								<mkdir dir="${project.build.directory}/javadoc"/>
+								<mkdir dir="${project.build.directory}/javadoc" />
 								<copy todir="${project.build.directory}/javadoc">
-									<fileset dir="${project.build.directory}/jd" includes="*-javadoc.jar"/>
-									<mapper type="merge" to="org.openscada-javadoc.jar"/>
+									<fileset dir="${project.build.directory}/jd" includes="*-javadoc.jar" />
+									<mapper type="merge" to="org.openscada-javadoc.jar" />
 								</copy>
 								<unzip dest="${project.build.directory}/javadoc">
 									<fileset dir="${project.build.directory}/jd" includes="*-javadoc.jar" />
@@ -104,64 +104,80 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>wagon-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>clean</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>sshexec</goal>
-						</goals>
-						<configuration>
-							<serverId>openscada-neutronium</serverId>
-							<url>scpexe://openscada.org</url>
-							<commands>
-								<command>rm -Rf "/neutronium.openscada.org/download/${openscada.release}/${openscada.releaseType}/${project.version}"</command>
-								<command>rm -Rf "/neutronium.openscada.org/p2/${openscada.release}/${openscada.releaseType}"</command>
-								<command>rm -Rf "/neutronium.openscada.org/javadoc/${openscada.release}/${openscada.releaseType}"</command>
-							</commands>
-						</configuration>
-					</execution>
-					<execution>
-						<id>upload-zip</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>upload</goal>
-						</goals>
-						<configuration>
-							<serverId>openscada-neutronium</serverId>
-							<url>scpexe://openscada.org/neutronium.openscada.org/download/${openscada.release}/${openscada.releaseType}/${project.version}</url>
-							<fromDir>${project.build.directory}/zip</fromDir>
-						</configuration>
-					</execution>
-					<execution>
-						<id>upload-p2</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>upload</goal>
-						</goals>
-						<configuration>
-							<serverId>openscada-neutronium</serverId>
-							<url>scpexe://openscada.org/neutronium.openscada.org/p2/${openscada.release}/${openscada.releaseType}</url>
-							<fromDir>${project.build.directory}/p2</fromDir>
-						</configuration>
-					</execution>
-					<execution>
-						<id>upload-javadoc</id>
-						<phase>deploy</phase>
-						<goals>
-							<goal>upload</goal>
-						</goals>
-						<configuration>
-							<serverId>openscada-neutronium</serverId>
-							<url>scpexe://openscada.org/neutronium.openscada.org/javadoc/${openscada.release}/${openscada.releaseType}</url>
-							<fromDir>${project.build.directory}/javadoc</fromDir>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>upload</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>repo.upload</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>wagon-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>clean</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>sshexec</goal>
+								</goals>
+								<configuration>
+									<serverId>openscada-neutronium</serverId>
+									<url>scpexe://openscada.org</url>
+									<commands>
+										<command>rm -Rf "/neutronium.openscada.org/download/${openscada.release}/${openscada.releaseType}/${project.version}"</command>
+										<command>rm -Rf "/neutronium.openscada.org/p2/${openscada.release}/${openscada.releaseType}"</command>
+										<command>rm -Rf "/neutronium.openscada.org/javadoc/${openscada.release}/${openscada.releaseType}"</command>
+									</commands>
+								</configuration>
+							</execution>
+							<execution>
+								<id>upload-zip</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>upload</goal>
+								</goals>
+								<configuration>
+									<serverId>openscada-neutronium</serverId>
+									<url>scpexe://openscada.org/neutronium.openscada.org/download/${openscada.release}/${openscada.releaseType}/${project.version}</url>
+									<fromDir>${project.build.directory}/zip</fromDir>
+								</configuration>
+							</execution>
+							<execution>
+								<id>upload-p2</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>upload</goal>
+								</goals>
+								<configuration>
+									<serverId>openscada-neutronium</serverId>
+									<url>scpexe://openscada.org/neutronium.openscada.org/p2/${openscada.release}/${openscada.releaseType}</url>
+									<fromDir>${project.build.directory}/p2</fromDir>
+								</configuration>
+							</execution>
+							<execution>
+								<id>upload-javadoc</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>upload</goal>
+								</goals>
+								<configuration>
+									<serverId>openscada-neutronium</serverId>
+									<url>scpexe://openscada.org/neutronium.openscada.org/javadoc/${openscada.release}/${openscada.releaseType}</url>
+									<fromDir>${project.build.directory}/javadoc</fromDir>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
