@@ -1,7 +1,7 @@
 buildHelperVersion=0.0.19
 
 version=1.4.0
-release=$version.M2
+release=$version.M3
 branch=1.4
 buildProfile=integration
 
