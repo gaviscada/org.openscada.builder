@@ -2,7 +2,7 @@ target "openSCADA Target Platform (Base Fragment)"
 
 with source, allEnvironments
 
-location "http://download.eclipse.org/releases/kepler" {
+location "http://download.eclipse.org/releases/mars" {
 	org.eclipse.equinox.sdk.feature.group
 	
 	org.eclipse.emf.validation.sdk.feature.group
@@ -22,7 +22,7 @@ location "http://download.eclipse.org/releases/kepler" {
 
 }
 
-location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/" {
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/" {
 	ch.qos.logback.classic
 	ch.qos.logback.core
 	ch.qos.logback.slf4j
