@@ -2,6 +2,9 @@ target "openSCADA Target Platform (Base Fragment)"
 
 with source, allEnvironments
 
+location "http://download.eclipse.org/eclipse/updates/4.5" {
+}
+
 location "http://download.eclipse.org/releases/mars" {
 	org.eclipse.equinox.sdk.feature.group
 	

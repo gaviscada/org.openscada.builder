@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="openSCADA Target Platform (Development)" sequenceNumber="1438071480">
+<target name="openSCADA Target Platform (Development)" sequenceNumber="1438071581">
   <locations>
+    <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <repository location="http://download.eclipse.org/eclipse/updates/4.5"/>
+    </location>
     <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.sdk.feature.group" version="3.11.0.v20150602-1417"/>
       <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.9.0.201505312255"/>
