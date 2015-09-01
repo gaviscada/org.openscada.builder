@@ -134,12 +134,6 @@
 					</dependency>
 				</dependencies>
 				<configuration>
-					<timestampProvider>jgit</timestampProvider>
-					<jgit.ignore>
-						pom.xml
-						CHANGES.txt
-					</jgit.ignore>
-					<format>'v'yyyyMMdd-HHmm</format>
 					<sourceReferences>
 						<generate>true</generate>
 					</sourceReferences>
