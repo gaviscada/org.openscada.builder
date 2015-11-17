@@ -84,20 +84,7 @@
 					<doctitle>openSCADA ${project.version}</doctitle>
 					<excludePackageNames>ndr:jcifs:rpc:org.apache:org.jinterop:org.odftoolkit:org.snmp4j:org.openscada.configuration</excludePackageNames>
 					<finalName>org.openscada</finalName>
-					<tags>
-						<tag>
-							<name>generated</name>
-							<placement>X</placement>
-						</tag>
-						<tag>
-							<name>model</name>
-							<placement>X</placement>
-						</tag>
-						<tag>
-							<name>ordered</name>
-							<placement>X</placement>
-						</tag>
-					</tags>
+					<additionalparam>-Xdoclint:none</additionalparam>
 				</configuration>
 			</plugin>
 		</plugins>
