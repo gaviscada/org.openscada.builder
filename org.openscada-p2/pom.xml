@@ -16,7 +16,7 @@
 	
 	<profiles>
 		<profile>
-			<id>integration</id>
+			<id>deploy</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>

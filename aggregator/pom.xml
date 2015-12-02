@@ -84,6 +84,7 @@
 					<doctitle>openSCADA ${project.version}</doctitle>
 					<excludePackageNames>ndr:jcifs:rpc:org.apache:org.jinterop:org.odftoolkit:org.snmp4j:org.openscada.configuration</excludePackageNames>
 					<finalName>org.openscada</finalName>
+					<additionalparam>-Xdoclint:none</additionalparam>
 				</configuration>
 			</plugin>
 		</plugins>
