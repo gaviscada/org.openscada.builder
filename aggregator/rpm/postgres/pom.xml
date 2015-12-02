@@ -54,7 +54,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <license>LGPL</license>
+                    <license>PostgreSQL License</license>
                     <distribution>openSCADA</distribution>
                     <group>Application/System</group>
                     <packager>openSCADA</packager>
@@ -77,4 +77,26 @@
 
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>deploy</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-deploy-plugin</artifactId>
+						<configuration>
+							<skip>false</skip>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	
 </project>
