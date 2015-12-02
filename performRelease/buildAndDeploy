@@ -9,11 +9,11 @@ pushd workspace/org.openscada.builder
 echo "Build profile: $buildProfile"
 
 pushd superParent
-mvn clean deploy -P$buildProfile
+mvn clean deploy -Pdeploy -P$buildProfile
 popd
 
 pushd aggregator
-mvn clean deploy -P$buildProfile
+mvn clean deploy -Pdeploy -P$buildProfile
 popd
 
 
