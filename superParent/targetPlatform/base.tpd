@@ -40,6 +40,9 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2015051921075
 	
 	org.apache.commons.dbcp[1.4.0,1.4.1)
 	org.apache.commons.dbcp.source[1.4.0,1.4.1)
+	
+	org.apache.commons.pool[1.6.0,1.6.1)
+	org.apache.commons.pool.source[1.6.0,1.6.1)
 }
 
 location "http://download.eclipse.org/paho/" {

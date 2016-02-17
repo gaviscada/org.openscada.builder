@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="openSCADA Target Platform (Development)" sequenceNumber="1455705876">
+<target name="openSCADA Target Platform (Development)" sequenceNumber="1455708276">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <repository location="http://download.eclipse.org/eclipse/updates/4.5"/>
@@ -71,6 +71,8 @@
       <unit id="ch.qos.logback.slf4j" version="1.0.7.v201505121915"/>
       <unit id="org.apache.commons.dbcp" version="1.4.0.v201204271417"/>
       <unit id="org.apache.commons.dbcp.source" version="1.4.0.v201204271417"/>
+      <unit id="org.apache.commons.pool" version="1.6.0.v201204271246"/>
+      <unit id="org.apache.commons.pool.source" version="1.6.0.v201204271246"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="true" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
