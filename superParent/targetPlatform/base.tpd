@@ -37,6 +37,16 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2015051921075
 	ch.qos.logback.classic
 	ch.qos.logback.core
 	ch.qos.logback.slf4j
+	
+	org.apache.commons.dbcp[1.4.0,1.4.1)
+	org.apache.commons.dbcp.source[1.4.0,1.4.1)
+	
+	org.apache.commons.pool[1.6.0,1.6.1)
+	org.apache.commons.pool.source[1.6.0,1.6.1)
+}
+
+location "http://download.eclipse.org/paho/" {
+	org.eclipse.paho.client.mqttv3
 }
 
 location "http://thedrone.packagedrone.org/p2/os-externals" {
