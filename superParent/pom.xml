@@ -183,11 +183,11 @@
 			</properties>
 
 			<distributionManagement>
-				<downloadUrl>http://thedrone.packagedrone.org/maven/os-release</downloadUrl>
+				<downloadUrl>http://thedrone.packagedrone.org/maven/openscada-1.4</downloadUrl>
 				<repository>
 					<id>openscada-drone</id>
 					<name>openSCADA Maven Repository</name>
-					<url>http://thedrone.packagedrone.org/maven/os-release</url>
+					<url>http://thedrone.packagedrone.org/maven/openscada-1.4</url>
 				</repository>
 			</distributionManagement>
 		</profile>
