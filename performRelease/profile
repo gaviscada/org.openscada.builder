@@ -1,9 +1,9 @@
 buildHelperVersion=0.0.19
 
 version=1.4.0
-release=$version.M14
+release=$version
 branch=1.4
-buildProfile=integration
+buildProfile=release
 
 function die {
         echo "$@" 1>&2 # echo to stderr

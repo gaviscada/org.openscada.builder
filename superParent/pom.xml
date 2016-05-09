@@ -13,15 +13,6 @@
 		<url>http://openscada.org</url>
 	</organization>
 
-	<distributionManagement>
-		<downloadUrl>http://neutronium.openscada.org/maven</downloadUrl>
-		<repository>
-			<id>openscada-neutronium</id>
-			<name>openSCADA Maven Repository</name>
-			<url>scpexe://openscada.org/neutronium.openscada.org/maven</url>
-		</repository>
-	</distributionManagement>
-
 	<properties>
 		<openscada.release>1.4</openscada.release>
 		<openscada.releaseType>nightly</openscada.releaseType>
@@ -170,6 +161,15 @@
 			<properties>
 				<openscada.releaseType>milestone</openscada.releaseType>
 			</properties>
+
+			<distributionManagement>
+				<downloadUrl>http://thedrone.packagedrone.org/maven/os-milestones</downloadUrl>
+				<repository>
+					<id>openscada-drone</id>
+					<name>openSCADA Maven Repository</name>
+					<url>http://thedrone.packagedrone.org/maven/os-milestones</url>
+				</repository>
+			</distributionManagement>
 		</profile>
 		
 		<profile>
@@ -181,6 +181,15 @@
 				<openscada.releaseType>release</openscada.releaseType>
 				<repo.upload>true</repo.upload>
 			</properties>
+
+			<distributionManagement>
+				<downloadUrl>http://thedrone.packagedrone.org/maven/os-release</downloadUrl>
+				<repository>
+					<id>openscada-drone</id>
+					<name>openSCADA Maven Repository</name>
+					<url>http://thedrone.packagedrone.org/maven/os-release</url>
+				</repository>
+			</distributionManagement>
 		</profile>
 		
 		<profile>
