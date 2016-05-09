@@ -33,7 +33,7 @@ location "http://download.eclipse.org/releases/mars" {
 	org.eclipse.equinox.p2.rcp.feature.feature.group
 }
 
-location "http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/" {
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/" {
 	ch.qos.logback.classic
 	ch.qos.logback.core
 	ch.qos.logback.slf4j
