@@ -41,7 +41,6 @@ def main():
                        'org.openscada.external',
                        'org.openscada.ide',
                        'org.openscada.jinterop',
-                       'org.openscada.releng',
                        'org.openscada.utgard'))
 
 if __name__=='__main__':
